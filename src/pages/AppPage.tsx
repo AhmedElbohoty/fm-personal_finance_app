@@ -1,5 +1,5 @@
 function AppPage() {
-  return <div>AppPage</div>;
+  return <div className="">AppPage</div>;
 }
 
 export default AppPage;

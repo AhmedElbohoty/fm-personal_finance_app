@@ -27,6 +27,7 @@
       "contexts/*": ["./src/contexts/*"],
       "pages/*": ["./src/pages/*"],
       "store/*": ["./src/store/*"],
+      "styles/*": ["./src/styles/*"],
       "types/*": ["./src/types/*"],
       "utils/*": ["./src/utils/*"],
       "src/*": ["./src/*"]

@@ -4,6 +4,10 @@ import { BrowserRouter } from "react-router-dom";
 
 import { store } from "store/store";
 
+// Import shared style
+import "styles/base.css";
+import "styles/text.css";
+
 function App() {
   return (
     <Provider store={store}>

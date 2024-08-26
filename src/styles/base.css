@@ -1,0 +1,89 @@
+:root {
+  /* #region Colors */
+  /* All colors variables starts with --c- */
+  /* Beige */
+  --c-beige-500: #98908b;
+  --c-beige-100: #f8f4f0;
+
+  /* Grey */
+  --c-grey-900: #201f24;
+  --c-grey-500: #696868;
+  --c-grey-300: #b3b3b3;
+  --c-grey-100: #f2f2f2;
+
+  /* Secondary Colors */
+  --c-green: #277c78;
+  --c-yellow: #f2cdac;
+  --c-cyan: #82c9d7;
+  --c-navy: #626070;
+  --c-red: #c94736;
+  --c-purple: #826cb0;
+
+  /* Other Colors */
+  --c-purple-2: #af81ba;
+  --c-turquoise: #597c7c;
+  --c-brown: #93674f;
+  --c-magenta: #934f6f;
+  --c-blue: #3f82b2;
+  --c-navy-grey: #97a0ac;
+  --c-army-green: #7f9161;
+  --c-gold: #cab361;
+  --c-orange: #be6c49;
+  --c-white: #ffffff;
+  /* #endregion Colors */
+
+  /* #region Typography */
+  --font-family: "Public Sans", sans-serif;
+
+  /* Font sizes */
+  --font-size-32: 32px;
+  --font-size-20: 20px;
+  --font-size-16: 16px;
+  --font-size-14: 14px;
+  --font-size-12: 12px;
+
+  /* Line heights */
+  --line-height-120: 120%;
+  --line-height-150: 150%;
+
+  /* Letter spacing */
+  --letter-spacing-0: 0px;
+
+  /* Font weights */
+  --font-weight-bold: 700;
+  --font-weight-regular: 400;
+  /* #endregion Typography */
+
+  /* #region Spacing */
+  --spacing-500: 40px;
+  --spacing-400: 32px;
+  --spacing-300: 24px;
+  --spacing-250: 20px;
+  --spacing-200: 16px;
+  --spacing-150: 12px;
+  --spacing-100: 8px;
+  --spacing-50: 4px;
+  /* #endregion Spacing */
+
+  --border-radius-small: 8px;
+  --border-radius-medium: 12px;
+  --border-radius-large: 16px;
+  --border-radius-full: 1000px;
+
+  --icon-size-small: 24px;
+  --icon-size-medium: 32px;
+  --icon-size-large: 40px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html,
+#root {
+  width: 100%;
+  height: 100%;
+}

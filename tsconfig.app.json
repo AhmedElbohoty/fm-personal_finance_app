@@ -26,6 +26,7 @@
       "components/*": ["./src/components/*"],
       "contexts/*": ["./src/contexts/*"],
       "pages/*": ["./src/pages/*"],
+      "store/*": ["./src/store/*"],
       "types/*": ["./src/types/*"],
       "utils/*": ["./src/utils/*"],
       "src/*": ["./src/*"]

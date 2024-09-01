@@ -114,3 +114,7 @@ a {
   color: inherit;
   outline: none;
 }
+
+.resize-animation-stopper {
+  --transition-duration: 0;
+}

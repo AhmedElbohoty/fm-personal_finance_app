@@ -125,11 +125,6 @@
     justify-content: space-between;
     gap: 0;
   }
-
-  .sidebar-header,
-  .sidebar-toggle-btn {
-    display: none;
-  }
 }
 
 /* Small */

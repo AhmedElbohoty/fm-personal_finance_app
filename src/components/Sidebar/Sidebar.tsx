@@ -10,6 +10,7 @@ import BudgetsIcon from "assets/icons/nav-budgets.svg";
 import PotsIcon from "assets/icons/nav-pots.svg";
 import RecurringBillsIcon from "assets/icons/nav-recurring-bills.svg";
 import MinimizeIcon from "assets/icons/minimize-menu.svg";
+import { useWindowSizeContext } from "contexts/windowSizeContext";
 
 // CSS prefix: .sidebar-
 import "./style.css";
@@ -51,15 +52,19 @@ const links: LinkType[] = [
 function Sidebar() {
   const [isMinimized, setIsMinimized] = useState(false);
 
+  const { isLargeScr } = useWindowSizeContext();
+
   function handleToggleMinimize() {
     setIsMinimized(!isMinimized);
   }
 
   return (
     <aside className="sidebar" data-minimized={isMinimized}>
-      <header className="sidebar-header">
-        {isMinimized ? <LogoMinimized /> : <Logo />}
-      </header>
+      {isLargeScr && (
+        <header className="sidebar-header">
+          {isMinimized ? <LogoMinimized /> : <Logo />}
+        </header>
+      )}
 
       <nav className="sidebar-nav">
         {links.map((link) => (
@@ -67,12 +72,14 @@ function Sidebar() {
         ))}
       </nav>
 
-      <button className="sidebar-toggle-btn" onClick={handleToggleMinimize}>
-        <span className="sidebar-toggle-btn-icon">
-          <MinimizeIcon />
-        </span>
-        <span className="sidebar-toggle-btn-label">Minimize Menu</span>
-      </button>
+      {isLargeScr && (
+        <button className="sidebar-toggle-btn" onClick={handleToggleMinimize}>
+          <span className="sidebar-toggle-btn-icon">
+            <MinimizeIcon />
+          </span>
+          <span className="sidebar-toggle-btn-label">Minimize Menu</span>
+        </button>
+      )}
     </aside>
   );
 }

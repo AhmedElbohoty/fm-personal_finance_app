@@ -73,6 +73,9 @@
   --icon-size-small: 24px;
   --icon-size-medium: 32px;
   --icon-size-large: 40px;
+
+  --transition-duration: 400ms;
+  --transition-timing-func: ease-in-out;
 }
 
 * {
@@ -86,4 +89,28 @@ html,
 #root {
   width: 100%;
   height: 100%;
+  font-family: var(--font-family);
+}
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+svg {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
 }

@@ -11,5 +11,4 @@ const appSlice = createSlice({
 // Export action creators
 // export const {} = appSlice.actions;
 
-console.log(appSlice);
 export default appSlice.reducer;

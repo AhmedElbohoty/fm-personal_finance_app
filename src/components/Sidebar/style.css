@@ -116,6 +116,7 @@
     padding: 8px 40px 0 40px;
     padding-bottom: 0;
     border-radius: var(--border-radius-small) var(--border-radius-small) 0 0;
+    transition: unset;
   }
 
   .sidebar-nav {

@@ -89,6 +89,10 @@ html,
 #root {
   width: 100%;
   height: 100%;
+}
+
+body {
+  background-color: var(--c-beige-100);
   font-family: var(--font-family);
 }
 

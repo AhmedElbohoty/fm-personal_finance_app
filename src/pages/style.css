@@ -12,6 +12,7 @@
 
 .apppage-main {
   grid-area: main;
+  padding: var(--spacing-400) var(--spacing-500);
 }
 
 /* Medium */
@@ -22,5 +23,12 @@
       "aside";
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
+  }
+}
+
+/* Small */
+@media screen and (max-width: 767px) {
+  .apppage-main {
+    padding: var(--spacing-300) var(--spacing-200);
   }
 }

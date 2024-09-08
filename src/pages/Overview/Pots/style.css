@@ -1,0 +1,113 @@
+.potssect {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-250);
+}
+
+.potssect-main {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-250);
+}
+
+/* #region total */
+.potssect-total {
+  width: 247px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-200);
+  padding: var(--spacing-250) var(--spacing-200);
+  background-color: var(--c-beige-100);
+  border-radius: var(--border-radius-medium);
+}
+
+.potssect-total-icon {
+  display: block;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.potssect-total-icon .svg-pot {
+  width: 27px;
+  height: auto;
+}
+
+.potssect-total-label {
+  margin-bottom: 11px;
+  color: var(--c-grey-500);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.potssect-total-value {
+  color: var(--c-grey-900);
+  font-size: var(--font-size-32);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-120);
+  letter-spacing: var(--letter-spacing-0);
+}
+/* #endregion total */
+
+/* #region list */
+.potssect-list {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-200);
+}
+
+.potssect-list-item {
+  position: relative;
+  min-width: 130.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-50);
+  padding-left: var(--spacing-250);
+  padding-right: var(--spacing-50);
+}
+
+.potssect-list-color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: var(--border-radius-small);
+}
+
+.potssect-list-name {
+  color: var(--c-grey-500);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.potssect-list-value {
+  color: var(--c-grey-900);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+/* #endregion list */
+
+/* Small */
+@media screen and (max-width: 767px) {
+  .potssect-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .potssect-total,
+  .potssect-list {
+    width: 100%;
+  }
+}

@@ -65,17 +65,26 @@
   --spacing-50: 4px;
   /* #endregion Spacing */
 
+  /* #region border */
   --border-radius-small: 8px;
   --border-radius-medium: 12px;
   --border-radius-large: 16px;
   --border-radius-full: 1000px;
+  /* #endregion border */
 
+  /* #region icon */
   --icon-size-small: 24px;
   --icon-size-medium: 32px;
   --icon-size-large: 40px;
+  /* #endregion icon */
 
+  /* #region transition */
   --transition-duration: 400ms;
   --transition-timing-func: ease-in-out;
+  /* #endregion transition */
+
+  /* #region dropshadow */
+  /* #endregion dropshadow */
 }
 
 * {
@@ -84,8 +93,8 @@
   box-sizing: border-box;
 }
 
-body,
 html,
+body,
 #root {
   width: 100%;
   height: 100%;
@@ -117,6 +126,10 @@ a {
   text-decoration: none;
   color: inherit;
   outline: none;
+}
+
+li {
+  list-style-type: none;
 }
 
 .resize-animation-stopper {

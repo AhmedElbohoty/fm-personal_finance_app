@@ -1,0 +1,12 @@
+.card {
+  padding: var(--spacing-400);
+  border-radius: var(--border-radius-medium);
+  background-color: var(--c-white);
+}
+
+/* Small */
+@media screen and (max-width: 767px) {
+  .card {
+    padding: var(--spacing-300) var(--spacing-250);
+  }
+}

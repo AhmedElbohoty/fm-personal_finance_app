@@ -1,0 +1,23 @@
+.useravatar {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius-full);
+}
+
+.useravatar-circ {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.useravatar-circ .svg-circle-circ {
+  fill: var(--c-green);
+}
+
+.useravatar-circ-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  color: var(--c-white);
+}

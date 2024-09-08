@@ -1,3 +1,6 @@
+import Card from "components/Card/Card";
+import CardHeader from "pages/Overview/CardHeader/CardHeader";
+
 import data from "utils/data.json";
 
 // CSS .budgets-section
@@ -11,27 +14,30 @@ function Budgets() {
   const totalBudget = budgets.reduce((sum, budget) => sum + budget.maximum, 0);
 
   return (
-    <section className="budgets-section">
-      <div className="section-header">
-        <h2>Budgets</h2>
-        <a href="/budgets">See Details ▶</a>
-      </div>
-      <div className="budget-chart">
-        {/* Implement a circular chart component here */}
-        <div className="chart-center">
-          <p>${totalSpent.toFixed(2)}</p>
-          <span>of ${totalBudget.toFixed(2)} limit</span>
-        </div>
-      </div>
-      <div className="budget-list">
-        {budgets.map((budget) => (
-          <div key={budget.category} className="budget-item">
-            <span>{budget.category}</span>
-            <span>${budget.maximum.toFixed(2)}</span>
+    <Card>
+      <section className="budgets-section">
+        <CardHeader
+          title="Budgets"
+          linkPath="/budgets"
+          linkText="See Details"
+        />
+        <div className="budget-chart">
+          {/* Implement a circular chart component here */}
+          <div className="chart-center">
+            <p>${totalSpent.toFixed(2)}</p>
+            <span>of ${totalBudget.toFixed(2)} limit</span>
           </div>
-        ))}
-      </div>
-    </section>
+        </div>
+        <div className="budget-list">
+          {budgets.map((budget) => (
+            <div key={budget.category} className="budget-item">
+              <span>{budget.category}</span>
+              <span>${budget.maximum.toFixed(2)}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    </Card>
   );
 }
 

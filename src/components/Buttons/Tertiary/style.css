@@ -1,0 +1,41 @@
+.tertiarybtn {
+  height: 21px;
+  min-height: 21px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-150);
+  color: var(--c-grey-500);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+  transition: color var(--transition-timing-func) var(--transition-duration);
+}
+
+.tertiarybtn-icon {
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tertiarybtn-icon .svg-caretr {
+  width: 5px;
+  height: 8px;
+}
+
+.tertiarybtn-icon .svg-caretr-path {
+  fill: var(--c-grey-500);
+  transition: fill var(--transition-timing-func) var(--transition-duration);
+}
+
+@media (hover: hover) {
+  .tertiarybtn:hover {
+    color: var(--c-grey-900);
+  }
+
+  .tertiarybtn:hover .svg-caretr-path {
+    fill: var(--c-grey-900);
+  }
+}

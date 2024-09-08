@@ -7,6 +7,7 @@ import { store } from "store/store";
 
 // Import shared style
 import "styles/base.css";
+import "styles/helpers.css";
 import "styles/text.css";
 
 function App() {

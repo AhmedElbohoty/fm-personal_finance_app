@@ -1,32 +1,28 @@
-import Card from "components/Card/Card";
-import Balance from "pages/Overview/Balance/Balance";
+import Heading1 from "components/Heading1/Heading1";
+import Stats from "pages/Overview/Stats/Stats";
 import Pots from "pages/Overview/Pots/Pots";
 import Budgets from "pages/Overview/Budgets/Budgets";
 import Transactions from "pages/Overview/Transactions/Transactions";
 import RecurringBills from "pages/Overview/RecurringBills/RecurringBills";
 
+import "./style.css";
+
 function Overview() {
   return (
     <div className="overview">
-      <h1>Overview</h1>
-      <Card>
-        <Balance />
-      </Card>
-      <div className="overview-grid">
-        <Card>
+      <Heading1 text="Overview" />
+
+      <Stats />
+
+      <div className="overview-grid-cont">
+        <div className="overview-grid">
           <Pots />
-        </Card>
-        <Card>
-          <Budgets />
-        </Card>
-      </div>
-      <div className="overview-grid">
-        <Card>
           <Transactions />
-        </Card>
-        <Card>
+        </div>
+        <div className="overview-grid">
+          <Budgets />
           <RecurringBills />
-        </Card>
+        </div>
       </div>
     </div>
   );

@@ -8,14 +8,15 @@ import Pot from "pages/Pots/Pot/Pot";
 import { PotsPageContext } from "contexts/potsPageContext";
 import useDocumentTitle from "hooks/useDocumentTitle";
 import titles from "utils/documentTitle";
-
 import { pots } from "utils/data.json";
+import type { Pot as PotType } from "types/data";
 
 // CSS prefix: .potspage-
 import "./style.css";
 
 function Pots() {
   const [isPotsFormOpened, setIsPotsFormOpened] = useState(false);
+  const [editPot, setEditPot] = useState<PotType | null>(null);
 
   useDocumentTitle(titles.pots);
 
@@ -23,7 +24,12 @@ function Pots() {
     setIsPotsFormOpened(true);
   }
 
-  const contextValue = { isPotsFormOpened, setIsPotsFormOpened };
+  const contextValue = {
+    isPotsFormOpened,
+    setIsPotsFormOpened,
+    editPot,
+    setEditPot,
+  };
   return (
     <PotsPageContext.Provider value={contextValue}>
       <div className="potspage">
@@ -39,7 +45,7 @@ function Pots() {
           })}
         </div>
       </div>
-      {isPotsFormOpened && <PotForm />}
+      {isPotsFormOpened && <PotForm editPot={editPot} />}
     </PotsPageContext.Provider>
   );
 }

@@ -1,7 +1,8 @@
-import type { Pot } from "types/data";
 import EllipsisIcon from "assets/icons/ellipsis.svg";
 import SecondaryBtn from "components/Buttons/Secondary/Secondary";
 import ProgressBar from "components/ProgressBar/ProgressBar";
+
+import type { Pot } from "types/data";
 
 // CSS prefix: .potcard-
 import "./style.css";

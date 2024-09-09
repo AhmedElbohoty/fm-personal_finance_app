@@ -1,12 +1,14 @@
 import type { ChangeEvent } from "react";
 
+import type { Option } from "components/Input/selectOptions";
+
 // CSS prefix: .select-
 import "./style.css";
 
 type SelectProps = {
   id: string;
   value: string;
-  options: [];
+  options: Option[];
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 };
 

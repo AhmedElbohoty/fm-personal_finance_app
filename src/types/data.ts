@@ -5,6 +5,7 @@ export type Balance = {
 };
 
 export type Transaction = {
+  id: string;
   avatar: string;
   name: string;
   category: string;
@@ -14,12 +15,14 @@ export type Transaction = {
 };
 
 export type Budget = {
+  id: string;
   category: string;
   maximum: number;
   theme: string;
 };
 
 export type Pot = {
+  id: string;
   name: string;
   target: number;
   total: number;

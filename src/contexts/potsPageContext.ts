@@ -1,13 +1,19 @@
 import React, { createContext, useContext } from "react";
 
+import type { Pot } from "types/data";
+
 type potsPageContext = {
   isPotsFormOpened: boolean;
   setIsPotsFormOpened: React.Dispatch<React.SetStateAction<boolean>>;
+  editPot: Pot | null;
+  setEditPot: React.Dispatch<React.SetStateAction<Pot | null>>;
 };
 
 const contextValue: potsPageContext = {
   isPotsFormOpened: false,
   setIsPotsFormOpened: () => {},
+  editPot: null,
+  setEditPot: () => {},
 };
 
 export const PotsPageContext = createContext(contextValue);

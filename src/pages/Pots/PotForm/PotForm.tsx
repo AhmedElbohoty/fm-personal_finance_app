@@ -8,21 +8,27 @@ import PrimaryBtn from "components/Buttons/Primary/Primary";
 import Modal from "components/Modal/Modal";
 import ModalHeader from "components/Modal/ModalHeader";
 import ModalInfo from "components/Modal/ModalInfo";
+import { themesOptions } from "components/Input/selectOptions";
 
 import CaretDownIcon from "assets/icons/caret-down.svg";
 import { PotsPageContext } from "contexts/potsPageContext";
+import { Pot } from "types/data";
 
 // CSS prefix: .potform-
 import "./style.css";
 
-function PotForm() {
+type PotFormProps = {
+  editPot: Pot | null;
+};
+
+function PotForm({ editPot }: PotFormProps) {
   const nameId = useId();
   const targetId = useId();
   const themeId = useId();
   const { setIsPotsFormOpened } = useContext(PotsPageContext);
-  const [potName, setPotName] = useState("");
-  const [target, setTarget] = useState(0);
-  const [theme, setTheme] = useState("red");
+  const [potName, setPotName] = useState(editPot ? editPot.name : "");
+  const [target, setTarget] = useState(editPot ? editPot.target : 0);
+  const [theme, setTheme] = useState(editPot ? editPot.theme : "#277c78");
 
   function onClick() {}
 
@@ -76,12 +82,12 @@ function PotForm() {
           <InputWrapper
             id={themeId}
             label="Theme"
-            colorTag="red"
+            colorTag={theme}
             icon={<CaretDownIcon />}
           >
             <Select
               id={themeId}
-              options={[]}
+              options={themesOptions}
               value={theme}
               onChange={onChangeTheme}
             />

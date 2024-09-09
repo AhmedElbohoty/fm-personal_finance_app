@@ -5,9 +5,14 @@ import Budgets from "pages/Overview/Budgets/Budgets";
 import Transactions from "pages/Overview/Transactions/Transactions";
 import RecurringBills from "pages/Overview/RecurringBills/RecurringBills";
 
+import titles from "utils/documentTitle";
+import useDocumentTitle from "hooks/useDocumentTitle";
+
 import "./style.css";
 
 function Overview() {
+  useDocumentTitle(titles.overview);
+
   return (
     <div className="overview">
       <Heading1 text="Overview" />

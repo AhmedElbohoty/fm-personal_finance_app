@@ -1,9 +1,9 @@
 import AppPage from "pages/AppPage";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import useResizeAnimationStopper from "hooks/useResizeAnimationStopper";
 
 import { store } from "store/store";
+import useResizeAnimationStopper from "hooks/useResizeAnimationStopper";
 
 // Import shared style
 import "styles/base.css";

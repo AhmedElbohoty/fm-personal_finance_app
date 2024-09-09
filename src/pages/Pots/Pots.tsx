@@ -5,12 +5,16 @@ import PotForm from "pages/Pots/PotForm/PotForm";
 import PrimaryBtn from "components/Buttons/Primary/Primary";
 
 import { PotsPageContext } from "contexts/potsPageContext";
+import useDocumentTitle from "hooks/useDocumentTitle";
+import titles from "utils/documentTitle";
 
 // CSS prefix: .potspage-
 import "./style.css";
 
 function Pots() {
   const potsFormRef = useRef<HTMLDialogElement | null>(null);
+
+  useDocumentTitle(titles.pots);
 
   function onClickAddNewPot() {
     if (!potsFormRef.current) return;

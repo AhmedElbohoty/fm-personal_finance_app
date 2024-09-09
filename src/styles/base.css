@@ -105,6 +105,10 @@ body {
   font-family: var(--font-family);
 }
 
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
 button {
   background: none;
   border: none;
@@ -116,6 +120,33 @@ button {
 
 button::-moz-focus-inner {
   border: 0;
+}
+
+input,
+select {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 svg {
@@ -130,6 +161,22 @@ a {
 
 li {
   list-style-type: none;
+}
+
+dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: unset;
+  height: 100%;
+  max-height: unset;
+  border: none;
+  background-color: transparent;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .resize-animation-stopper {

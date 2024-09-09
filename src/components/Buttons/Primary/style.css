@@ -1,0 +1,24 @@
+.primarybtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-200);
+  background-color: var(--c-grey-900);
+  border-radius: var(--border-radius-small);
+  transition: background-color var(--transition-timing-func)
+    var(--transition-duration);
+}
+
+.primarybtn-label {
+  color: var(--c-white);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+@media (hover: hover) {
+  .primarybtn:hover {
+    background-color: var(--c-grey-500);
+  }
+}

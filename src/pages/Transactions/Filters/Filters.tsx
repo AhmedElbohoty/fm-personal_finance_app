@@ -1,4 +1,4 @@
-import Input from "components/Input/Input";
+import InputWrapper from "components/Input/InputWrapper";
 
 // CSS prefix: .transactions-filters-
 import "./style.css";
@@ -6,14 +6,14 @@ import "./style.css";
 function Filters() {
   return (
     <div className="transactions-filters">
-      <Input
+      <InputWrapper
         id="search"
         label="Search"
         type="search"
         placeholder="Search transaction"
       />
       <div className="transactions-filters-right">
-        <Input
+        <InputWrapper
           id="sort"
           label="Sort by"
           type="select"
@@ -25,7 +25,7 @@ function Filters() {
             { value: "lowest", label: "Lowest Amount" },
           ]}
         />
-        <Input
+        <InputWrapper
           id="category"
           label="Category"
           type="select"

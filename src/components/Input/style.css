@@ -1,0 +1,102 @@
+.input-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-50);
+}
+
+.input-label {
+  color: var(--c-grey-500);
+  text-align: left;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.input-field {
+  position: relative;
+  width: 100%;
+}
+
+.input-input,
+.input-select {
+  width: 100%;
+  padding: var(--spacing-150) var(--spacing-250);
+  border-radius: var(--border-radius-small);
+  outline: var(--c-beige-500) solid 1px;
+  outline-offset: -1px;
+  background-color: var(--c-white);
+  color: var(--c-grey-900);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.input-select {
+  padding-left: 48px;
+  cursor: pointer;
+}
+
+.input-input::placeholder {
+  color: var(--c-beige-500);
+}
+
+.input-field:has(.input-prefix) .input-input,
+.input-field:has(.input-color-tag) .input-input {
+  padding-left: 42px;
+}
+
+.input-field:has(.input-icon) .input-input,
+.input-select {
+  padding-right: 52px;
+}
+
+.input-prefix {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  color: var(--c-beige-500);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+  pointer-events: none;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  translate: 0 -50%;
+}
+
+.input-icon .svg-caretd {
+  width: 11px;
+  height: 6px;
+}
+
+.input-color-tag {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--border-radius-full);
+  translate: 0 -50%;
+}
+
+.input-helper-text {
+  color: var(--c-grey-500);
+  text-align: right;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}

@@ -14,7 +14,6 @@
   max-width: 1440px;
   grid-area: main;
   padding: var(--spacing-400) var(--spacing-500);
-  justify-self: center;
 }
 
 /* Medium */

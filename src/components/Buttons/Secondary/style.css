@@ -1,0 +1,27 @@
+.secondbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-200);
+  background-color: var(--c-beige-100);
+  border-radius: var(--border-radius-small);
+  outline: 1px solid transparent;
+  transition: background-color var(--transition-timing-func)
+      var(--transition-duration),
+    outline-color var(--transition-timing-func) var(--transition-duration);
+}
+
+.secondbtn-label {
+  color: var(--c-grey-900);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+@media (hover: hover) {
+  .secondbtn:hover {
+    background-color: var(--c-white);
+    outline-color: var(--c-beige-500);
+  }
+}

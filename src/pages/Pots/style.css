@@ -1,0 +1,25 @@
+.potspage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-400);
+}
+
+.potspage-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.potspage-grid {
+  display: grid;
+  grid-template-columns: minmax(518px, 1fr) minmax(518px, 1fr);
+  gap: var(--spacing-300);
+}
+
+/* Medium */
+@media screen and (max-width: 1439px) {
+  .potspage-grid {
+    grid-template-columns: 1fr;
+  }
+}

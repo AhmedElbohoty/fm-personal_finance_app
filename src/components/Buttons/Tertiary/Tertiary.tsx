@@ -1,8 +1,6 @@
 import { type ReactElement } from "react";
 import { Link, type To } from "react-router-dom";
 
-import CaretRight from "assets/icons/caret-right.svg";
-
 // CSS prefix: .tertiarybtn-
 import "./style.css";
 
@@ -17,11 +15,7 @@ function TertiaryButton({ label, link, icon }: TertiaryProps) {
     return (
       <Link to={link} className="tertiarybtn">
         <span>{label}</span>
-        {icon && (
-          <span className="tertiarybtn-icon">
-            <CaretRight />
-          </span>
-        )}
+        {icon && <span className="tertiarybtn-icon">{icon}</span>}
       </Link>
     );
   }
@@ -29,11 +23,7 @@ function TertiaryButton({ label, link, icon }: TertiaryProps) {
   return (
     <button className="tertiarybtn">
       <span>{label}</span>
-      {icon && (
-        <span className="tertiarybtn-icon">
-          <CaretRight />
-        </span>
-      )}
+      {icon && <span className="tertiarybtn-icon">{icon}</span>}
     </button>
   );
 }

@@ -1,11 +1,13 @@
-import { createContext, MutableRefObject, useContext } from "react";
+import React, { createContext, useContext } from "react";
 
 type potsPageContext = {
-  potsFormRef: MutableRefObject<HTMLDialogElement | null>;
+  isPotsFormOpened: boolean;
+  setIsPotsFormOpened: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const contextValue: potsPageContext = {
-  potsFormRef: { current: null },
+  isPotsFormOpened: false,
+  setIsPotsFormOpened: () => {},
 };
 
 export const PotsPageContext = createContext(contextValue);

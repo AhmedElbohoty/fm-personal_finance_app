@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useState } from "react";
 
 import Heading1 from "components/Heading1/Heading1";
 import PrimaryBtn from "components/Buttons/Primary/Primary";
@@ -15,17 +15,17 @@ import { pots } from "utils/data.json";
 import "./style.css";
 
 function Pots() {
-  const potsFormRef = useRef<HTMLDialogElement | null>(null);
+  const [isPotsFormOpened, setIsPotsFormOpened] = useState(false);
 
   useDocumentTitle(titles.pots);
 
   function onClickAddNewPot() {
-    if (!potsFormRef.current) return;
-    potsFormRef.current.showModal();
+    setIsPotsFormOpened(true);
   }
 
+  const contextValue = { isPotsFormOpened, setIsPotsFormOpened };
   return (
-    <PotsPageContext.Provider value={{ potsFormRef }}>
+    <PotsPageContext.Provider value={contextValue}>
       <div className="potspage">
         <div className="potspage-top">
           <Heading1 text="Pots" />
@@ -34,12 +34,12 @@ function Pots() {
         </div>
 
         <div className="potspage-grid">
-          {pots.map((pot, idx) => {
-            return <Pot key={idx} pot={pot} />;
+          {pots.map((pot) => {
+            return <Pot key={pot.id} pot={pot} />;
           })}
         </div>
       </div>
-      <PotForm potsFormRef={potsFormRef} />
+      {isPotsFormOpened && <PotForm />}
     </PotsPageContext.Provider>
   );
 }

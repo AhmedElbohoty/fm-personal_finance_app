@@ -1,54 +1,7 @@
-.potform-dialog {
-  display: none;
-}
-
-.potform-dialog[open] {
-  display: flex;
-}
-
 .potform-form {
-  width: 560px;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-250);
-  padding: var(--spacing-400);
-  border-radius: var(--border-radius-medium);
-  background-color: var(--c-white);
-}
-
-.potform-head-cont {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.potform-head {
-  color: var(--c-grey-900);
-  font-size: var(--font-size-32);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-120);
-  letter-spacing: var(--letter-spacing-0);
-}
-
-.potform-head-icon {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.potform-head-icon .svg-close {
-  width: 25px;
-}
-
-.potform-info {
-  color: var(--c-grey-500);
-  font-size: var(--font-size-14);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-150);
-  letter-spacing: var(--letter-spacing-0);
 }
 
 .potform-inputs {

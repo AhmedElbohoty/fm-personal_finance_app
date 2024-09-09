@@ -9,6 +9,7 @@
   transition: background-color var(--transition-timing-func)
       var(--transition-duration),
     outline-color var(--transition-timing-func) var(--transition-duration);
+  overflow: hidden;
 }
 
 .secondbtn-label {

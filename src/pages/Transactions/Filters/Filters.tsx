@@ -6,14 +6,14 @@ import "./style.css";
 function Filters() {
   return (
     <div className="transactions-filters">
-      <InputWrapper
+      {/* <InputWrapper
         id="search"
         label="Search"
         type="search"
         placeholder="Search transaction"
-      />
+      /> */}
       <div className="transactions-filters-right">
-        <InputWrapper
+        {/* <InputWrapper
           id="sort"
           label="Sort by"
           type="select"
@@ -37,7 +37,7 @@ function Filters() {
             { value: "groceries", label: "Groceries" },
             { value: "entertainment", label: "Entertainment" },
           ]}
-        />
+        /> */}
       </div>
     </div>
   );

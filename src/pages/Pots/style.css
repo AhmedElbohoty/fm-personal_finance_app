@@ -20,6 +20,6 @@
 /* Medium */
 @media screen and (max-width: 1439px) {
   .potspage-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(100%, 1fr);
   }
 }

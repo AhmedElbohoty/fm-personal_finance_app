@@ -1,0 +1,104 @@
+.potcard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-400);
+  padding: var(--spacing-300);
+  background-color: var(--c-white);
+  border-radius: var(--border-radius-medium);
+}
+
+/* #region header */
+.potcard-head {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-200);
+}
+
+.potcard-head-theme {
+  display: block;
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+  border-radius: var(--border-radius-full);
+}
+
+.potcard-head-name {
+  flex: 1;
+  color: var(--c-grey-900);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-120);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.potcard-head-icon {
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.potcard-head-icon .svg-ellipsis {
+  width: 14px;
+  height: 4px;
+}
+/* #endregion header */
+
+/* #region main */
+.potcard-main {
+  padding: 10.5px 0;
+}
+
+.potcard-main-saved {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-200);
+  margin-bottom: var(--spacing-200);
+}
+
+.potcard-main-saved-label {
+  flex: 1;
+  color: var(--c-beige-500);
+  text-align: left;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.potcard-main-saved-value {
+  flex: 1;
+  color: var(--c-grey-900);
+  text-align: right;
+  font-size: var(--font-size-32);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-120);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.potcard-main-progress {
+  width: 100%;
+}
+/* #endregion main */
+
+/* #region footer */
+.potcard-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-200);
+}
+
+.potcard-footer .secondbtn {
+  flex: 1;
+}
+/* #endregion footer */
+
+/* Small */
+@media screen and (max-width: 767px) {
+  .potcard {
+    padding-right: var(--spacing-250);
+    padding-left: var(--spacing-250);
+  }
+}

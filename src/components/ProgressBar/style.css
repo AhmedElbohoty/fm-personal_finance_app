@@ -1,0 +1,44 @@
+.progbar-cont {
+  width: 100%;
+}
+
+.progbar-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: var(--border-radius-small);
+  background-color: var(--c-beige-100);
+  overflow: hidden;
+}
+
+.progbar-active {
+  display: block;
+  height: 100%;
+  border-radius: var(--border-radius-small);
+}
+
+.progbar-labels {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-200);
+  margin-top: 13px;
+}
+
+.progbar-left-label {
+  flex: 1;
+  color: var(--c-grey-500);
+  text-align: left;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.progbar-right-label {
+  flex: 1;
+  color: var(--c-grey-500);
+  text-align: right;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}

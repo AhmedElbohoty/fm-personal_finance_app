@@ -25,7 +25,7 @@ function PotForm({ editPot }: PotFormProps) {
   const nameId = useId();
   const targetId = useId();
   const themeId = useId();
-  const { setIsPotsFormOpened } = useContext(PotsPageContext);
+  const { setIsPotsFormOpened, setEditPot } = useContext(PotsPageContext);
   const [potName, setPotName] = useState(editPot ? editPot.name : "");
   const [target, setTarget] = useState(editPot ? editPot.target : 0);
   const [theme, setTheme] = useState(editPot ? editPot.theme : "#277c78");
@@ -46,14 +46,21 @@ function PotForm({ editPot }: PotFormProps) {
 
   function closeModal() {
     setIsPotsFormOpened(false);
+    setEditPot(null);
   }
 
   return (
     <Modal closeModal={closeModal}>
-      <ModalHeader text="Add New Pot" closeModal={closeModal} />
+      <ModalHeader
+        text={editPot ? "Edit Pot" : "Add New Pot"}
+        closeModal={closeModal}
+      />
       <ModalInfo
-        text="Create a pot to set savings targets. These can help keep you on track
-          as you save for special purchases."
+        text={
+          editPot
+            ? "If your saving targets change, feel free to update your pots."
+            : "Create a pot to set savings targets. These can help keep you on track as you save for special purchases."
+        }
       />
 
       <form className="potform-form">
@@ -88,7 +95,7 @@ function PotForm({ editPot }: PotFormProps) {
             <Select
               id={themeId}
               options={themesOptions}
-              value={theme}
+              value={theme.toLowerCase()}
               onChange={onChangeTheme}
             />
           </InputWrapper>

@@ -1,8 +1,14 @@
+import { useContext, useId, useState } from "react";
+
 import EllipsisIcon from "assets/icons/ellipsis.svg";
 import SecondaryBtn from "components/Buttons/Secondary/Secondary";
 import ProgressBar from "components/ProgressBar/ProgressBar";
+import Dropdown from "components/Dropdown/Dropdown";
 
 import type { Pot } from "types/data";
+import usePopover from "hooks/usePopover";
+import useToggleEvent from "hooks/useToggleEvent";
+import { PotsPageContext } from "contexts/potsPageContext";
 
 // CSS prefix: .potcard-
 import "./style.css";
@@ -12,11 +18,25 @@ type PotProps = {
 };
 
 function Pot({ pot }: PotProps) {
+  const floatId = useId();
+  const { setEditPot, setIsPotsFormOpened } = useContext(PotsPageContext);
+  const { refElem, floatElem } = usePopover();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  useToggleEvent(floatId, (state) => {
+    // @ts-expect-error TODO: fix this
+    if (state.newState === "closed") {
+      setIsDropdownOpen(false);
+    }
+  });
+
   function onClickAddMoney() {}
 
   function onClickWithdraw() {}
 
-  const percentage = (pot.total / pot.target) * 100;
+  function onCLickOptIcon() {
+    setIsDropdownOpen(!isDropdownOpen);
+  }
 
   function formatNumber(num: number) {
     let precision = num < 10 ? 3 : 4;
@@ -26,6 +46,7 @@ function Pot({ pot }: PotProps) {
     return num.toPrecision(precision);
   }
 
+  const percentage = (pot.total / pot.target) * 100;
   return (
     <section className="potcard">
       {/* Header */}
@@ -37,9 +58,31 @@ function Pot({ pot }: PotProps) {
 
         <p className="potcard-head-name ellip-text">{pot.name}</p>
 
-        <span className="potcard-head-icon">
+        <span
+          ref={refElem}
+          className="potcard-head-icon"
+          onClick={onCLickOptIcon}
+        >
           <EllipsisIcon />
         </span>
+
+        {isDropdownOpen && (
+          // @ts-expect-error will be resolved in react 19
+          <div id={floatId} ref={floatElem} popover="auto">
+            <Dropdown
+              options={[
+                {
+                  label: "Edit Pot",
+                  onClick: () => {
+                    setEditPot(pot);
+                    setIsPotsFormOpened(true);
+                  },
+                },
+                { label: "Delete Pot", isDanger: true, onClick: () => {} },
+              ]}
+            />
+          </div>
+        )}
       </header>
 
       {/* Main */}

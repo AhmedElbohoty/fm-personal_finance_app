@@ -19,7 +19,8 @@ type PotProps = {
 
 function Pot({ pot }: PotProps) {
   const floatId = useId();
-  const { setEditPot, setIsPotsFormOpened } = useContext(PotsPageContext);
+  const { setEditPot, setIsPotsFormOpened, setDeletePot } =
+    useContext(PotsPageContext);
   const { refElem, floatElem } = usePopover();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -47,6 +48,17 @@ function Pot({ pot }: PotProps) {
   }
 
   const percentage = (pot.total / pot.target) * 100;
+  const options = [
+    {
+      label: "Edit Pot",
+      onClick: () => {
+        setEditPot(pot);
+        setIsPotsFormOpened(true);
+      },
+    },
+    { label: "Delete Pot", isDanger: true, onClick: () => setDeletePot(pot) },
+  ];
+
   return (
     <section className="potcard">
       {/* Header */}
@@ -69,18 +81,7 @@ function Pot({ pot }: PotProps) {
         {isDropdownOpen && (
           // @ts-expect-error will be resolved in react 19
           <div id={floatId} ref={floatElem} popover="auto">
-            <Dropdown
-              options={[
-                {
-                  label: "Edit Pot",
-                  onClick: () => {
-                    setEditPot(pot);
-                    setIsPotsFormOpened(true);
-                  },
-                },
-                { label: "Delete Pot", isDanger: true, onClick: () => {} },
-              ]}
-            />
+            <Dropdown options={options} />
           </div>
         )}
       </header>

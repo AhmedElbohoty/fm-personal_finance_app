@@ -1,4 +1,4 @@
-import { type ReactElement } from "react";
+import { MouseEventHandler, type ReactElement } from "react";
 import { Link, type To } from "react-router-dom";
 
 // CSS prefix: .tertiarybtn-
@@ -8,9 +8,17 @@ type TertiaryProps = {
   label: string;
   link?: To;
   icon?: ReactElement;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  type?: "submit" | "reset" | "button";
 };
 
-function TertiaryButton({ label, link, icon }: TertiaryProps) {
+function TertiaryButton({
+  label,
+  link,
+  icon,
+  type = "button",
+  onClick = () => {},
+}: TertiaryProps) {
   if (link) {
     return (
       <Link to={link} className="tertiarybtn">
@@ -21,7 +29,7 @@ function TertiaryButton({ label, link, icon }: TertiaryProps) {
   }
 
   return (
-    <button className="tertiarybtn">
+    <button className="tertiarybtn" type={type} onCanPlay={onClick}>
       <span>{label}</span>
       {icon && <span className="tertiarybtn-icon">{icon}</span>}
     </button>

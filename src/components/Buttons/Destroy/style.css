@@ -1,0 +1,23 @@
+.destroybtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-200);
+  background-color: var(--c-red);
+  border-radius: var(--border-radius-small);
+  transition: opacity var(--transition-timing-func) var(--transition-duration);
+}
+
+.destroybtn-label {
+  color: var(--c-white);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+@media (hover: hover) {
+  .destroybtn:hover {
+    opacity: 0.8;
+  }
+}

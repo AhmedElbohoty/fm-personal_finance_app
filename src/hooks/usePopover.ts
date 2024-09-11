@@ -25,7 +25,7 @@ type Options = {
 
 const defaultOptions: Options = {
   strategy: "fixed",
-  placement: "bottom-start",
+  placement: "bottom-end",
   offsetOptions: 8,
   shiftOptions: { padding: 8 },
 };

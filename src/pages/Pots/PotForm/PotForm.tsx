@@ -12,20 +12,16 @@ import { themesOptions } from "components/Input/selectOptions";
 
 import CaretDownIcon from "assets/icons/caret-down.svg";
 import { PotsPageContext } from "contexts/potsPageContext";
-import { Pot } from "types/data";
 
 // CSS prefix: .potform-
 import "./style.css";
 
-type PotFormProps = {
-  editPot: Pot | null;
-};
-
-function PotForm({ editPot }: PotFormProps) {
+function PotForm() {
   const nameId = useId();
   const targetId = useId();
   const themeId = useId();
-  const { setIsPotsFormOpened, setEditPot } = useContext(PotsPageContext);
+  const { setIsPotsFormOpened, setEditPot, editPot } =
+    useContext(PotsPageContext);
   const [potName, setPotName] = useState(editPot ? editPot.name : "");
   const [target, setTarget] = useState(editPot ? editPot.target : 0);
   const [theme, setTheme] = useState(editPot ? editPot.theme : "#277c78");
@@ -101,7 +97,11 @@ function PotForm({ editPot }: PotFormProps) {
           </InputWrapper>
         </div>
 
-        <PrimaryBtn label="Add Pot" type="submit" onClick={onClick} />
+        <PrimaryBtn
+          label={editPot ? "Save Changes" : "Add Pot"}
+          type="submit"
+          onClick={onClick}
+        />
       </form>
     </Modal>
   );

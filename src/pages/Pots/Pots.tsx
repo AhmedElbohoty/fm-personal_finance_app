@@ -4,6 +4,7 @@ import PotForm from "pages/Pots/PotForm/PotForm";
 import Pot from "pages/Pots/Pot/Pot";
 import Providers from "pages/Pots/Providers";
 import DeletePot from "pages/Pots/DeletePot/DeletePot";
+import AddToPotForm from "pages/Pots/AddToPotForm/AddToPotForm";
 
 import { usePotsPageContext } from "contexts/potsPageContext";
 import useDocumentTitle from "hooks/useDocumentTitle";
@@ -27,7 +28,8 @@ function Pots() {
           })}
         </div>
       </div>
-      <Form />
+
+      <Forms />
       <DeletePot />
     </Providers>
   );
@@ -48,12 +50,13 @@ function Top() {
   );
 }
 
-function Form() {
-  const { isPotsFormOpened } = usePotsPageContext();
+function Forms() {
+  const { isPotsFormOpened, addToPot } = usePotsPageContext();
 
-  if (!isPotsFormOpened) return <></>;
+  if (isPotsFormOpened) return <PotForm />;
+  if (addToPot) return <AddToPotForm />;
 
-  return <PotForm />;
+  return <></>;
 }
 
 export default Pots;

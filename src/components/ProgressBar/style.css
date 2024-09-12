@@ -3,6 +3,7 @@
 }
 
 .progbar-bar {
+  position: relative;
   width: 100%;
   height: 8px;
   border-radius: var(--border-radius-small);
@@ -14,16 +15,55 @@
   display: block;
   height: 100%;
   border-radius: var(--border-radius-small);
+  transition: width var(--transition-timing-func) var(--transition-duration);
 }
 
-.progbar-labels {
+.progbar-split {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  height: 100%;
+  border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
+  border-right: 2px solid var(--c-white);
+  background-color: var(--c-grey-900);
+}
+
+.progbar-top-labels {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-200);
+  margin-bottom: var(--spacing-200);
+}
+
+.progbar-tleft-label {
+  flex: 1;
+  color: var(--c-beige-500);
+  text-align: left;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.progbar-tright-label {
+  flex: 1;
+  color: var(--c-grey-900);
+  text-align: right;
+  font-size: var(--font-size-32);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-120);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.progbar-bottom-labels {
   display: flex;
   align-items: center;
   gap: var(--spacing-200);
   margin-top: 13px;
 }
 
-.progbar-left-label {
+.progbar-bleft-label {
   flex: 1;
   color: var(--c-grey-500);
   text-align: left;
@@ -33,7 +73,7 @@
   letter-spacing: var(--letter-spacing-0);
 }
 
-.progbar-right-label {
+.progbar-bright-label {
   flex: 1;
   color: var(--c-grey-500);
   text-align: right;

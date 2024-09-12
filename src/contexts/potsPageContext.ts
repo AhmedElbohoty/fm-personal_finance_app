@@ -9,6 +9,8 @@ type potsPageContext = {
   setEditPot: React.Dispatch<React.SetStateAction<Pot | null>>;
   deletePot: Pot | null;
   setDeletePot: React.Dispatch<React.SetStateAction<Pot | null>>;
+  addToPot: Pot | null;
+  setAddToPot: React.Dispatch<React.SetStateAction<Pot | null>>;
 };
 
 const contextValue: potsPageContext = {
@@ -18,6 +20,8 @@ const contextValue: potsPageContext = {
   setEditPot: () => {},
   deletePot: null,
   setDeletePot: () => {},
+  addToPot: null,
+  setAddToPot: () => {},
 };
 
 export const PotsPageContext = createContext(contextValue);

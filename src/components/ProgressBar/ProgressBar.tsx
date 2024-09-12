@@ -4,32 +4,58 @@ import "./style.css";
 type ProgressBar = {
   theme: string;
   percentage: number;
-  leftLabel?: string;
-  rightLabel?: string;
+  topLeftLabel?: string;
+  topRightLabel?: string;
+  bottomLeftLabel?: string;
+  bottomRightLabel?: string;
+  splitPercentage?: number;
 };
 
 function ProgressBar({
   theme,
   percentage,
-  leftLabel,
-  rightLabel,
+  topLeftLabel,
+  topRightLabel,
+  bottomLeftLabel,
+  bottomRightLabel,
+  splitPercentage,
 }: ProgressBar) {
   return (
     <div className="progbar-cont">
+      {(topLeftLabel || topRightLabel) && (
+        <div className="progbar-top-labels">
+          {topLeftLabel && (
+            <p className="progbar-tleft-label ellip-text">{topLeftLabel}</p>
+          )}
+          {topRightLabel && (
+            <p className="progbar-tright-label ellip-text">{topRightLabel}</p>
+          )}
+        </div>
+      )}
+
       <div className="progbar-bar">
         <span
           style={{ width: `${percentage}%`, backgroundColor: theme }}
           className="progbar-active"
         ></span>
+
+        {splitPercentage && (
+          <span
+            style={{ width: `${splitPercentage}%` }}
+            className="progbar-split"
+          ></span>
+        )}
       </div>
 
-      {(leftLabel || rightLabel) && (
-        <div className="progbar-labels">
-          {leftLabel && (
-            <p className="progbar-left-label ellip-text">{leftLabel}</p>
+      {(bottomLeftLabel || bottomRightLabel) && (
+        <div className="progbar-bottom-labels">
+          {bottomLeftLabel && (
+            <p className="progbar-bleft-label ellip-text">{bottomLeftLabel}</p>
           )}
-          {rightLabel && (
-            <p className="progbar-right-label ellip-text">{rightLabel}</p>
+          {bottomRightLabel && (
+            <p className="progbar-bright-label ellip-text">
+              {bottomRightLabel}
+            </p>
           )}
         </div>
       )}

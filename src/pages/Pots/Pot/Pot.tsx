@@ -3,6 +3,7 @@ import { useContext, useId, useState } from "react";
 import EllipsisIcon from "assets/icons/ellipsis.svg";
 import SecondaryBtn from "components/Buttons/Secondary/Secondary";
 import ProgressBar from "components/ProgressBar/ProgressBar";
+import { formatPercentage } from "components/ProgressBar/helpers";
 import Dropdown from "components/Dropdown/Dropdown";
 
 import type { Pot } from "types/data";
@@ -19,7 +20,7 @@ type PotProps = {
 
 function Pot({ pot }: PotProps) {
   const floatId = useId();
-  const { setEditPot, setIsPotsFormOpened, setDeletePot } =
+  const { setEditPot, setIsPotsFormOpened, setDeletePot, setAddToPot } =
     useContext(PotsPageContext);
   const { refElem, floatElem } = usePopover();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -31,20 +32,14 @@ function Pot({ pot }: PotProps) {
     }
   });
 
-  function onClickAddMoney() {}
+  function onClickAddMoney() {
+    setAddToPot(pot);
+  }
 
   function onClickWithdraw() {}
 
   function onCLickOptIcon() {
     setIsDropdownOpen(!isDropdownOpen);
-  }
-
-  function formatNumber(num: number) {
-    let precision = num < 10 ? 3 : 4;
-
-    if (Number.isInteger(num)) precision--;
-
-    return num.toPrecision(precision);
   }
 
   const percentage = (pot.total / pot.target) * 100;
@@ -88,18 +83,14 @@ function Pot({ pot }: PotProps) {
 
       {/* Main */}
       <div className="potcard-main">
-        <div className="potcard-main-saved">
-          <p className="potcard-main-saved-label ellip-text">Total Saved</p>
-          <p className="potcard-main-saved-value ellip-text">
-            ${pot.total.toFixed(2)}
-          </p>
-        </div>
         <div className="potcard-main-progress">
           <ProgressBar
             theme={pot.theme}
             percentage={percentage}
-            leftLabel={`${formatNumber(percentage)}%`}
-            rightLabel={`Target of $${pot.target.toLocaleString()}`}
+            topLeftLabel="Total Saved"
+            topRightLabel={`$${pot.total.toFixed(2)}`}
+            bottomLeftLabel={`${formatPercentage(percentage)}%`}
+            bottomRightLabel={`Target of $${pot.target.toLocaleString()}`}
           />
         </div>
       </div>

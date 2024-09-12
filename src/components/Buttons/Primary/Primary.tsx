@@ -5,11 +5,12 @@ import "./style.css";
 
 type PrimaryProps = {
   label: string;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   type?: "submit" | "reset" | "button";
 };
 
-function Primary({ label, onClick, type = "button" }: PrimaryProps) {
+// TODO: handle disabled button
+function Primary({ label, onClick = () => {}, type = "button" }: PrimaryProps) {
   return (
     <button className="primarybtn" onClick={onClick} type={type}>
       <span className="primarybtn-label">{label}</span>

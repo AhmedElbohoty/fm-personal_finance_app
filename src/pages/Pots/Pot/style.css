@@ -51,33 +51,6 @@
   padding: 10.5px 0;
 }
 
-.potcard-main-saved {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-200);
-  margin-bottom: var(--spacing-200);
-}
-
-.potcard-main-saved-label {
-  flex: 1;
-  color: var(--c-beige-500);
-  text-align: left;
-  font-size: var(--font-size-14);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-150);
-  letter-spacing: var(--letter-spacing-0);
-}
-
-.potcard-main-saved-value {
-  flex: 1;
-  color: var(--c-grey-900);
-  text-align: right;
-  font-size: var(--font-size-32);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-120);
-  letter-spacing: var(--letter-spacing-0);
-}
-
 .potcard-main-progress {
   width: 100%;
 }

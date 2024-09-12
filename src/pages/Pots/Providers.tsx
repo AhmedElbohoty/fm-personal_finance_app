@@ -7,6 +7,7 @@ function Providers({ children }: { children: ReactNode }) {
   const [isPotsFormOpened, setIsPotsFormOpened] = useState(false);
   const [editPot, setEditPot] = useState<Pot | null>(null);
   const [deletePot, setDeletePot] = useState<Pot | null>(null);
+  const [addToPot, setAddToPot] = useState<Pot | null>(null);
 
   const contextValue = {
     isPotsFormOpened,
@@ -15,6 +16,8 @@ function Providers({ children }: { children: ReactNode }) {
     setEditPot,
     deletePot,
     setDeletePot,
+    addToPot,
+    setAddToPot,
   };
 
   return (

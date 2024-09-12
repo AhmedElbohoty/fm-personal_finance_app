@@ -10,6 +10,7 @@ import type { Pot } from "types/data";
 import usePopover from "hooks/usePopover";
 import useToggleEvent from "hooks/useToggleEvent";
 import { PotsPageContext } from "contexts/potsPageContext";
+import { formatNumber } from "utils/helpers";
 
 // CSS prefix: .potcard-
 import "./style.css";
@@ -97,7 +98,7 @@ function Pot({ pot }: PotProps) {
             topLeftLabel="Total Saved"
             topRightLabel={`$${pot.total.toFixed(2)}`}
             bottomLeftLabel={`${formatPercentage(percentage)}%`}
-            bottomRightLabel={`Target of $${pot.target.toLocaleString()}`}
+            bottomRightLabel={`Target of $${formatNumber(pot.target, 0)}`}
           />
         </div>
       </div>

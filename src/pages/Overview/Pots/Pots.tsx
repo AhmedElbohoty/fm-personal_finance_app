@@ -4,6 +4,7 @@ import CardHeader from "pages/Overview/CardHeader/CardHeader";
 import PotIcon from "assets/icons/pot.svg";
 
 import data from "utils/data.json";
+import { formatNumber } from "utils/helpers";
 
 // CSS prefix: .potssect-
 import "./style.css";
@@ -24,7 +25,9 @@ function PotsSection() {
             </span>
             <div>
               <p className="potssect-total-label">Total Saved</p>
-              <p className="potssect-total-value">$850</p>
+              <p className="potssect-total-value">
+                ${formatNumber(totalSaved)}
+              </p>
             </div>
           </div>
           <div className="potssect-list">

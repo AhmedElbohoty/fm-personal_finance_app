@@ -17,6 +17,7 @@ import Primary from "components/Buttons/Primary/Primary";
 
 import { PotsPageContext } from "contexts/potsPageContext";
 import type { Pot } from "types/data";
+import { formatNumber } from "utils/helpers";
 
 // CSS prefix: .withdrawpot-
 import "./style.css";
@@ -59,7 +60,7 @@ function WithdrawFromForm() {
           topLeftLabel="New Amount"
           topRightLabel={`$${(total - amount).toFixed(2)}`}
           bottomLeftLabel={`${formatPercentage(splitPercentage)}%`}
-          bottomRightLabel={`Target of $${target.toLocaleString()}`}
+          bottomRightLabel={`Target of $${formatNumber(target, 0)}`}
           splitPercentage={splitPercentage}
         />
       </div>

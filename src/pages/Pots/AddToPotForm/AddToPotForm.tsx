@@ -17,6 +17,7 @@ import InputNumber from "components/Input/InputNumber";
 
 import { PotsPageContext } from "contexts/potsPageContext";
 import type { Pot } from "types/data";
+import { formatNumber } from "utils/helpers";
 
 // CSS prefix: .addtopot-
 import "./style.css";
@@ -59,7 +60,7 @@ function AddToPotForm() {
           topLeftLabel="New Amount"
           topRightLabel={`$${(total + amount).toFixed(2)}`}
           bottomLeftLabel={`${formatPercentage(percentage)}%`}
-          bottomRightLabel={`Target of $${target.toLocaleString()}`}
+          bottomRightLabel={`Target of $${formatNumber(target, 0)}`}
           splitPercentage={splitPercentage}
         />
       </div>

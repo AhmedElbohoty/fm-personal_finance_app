@@ -105,6 +105,10 @@
   background-color: var(--c-grey-100);
 }
 
+.transtable-sep:last-child {
+  display: none;
+}
+
 /* Medium */
 @media screen and (max-width: 1439px) {
   .transtable-header {

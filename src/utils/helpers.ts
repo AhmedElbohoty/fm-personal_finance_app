@@ -9,3 +9,9 @@ export function formatDate(dateString: string): string {
 
   return date.toLocaleDateString("en-GB", options);
 }
+
+export function formatNumber(num: number, fraction = 2): string {
+  return new Intl.NumberFormat("en-IN", {
+    minimumFractionDigits: fraction,
+  }).format(num);
+}

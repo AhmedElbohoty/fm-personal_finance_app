@@ -2,6 +2,7 @@ import Card from "components/Card/Card";
 import CardHeader from "pages/Overview/CardHeader/CardHeader";
 
 import data from "utils/data.json";
+import { formatNumber } from "utils/helpers";
 
 // CSS prefix: .recurbills
 import "./style.css";
@@ -31,15 +32,17 @@ function RecurringBills() {
         <ul className="recurbills-list">
           <li className="recurbills-item">
             <p className="recurbills-item-label ellip-text">Paid Bills</p>
-            <p className="recurbills-item-value">$190.00</p>
+            <p className="recurbills-item-value">${formatNumber(paidBills)}</p>
           </li>
           <li className="recurbills-item">
             <p className="recurbills-item-label ellip-text">Total Upcoming</p>
-            <p className="recurbills-item-value">$194.98</p>
+            <p className="recurbills-item-value">
+              ${formatNumber(upcomingBills)}
+            </p>
           </li>
           <li className="recurbills-item">
             <p className="recurbills-item-label ellip-text">Due Soon</p>
-            <p className="recurbills-item-value">$59.98</p>
+            <p className="recurbills-item-value">${formatNumber(dueSoon)}</p>
           </li>
         </ul>
       </section>

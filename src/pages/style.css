@@ -35,6 +35,7 @@
 /* Small */
 @media screen and (max-width: 767px) {
   .apppage-main {
+    min-width: 375px;
     padding: var(--spacing-300) var(--spacing-200);
   }
 }

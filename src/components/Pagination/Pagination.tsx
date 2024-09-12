@@ -1,5 +1,12 @@
+// TODO: Use one caret
+import CaretRightIcon from "assets/icons/caret-right.svg";
+import CaretLeftIcon from "assets/icons/caret-left.svg";
+
 // CSS prefix: .pagination-
 import "./style.css";
+
+// TODO: update classnames
+// TODO: Disable button when currentPage === 1 or totalPages and prev and next buttons
 
 type PaginationProps = {
   currentPage: number;
@@ -18,7 +25,8 @@ function Pagination({
       pageNumbers.push(
         <button
           key={i}
-          className={`pagination-number ${currentPage === i ? "active" : ""}`}
+          className="pagination-number-btn"
+          data-active={currentPage === i}
           onClick={() => onPageChange(i)}
         >
           {i}
@@ -31,19 +39,27 @@ function Pagination({
   return (
     <div className="pagination">
       <button
-        className="pagination-button"
+        className="pagination-arrow-btn"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        ◀ Prev
+        <span className="pagination-arrow-icon">
+          <CaretLeftIcon />
+        </span>
+        <span className="pagination-arrow-label">Prev</span>
       </button>
+
       <div className="pagination-numbers">{renderPageNumbers()}</div>
+
       <button
-        className="pagination-button"
+        className="pagination-arrow-btn"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        Next ▶
+        <span className="pagination-arrow-label">Next</span>
+        <span className="pagination-arrow-icon">
+          <CaretRightIcon />
+        </span>
       </button>
     </div>
   );

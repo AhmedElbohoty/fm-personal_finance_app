@@ -52,7 +52,7 @@ function AddToPotForm() {
       <ModalHeader text={`Add to ‘${name}’`} closeModal={closeModal} />
       <ModalInfo text="Add money to your pot to keep it separate from your main balance. As soon as you add this money, it will be deducted from your current balance." />
 
-      <div className="addtopot-progress">
+      <div className="addtopot-progress" data-is-added={amount > 0}>
         <ProgressBar
           theme={theme}
           percentage={percentage}

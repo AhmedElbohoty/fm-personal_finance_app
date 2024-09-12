@@ -52,7 +52,7 @@ function WithdrawFromForm() {
       <ModalHeader text={`Withdraw from ‘${name}’`} closeModal={closeModal} />
       <ModalInfo text="Withdraw from your pot to put money back in your main balance. This will reduce the amount you have in this pot." />
 
-      <div className="withdrawpot-progress">
+      <div className="withdrawpot-progress" data-is-withdraw={amount > 0}>
         <ProgressBar
           theme="var(--c-red)"
           percentage={percentage}

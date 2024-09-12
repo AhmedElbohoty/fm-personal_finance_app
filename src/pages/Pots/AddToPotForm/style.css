@@ -3,6 +3,10 @@
   padding: 10.5px 0;
 }
 
+.addtopot-progress[data-is-added="true"] .progbar-bleft-label {
+  color: var(--c-green);
+}
+
 .addtopot-form {
   display: flex;
   flex-direction: column;

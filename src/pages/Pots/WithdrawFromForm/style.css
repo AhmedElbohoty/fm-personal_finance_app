@@ -3,6 +3,10 @@
   padding: 10.5px 0;
 }
 
+.withdrawpot-progress[data-is-withdraw="true"] .progbar-bleft-label {
+  color: var(--c-red);
+}
+
 .withdrawpot-form {
   display: flex;
   flex-direction: column;

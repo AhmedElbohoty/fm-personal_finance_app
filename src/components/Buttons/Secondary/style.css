@@ -5,7 +5,7 @@
   padding: var(--spacing-200);
   background-color: var(--c-beige-100);
   border-radius: var(--border-radius-small);
-  outline: 1px solid transparent;
+  outline: 1px solid var(--c-beige-100);
   transition: background-color var(--transition-timing-func)
       var(--transition-duration),
     outline-color var(--transition-timing-func) var(--transition-duration);

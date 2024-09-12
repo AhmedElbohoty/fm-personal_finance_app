@@ -12,6 +12,7 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-150);
   letter-spacing: var(--letter-spacing-0);
+  white-space: nowrap;
 }
 
 .input-field {
@@ -35,7 +36,6 @@
 }
 
 .input-select {
-  padding-left: 48px;
   cursor: pointer;
 }
 

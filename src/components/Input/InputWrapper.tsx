@@ -6,7 +6,7 @@ import "./style.css";
 type InputWrapProps = {
   children: ReactNode;
   id: string;
-  label: string;
+  label?: string;
   prefix?: string;
   icon?: ReactNode;
   colorTag?: string;
@@ -16,7 +16,7 @@ type InputWrapProps = {
 function InputWrapper({
   children,
   id,
-  label,
+  label = "",
   prefix,
   icon,
   colorTag,
@@ -24,7 +24,7 @@ function InputWrapper({
 }: InputWrapProps) {
   return (
     <div className="input-wrapper">
-      <Label id={id} label={label} />
+      {label && <Label id={id} label={label} />}
 
       <div className="input-field">
         {colorTag && <ColorTag colorTag={colorTag} />}

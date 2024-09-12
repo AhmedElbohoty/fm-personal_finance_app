@@ -14,7 +14,7 @@ function InputText({ id, placeholder, value, onChange }: InputTextProps) {
   return (
     <input
       id={id}
-      className="input-input"
+      className="input-input ellip-text"
       placeholder={placeholder}
       value={value}
       onChange={onChange}

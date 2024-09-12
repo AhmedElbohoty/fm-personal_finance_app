@@ -1,0 +1,11 @@
+.transactions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-400);
+}
+
+.transactions-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-300);
+}

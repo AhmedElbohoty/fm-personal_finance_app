@@ -27,6 +27,7 @@
   border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
   border-right: 2px solid var(--c-white);
   background-color: var(--c-grey-900);
+  transition: width var(--transition-timing-func) var(--transition-duration);
 }
 
 .progbar-top-labels {

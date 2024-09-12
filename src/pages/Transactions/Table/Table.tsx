@@ -1,36 +1,50 @@
+import { Fragment } from "react";
+
+import UserAvatar from "components/Avatar/Avatar";
+
+import { formatDate } from "utils/helpers";
 import { Transaction } from "types/data";
 
-type TableProps = {
-  transactions: Transaction[];
-};
+// CSS prefix: .transtable-
+import "./style.css";
+
+type TableProps = { transactions: Transaction[] };
 
 function Table({ transactions }: TableProps) {
   return (
-    <div className="transactions-table">
-      <div className="transactions-table-header">
-        <span>Recipient / Sender</span>
-        <span>Category</span>
-        <span>Transaction Date</span>
-        <span>Amount</span>
+    <div className="transtable">
+      <div className="transtable-header">
+        <span className="transtable-hsender">Recipient / Sender</span>
+        <span className="transtable-hcategory">Category</span>
+        <span className="transtable-hdate">Transaction Date</span>
+        <span className="transtable-hamount">Amount</span>
       </div>
-      {transactions.map((transaction) => (
-        <div key={transaction.date} className="transactions-table-row">
-          <div className="transactions-table-sender">
-            <img src={transaction.avatar} alt={transaction.name} />
-            <span>{transaction.name}</span>
-          </div>
-          <span>{transaction.category}</span>
-          <span>{new Date(transaction.date).toLocaleDateString()}</span>
-          <span
-            className={`transactions-table-amount ${
-              transaction.amount > 0 ? "positive" : "negative"
-            }`}
-          >
-            {transaction.amount > 0 ? "+" : "-"}$
-            {Math.abs(transaction.amount).toFixed(2)}
-          </span>
-        </div>
-      ))}
+      <div className="transtable-table">
+        {transactions.map((transaction) => {
+          const { id, name, avatar, amount, date, category } = transaction;
+          return (
+            <Fragment key={id}>
+              <div key={date} className="transtable-row">
+                <div className="transtable-sender-img">
+                  <UserAvatar src={avatar} alt={name} name={name} />
+                </div>
+                <span className="transtable-sender-name ellip-text">
+                  {name}
+                </span>
+
+                <span className="transtable-category">{category}</span>
+
+                <span className="transtable-date">{formatDate(date)}</span>
+
+                <span className="transtable-amount" data-positive={amount > 0}>
+                  {amount > 0 ? "+" : "-"}${Math.abs(amount).toFixed(2)}
+                </span>
+              </div>
+              <span className="transtable-sep"></span>
+            </Fragment>
+          );
+        })}
+      </div>
     </div>
   );
 }

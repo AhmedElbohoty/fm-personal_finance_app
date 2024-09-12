@@ -1,0 +1,10 @@
+.withdrawpot-progress {
+  width: 100%;
+  padding: 10.5px 0;
+}
+
+.withdrawpot-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-250);
+}

@@ -5,6 +5,7 @@ import Pot from "pages/Pots/Pot/Pot";
 import Providers from "pages/Pots/Providers";
 import DeletePot from "pages/Pots/DeletePot/DeletePot";
 import AddToPotForm from "pages/Pots/AddToPotForm/AddToPotForm";
+import WithdrawFromForm from "pages/Pots/WithdrawFromForm/WithdrawFromForm";
 
 import { usePotsPageContext } from "contexts/potsPageContext";
 import useDocumentTitle from "hooks/useDocumentTitle";
@@ -51,10 +52,11 @@ function Top() {
 }
 
 function Forms() {
-  const { isPotsFormOpened, addToPot } = usePotsPageContext();
+  const { isPotsFormOpened, addToPot, withdrawFromPot } = usePotsPageContext();
 
   if (isPotsFormOpened) return <PotForm />;
   if (addToPot) return <AddToPotForm />;
+  if (withdrawFromPot) return <WithdrawFromForm />;
 
   return <></>;
 }

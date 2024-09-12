@@ -20,8 +20,13 @@ type PotProps = {
 
 function Pot({ pot }: PotProps) {
   const floatId = useId();
-  const { setEditPot, setIsPotsFormOpened, setDeletePot, setAddToPot } =
-    useContext(PotsPageContext);
+  const {
+    setEditPot,
+    setIsPotsFormOpened,
+    setDeletePot,
+    setAddToPot,
+    setWithdrawFromPot,
+  } = useContext(PotsPageContext);
   const { refElem, floatElem } = usePopover();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -36,7 +41,9 @@ function Pot({ pot }: PotProps) {
     setAddToPot(pot);
   }
 
-  function onClickWithdraw() {}
+  function onClickWithdraw() {
+    setWithdrawFromPot(pot);
+  }
 
   function onCLickOptIcon() {
     setIsDropdownOpen(!isDropdownOpen);

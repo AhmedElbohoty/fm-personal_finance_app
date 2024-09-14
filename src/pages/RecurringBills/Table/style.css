@@ -1,0 +1,149 @@
+.rectable-table {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-250);
+}
+
+.rectable-row,
+.rectable-header {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 120px 100px;
+  grid-template-areas: "sender date amount";
+  gap: var(--spacing-400);
+  padding: 0 var(--spacing-200);
+}
+
+/* #region header */
+.rectable-header {
+  height: 42px;
+  margin-bottom: var(--spacing-300);
+  border-bottom: 1px solid var(--c-grey-100);
+  color: var(--c-grey-500);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.rectable-hsender {
+  grid-area: sender;
+}
+
+.rectable-hdate {
+  grid-area: date;
+}
+
+.rectable-hamount {
+  grid-area: amount;
+  text-align: right;
+}
+/* #endregion header */
+
+.rectable-row {
+  height: 32px;
+}
+
+.rectable-sender {
+  grid-area: sender;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-200);
+  overflow: hidden;
+}
+
+.rectable-sender-img {
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+}
+
+.rectable-sender-name {
+  grid-area: sender;
+  color: var(--c-grey-900);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.rectable-date {
+  grid-area: date;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-100);
+  color: var(--c-green);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.rectable-date[data-due="true"] {
+  color: var(--c-red);
+}
+
+.rectable-date-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rectable-amount {
+  grid-area: amount;
+  color: var(--c-grey-900);
+  text-align: right;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.rectable-amount[data-due="true"] {
+  color: var(--c-red);
+}
+
+.rectable-sep {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--c-grey-100);
+}
+
+.rectable-sep:last-child {
+  display: none;
+}
+
+/* Medium */
+@media screen and (max-width: 1439px) {
+  .rectable-header {
+    height: 42px;
+    padding: 0;
+  }
+
+  .rectable-row {
+    padding: 0;
+  }
+}
+
+/* Small */
+@media screen and (max-width: 767px) {
+  .rectable-header {
+    display: none;
+  }
+
+  .rectable-row {
+    height: auto;
+    grid-template-areas:
+      "sender sender"
+      "date amount";
+    grid-template-columns: 1fr 100px;
+    gap: var(--spacing-100);
+  }
+
+  .rectable-date {
+    text-align: right;
+  }
+}

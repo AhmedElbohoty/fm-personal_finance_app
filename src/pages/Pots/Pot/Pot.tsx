@@ -96,7 +96,7 @@ function Pot({ pot }: PotProps) {
             theme={pot.theme}
             percentage={percentage}
             topLeftLabel="Total Saved"
-            topRightLabel={`$${pot.total.toFixed(2)}`}
+            topRightLabel={`$${formatNumber(pot.total)}`}
             bottomLeftLabel={`${formatPercentage(percentage)}%`}
             bottomRightLabel={`Target of $${formatNumber(pot.target, 0)}`}
           />

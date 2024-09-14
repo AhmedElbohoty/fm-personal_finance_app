@@ -5,6 +5,7 @@ import data from "utils/data.json";
 
 // CSS .budgets-section
 import "./style.css";
+import { formatNumber } from "utils/helpers";
 
 function Budgets() {
   const budgets = data.budgets;
@@ -24,15 +25,15 @@ function Budgets() {
         <div className="budget-chart">
           {/* Implement a circular chart component here */}
           <div className="chart-center">
-            <p>${totalSpent.toFixed(2)}</p>
-            <span>of ${totalBudget.toFixed(2)} limit</span>
+            <p>${formatNumber(totalSpent)}</p>
+            <span>of ${formatNumber(totalBudget)} limit</span>
           </div>
         </div>
         <div className="budget-list">
           {budgets.map((budget) => (
             <div key={budget.category} className="budget-item">
               <span>{budget.category}</span>
-              <span>${budget.maximum.toFixed(2)}</span>
+              <span>${formatNumber(budget.maximum)}</span>
             </div>
           ))}
         </div>

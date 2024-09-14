@@ -1,0 +1,67 @@
+.totalbills-cont {
+  display: flex;
+  flex-direction: column;
+  min-width: 337px;
+  gap: var(--spacing-400);
+  padding: var(--spacing-300);
+  background-color: var(--c-grey-900);
+  border-radius: var(--border-radius-medium);
+}
+
+.totalbills-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.totalbills-icon .svg-recurbills-path {
+  fill: var(--c-white);
+}
+
+.totalbills-total {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.totalbills-total-label {
+  color: var(--c-white);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.totalbills-total-value {
+  color: var(--c-white);
+  font-size: var(--font-size-32);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-120);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+/* Medium */
+@media screen and (max-width: 1439px) {
+  .totalbills-cont {
+    min-width: unset;
+  }
+
+  .totalbills-icon {
+    margin-top: 14px;
+  }
+}
+
+/* Small */
+@media screen and (max-width: 767px) {
+  .totalbills-cont {
+    align-items: center;
+    flex-direction: row;
+    gap: var(--spacing-250);
+  }
+
+  .totalbills-icon {
+    margin-top: 0;
+  }
+}

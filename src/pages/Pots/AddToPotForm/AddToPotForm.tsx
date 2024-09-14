@@ -58,7 +58,7 @@ function AddToPotForm() {
           theme={theme}
           percentage={percentage}
           topLeftLabel="New Amount"
-          topRightLabel={`$${(total + amount).toFixed(2)}`}
+          topRightLabel={`$${formatNumber(total + amount)}`}
           bottomLeftLabel={`${formatPercentage(percentage)}%`}
           bottomRightLabel={`Target of $${formatNumber(target, 0)}`}
           splitPercentage={splitPercentage}

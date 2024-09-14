@@ -58,7 +58,7 @@ function WithdrawFromForm() {
           theme="var(--c-red)"
           percentage={percentage}
           topLeftLabel="New Amount"
-          topRightLabel={`$${(total - amount).toFixed(2)}`}
+          topRightLabel={`$${formatNumber(total - amount)}`}
           bottomLeftLabel={`${formatPercentage(splitPercentage)}%`}
           bottomRightLabel={`Target of $${formatNumber(target, 0)}`}
           splitPercentage={splitPercentage}

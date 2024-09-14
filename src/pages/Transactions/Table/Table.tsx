@@ -2,7 +2,7 @@ import { Fragment } from "react";
 
 import UserAvatar from "components/Avatar/Avatar";
 
-import { formatDate } from "utils/helpers";
+import { formatDate, formatNumber } from "utils/helpers";
 import { Transaction } from "types/data";
 
 // CSS prefix: .transtable-
@@ -24,7 +24,7 @@ function Table({ transactions }: TableProps) {
           const { id, name, avatar, amount, date, category } = transaction;
           return (
             <Fragment key={id}>
-              <div key={date} className="transtable-row">
+              <div className="transtable-row">
                 <div className="transtable-sender-img">
                   <UserAvatar src={avatar} alt={name} name={name} />
                 </div>
@@ -37,7 +37,7 @@ function Table({ transactions }: TableProps) {
                 <span className="transtable-date">{formatDate(date)}</span>
 
                 <span className="transtable-amount" data-positive={amount > 0}>
-                  {amount > 0 ? "+" : "-"}${Math.abs(amount).toFixed(2)}
+                  {amount > 0 ? "+" : "-"}${formatNumber(Math.abs(amount))}
                 </span>
               </div>
               <span className="transtable-sep"></span>

@@ -45,7 +45,7 @@ const links: LinkType[] = [
   {
     icon: <RecurringBillsIcon />,
     to: "/recurring-bills",
-    label: "Recurring Bills",
+    label: "Recurring bills",
   },
 ];
 

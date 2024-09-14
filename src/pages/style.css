@@ -11,6 +11,7 @@
 }
 
 .apppage-main {
+  min-width: 1140px;
   max-width: 1440px;
   grid-area: main;
   padding: var(--spacing-400) var(--spacing-500);
@@ -27,6 +28,8 @@
   }
 
   .apppage-main {
+    min-width: unset;
+    width: 100%;
     max-width: 100%;
     overflow-x: hidden;
   }
@@ -35,7 +38,6 @@
 /* Small */
 @media screen and (max-width: 767px) {
   .apppage-main {
-    min-width: 375px;
     padding: var(--spacing-300) var(--spacing-200);
   }
 }

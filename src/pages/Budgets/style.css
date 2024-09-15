@@ -13,7 +13,7 @@
 
 .budgetspage-grid {
   display: grid;
-  grid-template-columns: minmax(428px, 1fr) minmax(428px, 1fr);
+  grid-template-columns: 428px minmax(428px, 1fr);
   gap: var(--spacing-300);
 }
 

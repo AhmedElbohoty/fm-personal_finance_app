@@ -1,6 +1,7 @@
 import Providers from "pages/Budgets/Providers";
 import BudgetForm from "pages/Budgets/BudgetForm/BudgetForm";
 import DeleteBudget from "pages/Budgets/DeleteBudget/DeleteBudget";
+import Summary from "pages/Budgets/Summary/Summary";
 import Heading1 from "components/Heading1/Heading1";
 import PrimaryBtn from "components/Buttons/Primary/Primary";
 
@@ -19,7 +20,9 @@ function Budgets() {
       <div className="budgetspage">
         <Top />
 
-        <div className="potspage-grid"></div>
+        <div className="budgetspage-grid">
+          <Summary />
+        </div>
       </div>
 
       <Forms />
@@ -34,7 +37,7 @@ function Top() {
   }
 
   return (
-    <div className="potspage-top">
+    <div className="budgetspage-top">
       <Heading1 text="Budgets" />
 
       <PrimaryBtn label="+ Add New Budget" onClick={onClickAddNewBudget} />

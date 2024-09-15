@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 
 import UserAvatar from "components/Avatar/Avatar";
+import Separator from "components/Separator/Separator";
 
 import { formatDate, formatNumber } from "utils/helpers";
 import { Transaction } from "types/data";
@@ -40,7 +41,7 @@ function Table({ transactions }: TableProps) {
                   {amount > 0 ? "+" : "-"}${formatNumber(Math.abs(amount))}
                 </span>
               </div>
-              <span className="transtable-sep"></span>
+              <Separator />
             </Fragment>
           );
         })}

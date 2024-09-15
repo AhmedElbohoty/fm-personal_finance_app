@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import UserAvatar from "components/Avatar/Avatar";
 import DueIcon from "assets/icons/bill-due.svg";
 import PaidIcon from "assets/icons/bill-paid.svg";
+import Separator from "components/Separator/Separator";
 
 import { transactions } from "utils/data.json";
 import { formatDate } from "utils/helpers";
@@ -48,7 +49,8 @@ function Table() {
                   {amount}
                 </span>
               </div>
-              <span className="rectable-sep"></span>
+
+              <Separator />
             </Fragment>
           );
         })}

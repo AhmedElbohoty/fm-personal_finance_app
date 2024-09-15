@@ -1,5 +1,7 @@
 import { Fragment, type MouseEventHandler } from "react";
 
+import Separator from "components/Separator/Separator";
+
 // CSS prefix: .dropdown-
 import "./style.css";
 
@@ -27,7 +29,7 @@ function Dropdown({ options }: DropdownProps) {
             {option.label}
           </li>
 
-          <span className="dropdown-sep"></span>
+          <Separator />
         </Fragment>
       ))}
     </ul>

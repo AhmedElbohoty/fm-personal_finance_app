@@ -1,6 +1,7 @@
 .budsummary {
   display: flex;
   flex-direction: column;
+  height: fit-content;
   gap: var(--spacing-400);
   padding: var(--spacing-400) var(--spacing-400) var(--spacing-300)
     var(--spacing-400);
@@ -79,19 +80,13 @@
   line-height: var(--line-height-150);
   letter-spacing: var(--letter-spacing-0);
 }
-
-.budsummary-spend-sep {
-  display: block;
-  width: 100%;
-  height: 1px;
-  background-color: var(--c-grey-100);
-}
 /* #endregion stats */
 
 /* Medium */
 @media screen and (max-width: 1439px) {
   .budsummary {
     flex-direction: row;
+    padding: var(--spacing-400);
   }
 
   .budsummary-stats {
@@ -107,5 +102,6 @@
 @media screen and (max-width: 767px) {
   .budsummary {
     flex-direction: column;
+    padding: var(--spacing-300) var(--spacing-250);
   }
 }

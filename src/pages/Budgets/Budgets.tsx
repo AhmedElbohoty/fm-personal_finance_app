@@ -2,12 +2,15 @@ import Providers from "pages/Budgets/Providers";
 import BudgetForm from "pages/Budgets/BudgetForm/BudgetForm";
 import DeleteBudget from "pages/Budgets/DeleteBudget/DeleteBudget";
 import Summary from "pages/Budgets/Summary/Summary";
+import Budget from "pages/Budgets/Budget/Budget";
 import Heading1 from "components/Heading1/Heading1";
 import PrimaryBtn from "components/Buttons/Primary/Primary";
 
+// TODO: Add extexntions to imports
 import useDocumentTitle from "hooks/useDocumentTitle";
-import titles from "utils/documentTitle";
 import { useBudgetsPageContext } from "contexts/budgetsPageContext";
+import titles from "utils/documentTitle.ts";
+import { budgets } from "utils/data.json";
 
 // CSS prefix: .budgetspage-
 import "./style.css";
@@ -22,6 +25,12 @@ function Budgets() {
 
         <div className="budgetspage-grid">
           <Summary />
+
+          <div className="budgetspage-budgets">
+            {budgets.map((budget) => (
+              <Budget key={budget.id} budget={budget} />
+            ))}
+          </div>
         </div>
       </div>
 

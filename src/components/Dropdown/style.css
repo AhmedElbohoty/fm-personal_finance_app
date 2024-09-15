@@ -21,14 +21,3 @@
 .dropdown-li[data-danger="true"] {
   color: var(--c-red);
 }
-
-.dropdown-sep {
-  display: block;
-  width: 100%;
-  height: 1px;
-  background-color: var(--c-grey-100);
-}
-
-.dropdown-sep:last-child {
-  display: none;
-}

@@ -1,0 +1,218 @@
+.budgetcard-cont {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-250);
+  padding: var(--spacing-400);
+  background-color: var(--c-white);
+  border-radius: var(--border-radius-medium);
+}
+
+/* #region header */
+.budgetcard-head {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-200);
+}
+
+.budgetcard-head-theme {
+  display: block;
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+  border-radius: var(--border-radius-full);
+}
+
+.budgetcard-head-name {
+  flex: 1;
+  color: var(--c-grey-900);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-120);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.budgetcard-head-icon {
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.budgetcard-head-icon .svg-ellipsis {
+  width: 14px;
+  height: 4px;
+}
+/* #endregion header */
+
+/* #region bar */
+.budgetcard-bar-cont {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+}
+
+.budgetcard-bar-max {
+  color: var(--c-grey-500);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.budgetcard-bar-cont .progbar-bar {
+  height: 32px;
+  padding: var(--spacing-50);
+  border-radius: var(--border-radius-xsmall);
+}
+
+.budgetcard-bar-cont .progbar-active {
+  border-radius: var(--border-radius-xsmall);
+}
+
+.budgetcard-spend {
+  display: flex;
+}
+
+.budgetcard-spent,
+.budgetcard-remain {
+  position: relative;
+  padding-left: var(--spacing-250);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-50);
+  color: var(--c-grey-500);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.budgetcard-spent::before,
+.budgetcard-remain::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: var(--border-radius-small);
+}
+
+.budgetcard-spent::before {
+  background-color: var(--border-color);
+}
+
+.budgetcard-remain::before {
+  background-color: var(--c-beige-100);
+}
+
+.budgetcard-spent-value,
+.budgetcard-remain-value {
+  color: var(--c-grey-900);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+/* #endregion bar */
+
+/* #region latest spending */
+.budgetcard-latspend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-250);
+  padding: var(--spacing-250);
+  background-color: var(--c-beige-100);
+  border-radius: var(--border-radius-medium);
+}
+
+.budgetcard-latspend-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.budgetcard-latspend-title {
+  color: var(--c-grey-900);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.budgetcard-transactions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-150);
+}
+
+.budgetcard-transactions .separator {
+  background-color: rgba(105, 104, 104, 0.15);
+}
+
+.budgetcard-transitem {
+  display: flex;
+  align-items: center;
+}
+
+.budgetcard-transitem-user {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-right: var(--spacing-100);
+  gap: var(--spacing-200);
+  color: var(--c-grey-900);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+  overflow: hidden;
+}
+
+.budgetcard-transitem-user .useravatar {
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+}
+
+.budgetcard-transitem-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-50);
+}
+
+.budgetcard-transitem-amount {
+  color: var(--c-grey-900);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.budgetcard-transitem-date {
+  color: var(--c-grey-500);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+/* #endregion latest spending */
+
+/* Medium */
+@media screen and (max-width: 1439px) {
+}
+
+/* Small */
+@media screen and (max-width: 767px) {
+  .budgetcard-cont {
+    padding: var(--spacing-300) var(--spacing-250);
+  }
+
+  .budgetcard-latspend {
+    padding: var(--spacing-200);
+  }
+}

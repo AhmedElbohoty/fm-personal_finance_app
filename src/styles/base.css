@@ -66,6 +66,7 @@
   /* #endregion Spacing */
 
   /* #region border */
+  --border-radius-xsmall: 4px;
   --border-radius-small: 8px;
   --border-radius-medium: 12px;
   --border-radius-large: 16px;

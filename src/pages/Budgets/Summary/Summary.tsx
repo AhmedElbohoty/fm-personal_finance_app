@@ -1,3 +1,5 @@
+import Separator from "components/Separator/Separator";
+
 // CSS prefix: .budsummary-
 import "./style.css";
 
@@ -25,7 +27,7 @@ function Summary() {
             </p>
           </div>
 
-          <span className="budsummary-spend-sep"></span>
+          <Separator />
 
           <div className="budsummary-spend-item">
             <h3
@@ -42,7 +44,7 @@ function Summary() {
             </p>
           </div>
 
-          <span className="budsummary-spend-sep"></span>
+          <Separator />
 
           <div className="budsummary-spend-item">
             <h3
@@ -59,7 +61,7 @@ function Summary() {
             </p>
           </div>
 
-          <span className="budsummary-spend-sep"></span>
+          <Separator />
 
           <div className="budsummary-spend-item">
             <h3

@@ -17,6 +17,12 @@
   gap: var(--spacing-300);
 }
 
+.budgetspage-budgets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-300);
+}
+
 /* Medium */
 @media screen and (max-width: 1439px) {
   .budgetspage-grid {

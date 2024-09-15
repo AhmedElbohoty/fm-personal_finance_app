@@ -1,0 +1,11 @@
+.budgetform-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-250);
+}
+
+.budgetform-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+}

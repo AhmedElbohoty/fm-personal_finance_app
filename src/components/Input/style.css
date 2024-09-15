@@ -53,6 +53,10 @@
   padding-right: 52px;
 }
 
+.input-field:has(.input-color-tag) .input-select {
+  padding-left: 48px;
+}
+
 .input-prefix {
   position: absolute;
   top: 12px;

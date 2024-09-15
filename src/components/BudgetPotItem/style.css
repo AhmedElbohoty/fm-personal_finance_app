@@ -1,0 +1,47 @@
+.budgetpotitem {
+  position: relative;
+  min-width: 130.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-50);
+  padding-left: var(--spacing-250);
+}
+
+.budgetpotitem::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: var(--border-radius-small);
+  background-color: var(--border-color);
+}
+
+.budgetpotitem-label {
+  color: var(--c-grey-500);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.budgetpotitem-value {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-100);
+  color: var(--c-grey-900);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
+.budgetpotitem-total {
+  color: var(--c-grey-500);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}

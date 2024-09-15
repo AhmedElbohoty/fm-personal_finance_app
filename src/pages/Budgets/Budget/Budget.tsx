@@ -7,6 +7,7 @@ import Separator from "components/Separator/Separator";
 import UserAvatar from "components/Avatar/Avatar";
 import EllipsisIcon from "assets/icons/ellipsis.svg";
 import CaretRightIcon from "assets/icons/caret-right.svg";
+import BudgetPotItem from "components/BudgetPotItem/BudgetPotItem";
 
 import { Budget as BudgetType } from "types/data";
 import usePopover from "hooks/usePopover";
@@ -96,19 +97,9 @@ function Budget({ budget }: BudgetProps) {
         />
 
         <div className="budgetcard-spend">
-          <p
-            className="budgetcard-spent"
-            style={{ "--border-color": budget.theme } as React.CSSProperties}
-          >
-            <span>Spent</span>
-            <span className="budgetcard-spent-value">${formatNumber(15)}</span>
-          </p>
-          <p className="budgetcard-remain">
-            <span>Remaining</span>
-            <span className="budgetcard-remain-value">
-              ${formatNumber(budget.maximum - 15)}
-            </span>
-          </p>
+          <BudgetPotItem label="Spent" value={15} theme={budget.theme} />
+
+          <BudgetPotItem label="Remaining" value={budget.maximum - 15} />
         </div>
       </div>
 

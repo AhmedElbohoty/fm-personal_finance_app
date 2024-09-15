@@ -1,5 +1,6 @@
 import Card from "components/Card/Card";
 import CardHeader from "pages/Overview/CardHeader/CardHeader";
+import BudgetPotItem from "components/BudgetPotItem/BudgetPotItem";
 
 import PotIcon from "assets/icons/pot.svg";
 
@@ -31,38 +32,13 @@ function PotsSection() {
             </div>
           </div>
           <div className="potssect-list">
-            <div className="potssect-list-item">
-              <span
-                style={{ backgroundColor: "#277c78" }}
-                className="potssect-list-color"
-              ></span>
-              <p className="potssect-list-name ellip-text">Savings</p>
-              <p className="potssect-list-value">$159</p>
-            </div>
-            <div className="potssect-list-item">
-              <span
-                style={{ backgroundColor: "#82c9d7" }}
-                className="potssect-list-color"
-              ></span>
-              <p className="potssect-list-name ellip-text">Gift</p>
-              <p className="potssect-list-value">$40</p>
-            </div>
-            <div className="potssect-list-item">
-              <span
-                style={{ backgroundColor: "#626070" }}
-                className="potssect-list-color"
-              ></span>
-              <p className="potssect-list-name ellip-text">Concert Ticket</p>
-              <p className="potssect-list-value">$110</p>
-            </div>
-            <div className="potssect-list-item">
-              <span
-                style={{ backgroundColor: "#f2cdac" }}
-                className="potssect-list-color"
-              ></span>
-              <p className="potssect-list-name ellip-text">New Laptop</p>
-              <p className="potssect-list-value">$10</p>
-            </div>
+            <BudgetPotItem label="Savings" value={159} theme="#277c78" />
+
+            <BudgetPotItem label="Gift" value={40} theme="#82c9d7" />
+
+            <BudgetPotItem label="Concert Ticket" value={110} theme="#626070" />
+
+            <BudgetPotItem label="New Laptop" value={10} theme="#f2cdac" />
           </div>
         </div>
       </section>

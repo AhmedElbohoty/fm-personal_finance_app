@@ -3,7 +3,6 @@ import { createSelector } from "@reduxjs/toolkit";
 import { Transaction, Budget, Pot } from "types/data";
 import { RootState } from "store/store";
 import { isBillDue, isBillPaid } from "utils/helpers";
-import { Option } from "components/Input/selectOptions";
 
 // Balance selectors
 export const selectBalance = (state: RootState) => state.app.balance;

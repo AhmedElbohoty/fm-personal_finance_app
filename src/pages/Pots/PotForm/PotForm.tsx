@@ -1,4 +1,12 @@
-import { useId, useState, type ChangeEvent, useContext } from "react";
+import {
+  useId,
+  useState,
+  type ChangeEvent,
+  useContext,
+  type FormEvent,
+} from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
 
 import InputWrapper from "components/Input/InputWrapper";
 import InputText from "components/Input/InputText";
@@ -12,11 +20,13 @@ import { themesOptions } from "components/Input/selectOptions";
 
 import CaretDownIcon from "assets/icons/caret-down.svg";
 import { PotsPageContext } from "contexts/potsPageContext";
+import { addPot, updatePot } from "store/appSlice/slice";
 
 // CSS prefix: .potform-
 import "./style.css";
 
 function PotForm() {
+  const dispach = useDispatch();
   const nameId = useId();
   const targetId = useId();
   const themeId = useId();
@@ -26,7 +36,23 @@ function PotForm() {
   const [target, setTarget] = useState(editPot ? editPot.target : 0);
   const [theme, setTheme] = useState(editPot ? editPot.theme : "#277c78");
 
-  function onClick() {}
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    if (!editPot) {
+      dispach(addPot({ id: uuidv4(), name: potName, total: 0, target, theme }));
+    } else {
+      dispach(
+        updatePot({
+          ...editPot,
+          name: potName,
+          target,
+          theme,
+        })
+      );
+    }
+    closeModal();
+  }
 
   function onChangePotName(e: ChangeEvent<HTMLInputElement>) {
     setPotName(e.target.value);
@@ -59,7 +85,7 @@ function PotForm() {
         }
       />
 
-      <form className="potform-form">
+      <form className="potform-form" onSubmit={onSubmit}>
         <div className="potform-inputs">
           <InputWrapper
             id={nameId}
@@ -100,7 +126,6 @@ function PotForm() {
         <PrimaryBtn
           label={editPot ? "Save Changes" : "Add Pot"}
           type="submit"
-          onClick={onClick}
         />
       </form>
     </Modal>

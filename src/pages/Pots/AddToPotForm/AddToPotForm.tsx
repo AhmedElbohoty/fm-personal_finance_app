@@ -5,6 +5,7 @@ import {
   useId,
   useState,
 } from "react";
+import { useDispatch } from "react-redux";
 
 import Modal from "components/Modal/Modal";
 import ModalHeader from "components/Modal/ModalHeader";
@@ -18,16 +19,18 @@ import InputNumber from "components/Input/InputNumber";
 import { PotsPageContext } from "contexts/potsPageContext";
 import type { Pot } from "types/data";
 import { formatNumber } from "utils/helpers";
+import { addToPot } from "store/appSlice/slice";
 
 // CSS prefix: .addtopot-
 import "./style.css";
 
 function AddToPotForm() {
   const id = useId();
-  const { addToPot, setAddToPot } = useContext(PotsPageContext);
+  const dispatch = useDispatch();
+  const { addToPot: pot, setAddToPot } = useContext(PotsPageContext);
   const [amount, setAmount] = useState(0);
 
-  const { theme, name, total, target } = addToPot as Pot;
+  const { theme, name, total, target } = pot as Pot;
 
   function closeModal() {
     setAddToPot(null);
@@ -44,6 +47,8 @@ function AddToPotForm() {
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    dispatch(addToPot({ potId: pot!.id, amount }));
+    closeModal();
   }
 
   const percentage = ((total + amount) / target) * 100;

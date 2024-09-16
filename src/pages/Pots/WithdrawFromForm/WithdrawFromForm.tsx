@@ -5,6 +5,7 @@ import {
   useId,
   useState,
 } from "react";
+import { useDispatch } from "react-redux";
 
 import Modal from "components/Modal/Modal";
 import ModalHeader from "components/Modal/ModalHeader";
@@ -18,16 +19,19 @@ import Primary from "components/Buttons/Primary/Primary";
 import { PotsPageContext } from "contexts/potsPageContext";
 import type { Pot } from "types/data";
 import { formatNumber } from "utils/helpers";
+import { withdrawFromPot } from "store/appSlice/slice";
 
 // CSS prefix: .withdrawpot-
 import "./style.css";
 
 function WithdrawFromForm() {
   const id = useId();
-  const { withdrawFromPot, setWithdrawFromPot } = useContext(PotsPageContext);
+  const dispach = useDispatch();
+  const { withdrawFromPot: pot, setWithdrawFromPot } =
+    useContext(PotsPageContext);
   const [amount, setAmount] = useState(0);
 
-  const { name, total, target } = withdrawFromPot as Pot;
+  const { name, total, target } = pot as Pot;
 
   function closeModal() {
     setWithdrawFromPot(null);
@@ -44,6 +48,8 @@ function WithdrawFromForm() {
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    dispach(withdrawFromPot({ potId: pot!.id, amount }));
+    closeModal();
   }
 
   const percentage = (total / target) * 100;

@@ -7,11 +7,12 @@ import Select from "components/Input/Select";
 import SearchIcon from "assets/icons/search.svg";
 import CaretDownIcon from "assets/icons/caret-down.svg";
 import { Option } from "components/Input/selectOptions";
-import { transactions } from "utils/data.json";
 import { WindowSizeContext } from "contexts/windowSizeContext";
 
 import FilterIcon from "assets/icons/filter-mobile.svg";
 import SortIcon from "assets/icons/sort-mobile.svg";
+import { useAppSelector } from "store/store";
+import { selectlCategoriesOpts } from "store/appSlice/selectors";
 
 // CSS prefix: .tranfilters-
 import "./style.css";
@@ -25,18 +26,14 @@ const sortOptions: Option[] = [
   { label: "Lowest", value: "lowest" },
 ];
 
-const categories = new Set(transactions.map(({ category }) => category));
-const categoriesOpts: Option[] = [{ label: "All Transactions", value: "all" }];
-categories.forEach((category) =>
-  categoriesOpts.push({ label: category, value: category })
-);
-
 function Filters() {
   const { isSmallScr } = useContext(WindowSizeContext);
   const searchId = useId();
   const sortId = useId();
   const [search, setSearch] = useState("");
   const [sortOpt, setSortOpt] = useState(sortOptions[0].value);
+
+  const categoriesOpts = useAppSelector(selectlCategoriesOpts);
   const [categoryOpt, setCategOpt] = useState(categoriesOpts[0].value);
 
   function onChangeSearch(e: ChangeEvent<HTMLInputElement>) {

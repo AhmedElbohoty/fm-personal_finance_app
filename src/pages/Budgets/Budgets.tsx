@@ -10,12 +10,14 @@ import PrimaryBtn from "components/Buttons/Primary/Primary";
 import useDocumentTitle from "hooks/useDocumentTitle";
 import { useBudgetsPageContext } from "contexts/budgetsPageContext";
 import titles from "utils/documentTitle.ts";
-import { budgets } from "utils/data.json";
+import { useAppSelector } from "store/store";
+import { selectBudgetsIds } from "store/appSlice/selectors";
 
 // CSS prefix: .budgetspage-
 import "./style.css";
 
 function Budgets() {
+  const budgetsIds = useAppSelector(selectBudgetsIds);
   useDocumentTitle(titles.budgets);
 
   return (
@@ -27,8 +29,8 @@ function Budgets() {
           <Summary />
 
           <div className="budgetspage-budgets">
-            {budgets.map((budget) => (
-              <Budget key={budget.id} budget={budget} />
+            {budgetsIds.map((id) => (
+              <Budget key={id} budgetId={id} />
             ))}
           </div>
         </div>

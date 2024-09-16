@@ -8,12 +8,14 @@ import Heading1 from "components/Heading1/Heading1";
 
 import useDocumentTitle from "hooks/useDocumentTitle";
 import titles from "utils/documentTitle";
-import { transactions } from "utils/data.json";
+import { selectAllTransactions } from "store/appSlice/selectors";
+import { useAppSelector } from "store/store";
 
 // CSS prefix: .transactions-
 import "./style.css";
 
 function Transactions() {
+  const transactions = useAppSelector(selectAllTransactions);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const totalPages = Math.ceil(transactions.length / itemsPerPage);

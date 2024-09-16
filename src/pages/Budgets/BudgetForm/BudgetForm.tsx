@@ -8,20 +8,15 @@ import PrimaryBtn from "components/Buttons/Primary/Primary";
 import Modal from "components/Modal/Modal";
 import ModalHeader from "components/Modal/ModalHeader";
 import ModalInfo from "components/Modal/ModalInfo";
-import { Option, themesOptions } from "components/Input/selectOptions";
+import { themesOptions } from "components/Input/selectOptions";
 
 import CaretDownIcon from "assets/icons/caret-down.svg";
 import { BudgetsPageContext } from "contexts/budgetsPageContext";
-import { transactions } from "utils/data.json";
+import { useAppSelector } from "store/store";
+import { selectlCategoriesOpts } from "store/appSlice/selectors";
 
 // CSS prefix: .budgetform-
 import "./style.css";
-
-const categories = new Set(transactions.map(({ category }) => category));
-const categoriesOpts: Option[] = [];
-categories.forEach((category) =>
-  categoriesOpts.push({ label: category, value: category })
-);
 
 function BudgetForm() {
   const categoryId = useId();
@@ -34,6 +29,7 @@ function BudgetForm() {
   );
   const [maxSpend, setMaxSpend] = useState(editBudget ? editBudget.maximum : 0);
   const [theme, setTheme] = useState(editBudget ? editBudget.theme : "#277c78");
+  const options = useAppSelector(selectlCategoriesOpts);
 
   function onClick() {}
 
@@ -77,7 +73,7 @@ function BudgetForm() {
           >
             <Select
               id={categoryId}
-              options={categoriesOpts}
+              options={options}
               value={category}
               onChange={onChageCategory}
             />

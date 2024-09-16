@@ -1,4 +1,4 @@
-import { useContext, useId, useState } from "react";
+import { Fragment, useContext, useId, useState } from "react";
 
 import Dropdown from "components/Dropdown/Dropdown";
 import ProgressBar from "components/ProgressBar/ProgressBar";
@@ -14,16 +14,26 @@ import usePopover from "hooks/usePopover";
 import { BudgetsPageContext } from "contexts/budgetsPageContext";
 import useToggleEvent from "hooks/useToggleEvent";
 import { formatDate, formatNumber } from "utils/helpers";
-import { transactions } from "utils/data.json";
+import { useAppSelector } from "store/store";
+import {
+  selectBudgetById,
+  selectLatestTransactions,
+  selectMonthlySpent,
+} from "store/appSlice/selectors";
 
 // CSS prefix: .budgetcard-
 import "./style.css";
 
 type BudgetProps = {
-  budget: BudgetType;
+  budgetId: BudgetType["id"];
 };
 
-function Budget({ budget }: BudgetProps) {
+function Budget({ budgetId }: BudgetProps) {
+  const budget = useAppSelector((s) => selectBudgetById(s, budgetId));
+  const spent = useAppSelector((s) => selectMonthlySpent(s, budget.category));
+  const latestSpendings = useAppSelector((s) =>
+    selectLatestTransactions(s, budget.category)
+  );
   const floatId = useId();
   const { setDeleteBudget, setIsBudgetsFormOpened, setEditBudget } =
     useContext(BudgetsPageContext);
@@ -56,8 +66,7 @@ function Budget({ budget }: BudgetProps) {
     },
   ];
 
-  const { avatar, name, amount, date } = transactions[0];
-
+  const remaining = budget.maximum <= spent ? 0 : budget.maximum - spent;
   return (
     <section className="budgetcard-cont">
       {/* Header */}
@@ -92,14 +101,14 @@ function Budget({ budget }: BudgetProps) {
         </p>
 
         <ProgressBar
-          percentage={(15 / budget.maximum) * 100}
+          percentage={(spent / budget.maximum) * 100}
           theme={budget.theme}
         />
 
         <div className="budgetcard-spend">
-          <BudgetPotItem label="Spent" value={15} theme={budget.theme} />
+          <BudgetPotItem label="Spent" value={spent} theme={budget.theme} />
 
-          <BudgetPotItem label="Remaining" value={budget.maximum - 15} />
+          <BudgetPotItem label="Remaining" value={remaining} />
         </div>
       </div>
 
@@ -116,54 +125,31 @@ function Budget({ budget }: BudgetProps) {
         </div>
 
         <div className="budgetcard-transactions">
-          <div className="budgetcard-transitem">
-            <div className="budgetcard-transitem-user">
-              <UserAvatar src={avatar} alt={name} name={name} />
+          {latestSpendings.map((t) => {
+            const { id, avatar, name, amount, date } = t;
 
-              <p className="ellip-text">{name}</p>
-            </div>
+            return (
+              <Fragment key={id}>
+                <div className="budgetcard-transitem">
+                  <div className="budgetcard-transitem-user">
+                    <UserAvatar src={avatar} alt={name} name={name} />
 
-            <div className="budgetcard-transitem-detail">
-              <p className="budgetcard-transitem-amount">
-                {amount > 0 ? "+" : "-"}${formatNumber(Math.abs(amount))}
-              </p>
-              <p className="budgetcard-transitem-date">{formatDate(date)}</p>
-            </div>
-          </div>
+                    <p className="ellip-text">{name}</p>
+                  </div>
 
-          <Separator />
-
-          <div className="budgetcard-transitem">
-            <div className="budgetcard-transitem-user">
-              <UserAvatar src={avatar} alt={name} name={name} />
-
-              <p className="ellip-text">{name}</p>
-            </div>
-
-            <div className="budgetcard-transitem-detail">
-              <p className="budgetcard-transitem-amount">
-                {amount > 0 ? "+" : "-"}${formatNumber(Math.abs(amount))}
-              </p>
-              <p className="budgetcard-transitem-date">{formatDate(date)}</p>
-            </div>
-          </div>
-
-          <Separator />
-
-          <div className="budgetcard-transitem">
-            <div className="budgetcard-transitem-user">
-              <UserAvatar src={avatar} alt={name} name={name} />
-
-              <p className="ellip-text">{name}</p>
-            </div>
-
-            <div className="budgetcard-transitem-detail">
-              <p className="budgetcard-transitem-amount">
-                {amount > 0 ? "+" : "-"}${formatNumber(Math.abs(amount))}
-              </p>
-              <p className="budgetcard-transitem-date">{formatDate(date)}</p>
-            </div>
-          </div>
+                  <div className="budgetcard-transitem-detail">
+                    <p className="budgetcard-transitem-amount">
+                      {amount > 0 ? "+" : "-"}${formatNumber(Math.abs(amount))}
+                    </p>
+                    <p className="budgetcard-transitem-date">
+                      {formatDate(date)}
+                    </p>
+                  </div>
+                </div>
+                <Separator />
+              </Fragment>
+            );
+          })}
         </div>
       </div>
     </section>

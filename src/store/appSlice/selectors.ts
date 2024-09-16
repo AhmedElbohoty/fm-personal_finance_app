@@ -3,6 +3,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { Transaction, Budget, Pot } from "types/data";
 import { RootState } from "store/store";
 import { isBillDue, isBillPaid } from "utils/helpers";
+import { Option } from "components/Input/selectOptions";
 
 // Balance selectors
 export const selectBalance = (state: RootState) => state.app.balance;
@@ -10,6 +11,9 @@ export const selectBalance = (state: RootState) => state.app.balance;
 // Budget selectors
 export const selectAllBudgets = (state: RootState) =>
   Object.values(state.app.budgets);
+export const selectBudgetById = (state: RootState, id: Budget["id"]) =>
+  state.app.budgets[id];
+export const selectBudgetsIds = (state: RootState) => state.app.budgetsIds;
 
 // Pot selectors
 export const selectPotById = (state: RootState, id: Pot["id"]) =>
@@ -33,7 +37,7 @@ export const selectMonthlyRecurringBills = (state: RootState) => {
     bills.push(t);
   }
 
-  bills.sort((a, b) => new Date(a.date).getDate() - new Date(b.date).getDate());
+  bills.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
   return bills;
 };
@@ -66,9 +70,52 @@ export const selectMonthlyBillsDetails = createSelector(
   }
 );
 
+export const selectMonthlySpent = (
+  state: RootState,
+  category: Transaction["category"]
+) => {
+  const { transactions } = state.app;
+  const now = new Date();
+  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+  const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
+  return Object.values(transactions).reduce((total, t) => {
+    if (t.category !== category) return total;
+    const tDate = new Date(t.date);
+    if (tDate >= startOfMonth && tDate <= endOfMonth) {
+      return total + Math.abs(t.amount);
+    }
+    return total;
+  }, 0);
+};
+
+export const selectLatestTransactions = (
+  state: RootState,
+  category: Transaction["category"]
+) => {
+  const { transactions } = state.app;
+
+  const sortedTransactions = Object.values(transactions)
+    .filter((transaction) => transaction.category === category)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  return sortedTransactions.slice(0, 3);
+};
+
 // Transactions selectors
 export const selectAllTransactions = (state: RootState) =>
   Object.values(state.app.transactions);
+
+export const selectlCategoriesOpts = (state: RootState) => {
+  const { transactions } = state.app;
+  const categories: Transaction["category"][] = [];
+
+  Object.values(transactions).forEach((t) => {
+    if (!categories.includes(t.category)) categories.push(t.category);
+  });
+
+  return categories.map((c) => ({ label: c, value: c }));
+};
 
 //
 
@@ -138,11 +185,6 @@ const getTotalExpenses = (state: RootState) =>
   Object.values(state.app.transactions)
     .filter((transaction) => transaction.amount < 0)
     .reduce((total, transaction) => total + transaction.amount, 0);
-
-const getBudgetById = (state: RootState, id: Budget["id"]) =>
-  state.app.budgets[id];
-
-const getBudgetsIds = (state: RootState) => state.app.budgetsIds;
 
 const getBudgetsByCategory = (state: RootState, category: Budget["category"]) =>
   state.app.budgetsIds.filter(

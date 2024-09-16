@@ -5,12 +5,12 @@
 }
 
 .overview-grid-cont {
-  display: flex;
+  display: grid;
+  grid-template-columns: 608px minmax(428px, 1fr);
   gap: var(--spacing-300);
 }
 
 .overview-grid {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-300);
@@ -20,6 +20,6 @@
 /* Medium */
 @media screen and (max-width: 1439px) {
   .overview-grid-cont {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 }

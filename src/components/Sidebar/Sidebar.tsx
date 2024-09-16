@@ -59,28 +59,31 @@ function Sidebar() {
   }
 
   return (
-    <aside className="sidebar" data-minimized={isMinimized}>
-      {isLargeScr && (
-        <header className="sidebar-header">
-          {isMinimized ? <LogoMinimized /> : <Logo />}
-        </header>
-      )}
+    <>
+      <div className="sidebar-placeholder" data-minimized={isMinimized}></div>
+      <aside className="sidebar" data-minimized={isMinimized}>
+        {isLargeScr && (
+          <header className="sidebar-header">
+            {isMinimized ? <LogoMinimized /> : <Logo />}
+          </header>
+        )}
 
-      <nav className="sidebar-nav">
-        {links.map((link) => (
-          <Link key={link.to} {...link} />
-        ))}
-      </nav>
+        <nav className="sidebar-nav">
+          {links.map((link) => (
+            <Link key={link.to} {...link} />
+          ))}
+        </nav>
 
-      {isLargeScr && (
-        <button className="sidebar-toggle-btn" onClick={handleToggleMinimize}>
-          <span className="sidebar-toggle-btn-icon">
-            <MinimizeIcon />
-          </span>
-          <span className="sidebar-toggle-btn-label">Minimize Menu</span>
-        </button>
-      )}
-    </aside>
+        {isLargeScr && (
+          <button className="sidebar-toggle-btn" onClick={handleToggleMinimize}>
+            <span className="sidebar-toggle-btn-icon">
+              <MinimizeIcon />
+            </span>
+            <span className="sidebar-toggle-btn-label">Minimize Menu</span>
+          </button>
+        )}
+      </aside>
+    </>
   );
 }
 

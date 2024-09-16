@@ -4,15 +4,16 @@ import BudgetPotItem from "components/BudgetPotItem/BudgetPotItem";
 
 import PotIcon from "assets/icons/pot.svg";
 
-import data from "utils/data.json";
 import { formatNumber } from "utils/helpers";
+import { selectAllPots, selectPotsTotal } from "store/appSlice/selectors";
+import { useAppSelector } from "store/store";
 
 // CSS prefix: .potssect-
 import "./style.css";
 
 function PotsSection() {
-  const pots = data.pots;
-  const totalSaved = pots.reduce((sum, pot) => sum + pot.total, 0);
+  const pots = useAppSelector(selectAllPots);
+  const totalSaved = useAppSelector(selectPotsTotal);
 
   return (
     <Card>
@@ -32,13 +33,14 @@ function PotsSection() {
             </div>
           </div>
           <div className="potssect-list">
-            <BudgetPotItem label="Savings" value={159} theme="#277c78" />
-
-            <BudgetPotItem label="Gift" value={40} theme="#82c9d7" />
-
-            <BudgetPotItem label="Concert Ticket" value={110} theme="#626070" />
-
-            <BudgetPotItem label="New Laptop" value={10} theme="#f2cdac" />
+            {pots.map((pot) => (
+              <BudgetPotItem
+                key={pot.id}
+                label={pot.name}
+                value={pot.total}
+                theme={pot.theme}
+              />
+            ))}
           </div>
         </div>
       </section>

@@ -15,3 +15,10 @@ export function formatNumber(num: number, fraction = 2): string {
     minimumFractionDigits: fraction,
   }).format(num);
 }
+
+export function isDateBeforeNow(dateString: string): boolean {
+  const date = new Date(dateString);
+  const now = new Date();
+
+  return date < now;
+}

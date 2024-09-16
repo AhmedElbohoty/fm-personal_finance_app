@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 import Heading1 from "components/Heading1/Heading1";
 import PrimaryBtn from "components/Buttons/Primary/Primary";
 import PotForm from "pages/Pots/PotForm/PotForm";
@@ -10,12 +12,13 @@ import WithdrawFromForm from "pages/Pots/WithdrawFromForm/WithdrawFromForm";
 import { usePotsPageContext } from "contexts/potsPageContext";
 import useDocumentTitle from "hooks/useDocumentTitle";
 import titles from "utils/documentTitle";
-import { pots } from "utils/data.json";
+import { selectPotsIds } from "store/appSlice/selectors";
 
 // CSS prefix: .potspage-
 import "./style.css";
 
 function Pots() {
+  const potsIds = useSelector(selectPotsIds);
   useDocumentTitle(titles.pots);
 
   return (
@@ -24,8 +27,8 @@ function Pots() {
         <Top />
 
         <div className="potspage-grid">
-          {pots.map((pot) => {
-            return <Pot key={pot.id} pot={pot} />;
+          {potsIds.map((id) => {
+            return <Pot key={id} potId={id} />;
           })}
         </div>
       </div>

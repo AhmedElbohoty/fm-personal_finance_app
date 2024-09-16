@@ -11,15 +11,17 @@ import usePopover from "hooks/usePopover";
 import useToggleEvent from "hooks/useToggleEvent";
 import { PotsPageContext } from "contexts/potsPageContext";
 import { formatNumber } from "utils/helpers";
+import { selectPotById } from "store/appSlice/selectors";
+import { useAppSelector } from "store/store";
 
 // CSS prefix: .potcard-
 import "./style.css";
 
 type PotProps = {
-  pot: Pot;
+  potId: Pot["id"];
 };
 
-function Pot({ pot }: PotProps) {
+function Pot({ potId }: PotProps) {
   const floatId = useId();
   const {
     setEditPot,
@@ -30,6 +32,7 @@ function Pot({ pot }: PotProps) {
   } = useContext(PotsPageContext);
   const { refElem, floatElem } = usePopover();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const pot = useAppSelector((s) => selectPotById(s, potId));
 
   useToggleEvent(floatId, (state) => {
     // @ts-expect-error TODO: fix this

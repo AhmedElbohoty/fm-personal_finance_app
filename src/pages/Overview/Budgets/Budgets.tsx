@@ -2,13 +2,14 @@ import Card from "components/Card/Card";
 import CardHeader from "pages/Overview/CardHeader/CardHeader";
 import BudgetPotItem from "components/BudgetPotItem/BudgetPotItem";
 
-import data from "utils/data.json";
+import { useAppSelector } from "store/store";
+import { selectAllBudgets } from "store/appSlice/selectors";
 
 // CSS .budgets-section
 import "./style.css";
 
 function Budgets() {
-  const budgets = data.budgets;
+  const budgets = useAppSelector(selectAllBudgets);
 
   return (
     <Card>

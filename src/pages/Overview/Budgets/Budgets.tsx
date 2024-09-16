@@ -1,6 +1,9 @@
+import type { Options } from "highcharts";
+
 import Card from "components/Card/Card";
 import CardHeader from "pages/Overview/CardHeader/CardHeader";
 import BudgetPotItem from "components/BudgetPotItem/BudgetPotItem";
+import Chart from "components/Chart/Chart";
 
 import { useAppSelector } from "store/store";
 import { selectAllBudgets } from "store/appSlice/selectors";
@@ -11,6 +14,16 @@ import "./style.css";
 function Budgets() {
   const budgets = useAppSelector(selectAllBudgets);
 
+  const chartSeries: Options["series"] = [
+    {
+      type: "pie",
+      data: Object.values(budgets).map((budget) => ({
+        name: budget.category,
+        y: budget.maximum,
+        color: budget.theme,
+      })),
+    },
+  ];
   return (
     <Card>
       <section className="budgets-section">
@@ -21,7 +34,9 @@ function Budgets() {
         />
 
         <div className="budgets-main">
-          <div className="budget-chart">CHART</div>
+          <div className="budget-chart">
+            <Chart series={chartSeries} />
+          </div>
           <div className="budget-list">
             {budgets.map((budget) => (
               <BudgetPotItem

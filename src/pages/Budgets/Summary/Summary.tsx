@@ -1,13 +1,34 @@
+import type { Options } from "highcharts";
+
 import Separator from "components/Separator/Separator";
 import BudgetPotItem from "components/BudgetPotItem/BudgetPotItem";
+import Chart from "components/Chart/Chart";
+
+import { useAppSelector } from "store/store";
+import { selectAllBudgets } from "store/appSlice/selectors";
 
 // CSS prefix: .budsummary-
 import "./style.css";
 
 function Summary() {
+  const budgets = useAppSelector(selectAllBudgets);
+
+  const chartSeries: Options["series"] = [
+    {
+      type: "pie",
+      data: Object.values(budgets).map((budget) => ({
+        name: budget.category,
+        y: budget.maximum,
+        color: budget.theme,
+      })),
+    },
+  ];
+
   return (
     <section className="budsummary">
-      <div className="budsummary-chart">CHART</div>
+      <div className="budsummary-chart">
+        <Chart series={chartSeries} />
+      </div>
 
       <div className="budsummary-stats">
         <h2 className="budsummary-h2">Spending Summary</h2>

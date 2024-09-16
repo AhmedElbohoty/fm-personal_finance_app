@@ -37,7 +37,7 @@ export const selectMonthlyRecurringBills = (state: RootState) => {
     bills.push(t);
   }
 
-  bills.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  bills.sort((a, b) => new Date(a.date).getDate() - new Date(b.date).getDate());
 
   return bills;
 };

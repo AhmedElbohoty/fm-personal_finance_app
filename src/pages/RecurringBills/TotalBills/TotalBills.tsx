@@ -1,16 +1,14 @@
 import BillsIcons from "assets/icons/recurring-bills.svg";
 
-import data from "utils/data.json";
 import { formatNumber } from "utils/helpers";
+import { useAppSelector } from "store/store";
+import { selectMonthlyBillsDetails } from "store/appSlice/selectors";
 
 // CSS prefix: .totalbills-
 import "./style.css";
 
 function TotalBills() {
-  const bills = data.transactions.reduce(
-    (t, c) => (c.recurring && c.amount < 0 ? (t += c.amount) : (t += 0)),
-    0
-  );
+  const { totalBills } = useAppSelector(selectMonthlyBillsDetails);
 
   return (
     <div className="totalbills-cont">
@@ -21,7 +19,7 @@ function TotalBills() {
       <div className="totalbills-total">
         <p className="totalbills-total-label ellip-text">Total Bills</p>
         <p className="totalbills-total-value ellip-text">
-          ${formatNumber(Math.abs(bills))}
+          ${formatNumber(totalBills)}
         </p>
       </div>
     </div>

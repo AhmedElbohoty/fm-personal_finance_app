@@ -1,11 +1,13 @@
+import { useAppSelector } from "store/store";
+
 import { formatNumber } from "utils/helpers";
-import data from "utils/data.json";
+import { selectBalance } from "store/appSlice/selectors";
 
 // CSS prefix: .ovstats-
 import "./style.css";
 
 function Stats() {
-  const { current, income, expenses } = data.balance;
+  const { current, income, expenses } = useAppSelector(selectBalance);
 
   return (
     <section className="ovstats-sect">

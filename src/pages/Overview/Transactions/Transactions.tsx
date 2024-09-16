@@ -4,14 +4,15 @@ import Card from "components/Card/Card";
 import CardHeader from "pages/Overview/CardHeader/CardHeader";
 import UserAvatar from "components/Avatar/Avatar";
 
-import data from "utils/data.json";
 import type { Transaction } from "types/data";
+import { useAppSelector } from "store/store";
+import { selectAllTransactions } from "store/appSlice/selectors";
 
 // CSS prefix: .transactions-section-
 import "./style.css";
 
 function Transactions() {
-  const transactions: Transaction[] = data.transactions.slice(0, 5);
+  const transactions = useAppSelector(selectAllTransactions).slice(0, 5);
 
   return (
     <Card>

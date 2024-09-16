@@ -1,25 +1,17 @@
 import Card from "components/Card/Card";
 import CardHeader from "pages/Overview/CardHeader/CardHeader";
 
-import data from "utils/data.json";
 import { formatNumber } from "utils/helpers";
+import { useAppSelector } from "store/store";
+import { selectMonthlyBillsDetails } from "store/appSlice/selectors";
 
 // CSS prefix: .recurbills
 import "./style.css";
 
 function RecurringBills() {
-  const recurringTransactions = data.transactions.filter(
-    (t) => t.recurring && t.amount < 0
+  const { totalBills, paidTotal, dueTotal } = useAppSelector(
+    selectMonthlyBillsDetails
   );
-  const paidBills = recurringTransactions.reduce(
-    (sum, t) => sum + Math.abs(t.amount),
-    0
-  );
-  const upcomingBills = recurringTransactions.reduce(
-    (sum, t) => sum + Math.abs(t.amount),
-    0
-  );
-  const dueSoon = upcomingBills / 2; // Assuming half of the upcoming bills are due soon
 
   return (
     <Card>
@@ -32,17 +24,17 @@ function RecurringBills() {
         <ul className="recurbills-list">
           <li className="recurbills-item">
             <p className="recurbills-item-label ellip-text">Paid Bills</p>
-            <p className="recurbills-item-value">${formatNumber(paidBills)}</p>
+            <p className="recurbills-item-value">${formatNumber(paidTotal)}</p>
           </li>
           <li className="recurbills-item">
             <p className="recurbills-item-label ellip-text">Total Upcoming</p>
             <p className="recurbills-item-value">
-              ${formatNumber(upcomingBills)}
+              ${formatNumber(totalBills - paidTotal)}
             </p>
           </li>
           <li className="recurbills-item">
             <p className="recurbills-item-label ellip-text">Due Soon</p>
-            <p className="recurbills-item-value">${formatNumber(dueSoon)}</p>
+            <p className="recurbills-item-value">${formatNumber(dueTotal)}</p>
           </li>
         </ul>
       </section>

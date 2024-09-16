@@ -2,7 +2,10 @@ import { createSelector } from "@reduxjs/toolkit";
 
 import { Transaction, Budget, Pot } from "types/data";
 import { RootState } from "store/store";
-import { isDateBeforeNow } from "utils/helpers";
+import { isBillDue, isBillPaid } from "utils/helpers";
+
+// Balance selectors
+export const selectBalance = (state: RootState) => state.app.balance;
 
 // Budget selectors
 export const selectAllBudgets = (state: RootState) =>
@@ -18,36 +21,56 @@ export const selectPotsTotal = (state: RootState) =>
   Object.values(state.app.pots).reduce((t, p) => t + p.total, 0);
 
 // Bills selectors
-export const selectRecurringBills = (state: RootState) => {
-  const { transactions } = state.app;
-  const recurring = Object.values(transactions).filter((t) => t.recurring);
+export const selectMonthlyRecurringBills = (state: RootState) => {
+  const transactions = Object.values(state.app.transactions);
   const vendors = new Set();
-  const uniqueRecurring = [];
+  const bills = [];
 
-  for (const t of recurring) {
+  for (const t of transactions) {
+    if (!t.recurring) continue;
     if (vendors.has(t.name)) continue;
     vendors.add(t.name);
-    uniqueRecurring.push(t);
+    bills.push(t);
   }
 
-  return uniqueRecurring;
+  bills.sort((a, b) => new Date(a.date).getDate() - new Date(b.date).getDate());
+
+  return bills;
 };
 
-export const selectPaidRecurringBills = createSelector(
-  (s) => selectRecurringBills(s),
-  (bills: Transaction[]) => bills.filter((b) => isDateBeforeNow(b.date))
+export const selectMonthlyBillsDetails = createSelector(
+  selectMonthlyRecurringBills,
+  (bills) => {
+    let totalBills = 0,
+      paidTotal = 0,
+      paidCount = 0,
+      dueTotal = 0,
+      dueCount = 0;
+    const totalCount = bills.length;
+
+    bills.forEach((b) => {
+      const isPaid = isBillPaid(b.date);
+      const isDue = isBillDue(b.date);
+
+      totalBills += Math.abs(b.amount);
+      if (isPaid) {
+        paidTotal += Math.abs(b.amount);
+        paidCount++;
+      } else if (isDue) {
+        dueTotal += Math.abs(b.amount);
+        dueCount++;
+      }
+    });
+
+    return { totalBills, totalCount, paidTotal, paidCount, dueTotal, dueCount };
+  }
 );
 
-export const selectPaidRecurringBillsValue = createSelector(
-  (s) => selectPaidRecurringBills(s),
-  (bills: Transaction[]) =>
-    bills.reduce((sum, t) => sum + Math.abs(t.amount), 0)
-);
+// Transactions selectors
 export const selectAllTransactions = (state: RootState) =>
   Object.values(state.app.transactions);
 
 //
-const getBalance = (state: RootState) => state.app.balance;
 
 const getCurrentBalance = (state: RootState) => state.app.balance.current;
 

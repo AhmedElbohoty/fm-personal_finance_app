@@ -1,11 +1,18 @@
 import Separator from "components/Separator/Separator";
 
+import { useAppSelector } from "store/store";
+import { selectMonthlyBillsDetails } from "store/appSlice/selectors";
+import { formatNumber } from "utils/helpers";
+
 // CSS prefix: .billsummary-
 import "./style.css";
 
 // TODO: implement dynamic values
 
 function Summary() {
+  const { totalBills, totalCount, paidCount, paidTotal, dueTotal, dueCount } =
+    useAppSelector(selectMonthlyBillsDetails);
+
   return (
     <div className="billsummary-cont">
       <p className="billsummary-label">Summary</p>
@@ -13,21 +20,27 @@ function Summary() {
       <div className="billsummary-items">
         <div className="billsummary-item">
           <p className="billsummary-item-label ellip-text">Paid Bills</p>
-          <p className="billsummary-item-value">4 ($190.00)</p>
+          <p className="billsummary-item-value">
+            {paidCount} (${formatNumber(paidTotal)})
+          </p>
         </div>
 
         <Separator />
 
         <div className="billsummary-item">
           <p className="billsummary-item-label ellip-text">Total Upcoming</p>
-          <p className="billsummary-item-value">4 ($194.98)</p>
+          <p className="billsummary-item-value">
+            {totalCount - paidCount} (${formatNumber(totalBills - paidTotal)})
+          </p>
         </div>
 
         <Separator />
 
         <div className="billsummary-item" data-due="true">
           <p className="billsummary-item-label ellip-text">Due Soon</p>
-          <p className="billsummary-item-value">2 ($59.98)</p>
+          <p className="billsummary-item-value">
+            {dueCount} (${formatNumber(dueTotal)})
+          </p>
         </div>
       </div>
     </div>

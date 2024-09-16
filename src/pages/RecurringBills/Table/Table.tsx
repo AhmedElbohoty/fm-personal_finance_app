@@ -5,14 +5,20 @@ import DueIcon from "assets/icons/bill-due.svg";
 import PaidIcon from "assets/icons/bill-paid.svg";
 import Separator from "components/Separator/Separator";
 
-import { transactions } from "utils/data.json";
-import { formatDate } from "utils/helpers";
+import { useAppSelector } from "store/store";
+import { selectMonthlyRecurringBills } from "store/appSlice/selectors";
+import {
+  formatMonthlyDate,
+  formatNumber,
+  isBillDue,
+  isBillPaid,
+} from "utils/helpers";
 
 // CSS prefix: .rectable-
 import "./style.css";
 
 function Table() {
-  const bills = transactions;
+  const recurrBills = useAppSelector(selectMonthlyRecurringBills);
 
   return (
     <div className="rectable">
@@ -22,8 +28,12 @@ function Table() {
         <span className="rectable-hamount">Amount</span>
       </div>
       <div className="rectable-table">
-        {bills.map((bill) => {
+        {recurrBills.map((bill) => {
           const { id, name, date, avatar, amount } = bill;
+
+          const isPaid = isBillPaid(date);
+          const isDue = isBillDue(date);
+
           return (
             <Fragment key={id}>
               <div className="rectable-row">
@@ -36,17 +46,21 @@ function Table() {
                   </span>
                 </div>
 
-                {/* TODO */}
-                <div className="rectable-date" data-due={id === "5"}>
-                  <span>{formatDate(date)}</span>
+                <div
+                  className="rectable-date"
+                  data-paid={isPaid}
+                  data-due={isDue}
+                >
+                  <span>{formatMonthlyDate(date)}</span>
 
                   <div className="rectable-date-icon">
-                    {id !== "5" ? <PaidIcon /> : <DueIcon />}
+                    {isPaid && <PaidIcon />}
+                    {isDue && <DueIcon />}
                   </div>
                 </div>
 
-                <span className="rectable-amount" data-due={id === "5"}>
-                  {amount}
+                <span className="rectable-amount" data-due={isDue}>
+                  ${formatNumber(Math.abs(amount))}
                 </span>
               </div>
 

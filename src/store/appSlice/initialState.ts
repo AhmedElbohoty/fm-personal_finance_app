@@ -8,6 +8,7 @@ export type StateType = {
   transactionsIds: Transaction["id"][];
   budgetsIds: Budget["id"][];
   potsIds: Pot["id"][];
+  recurringBillsIds: string[];
 };
 
 const initialState: StateType = {
@@ -585,6 +586,19 @@ const initialState: StateType = {
     "4001c78e-357d-40d4-aae4-5ec4a7ee4c69",
     "300a386a-c336-43f7-a93c-4717d8c22a98",
     "190df543-b721-4211-8b42-f4229a6d8d1c",
+  ],
+  recurringBillsIds: [
+    "77f34e28-835c-4995-b4f1-788f1212bb8e",
+    "05354f7b-c8f5-4665-a8fe-ddd4686f6831",
+    "c735af2d-d3fb-4727-9e95-206889037a74",
+    "1569ab9e-0c1d-4061-8f62-a552c09779b6",
+    "a93ed15c-3f2d-4d8a-8c19-115f1184bcb7",
+    "d8aa7685-d521-4137-9492-e84e2f22a157",
+    "eb3a4f46-a1d3-4c29-828b-19cc7fe3516e",
+    "0ef6c9a2-81d2-4993-9c45-a68cc60d96b2",
+    "9d980e2b-1bb2-49ce-8258-5f35c1d5dc39",
+    "59ebc1e3-15ab-4d65-bfc0-7a5084daab8d",
+    "887f5c2d-3f15-49d3-92cd-b2d816ac8929",
   ],
 };
 

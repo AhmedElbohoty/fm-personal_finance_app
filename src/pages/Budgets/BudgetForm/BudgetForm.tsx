@@ -1,4 +1,13 @@
-import { useId, useState, type ChangeEvent, useContext, useMemo } from "react";
+import { useDispatch } from "react-redux";
+import {
+  useId,
+  useState,
+  type ChangeEvent,
+  useContext,
+  useMemo,
+  type FormEvent,
+} from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import InputWrapper from "components/Input/InputWrapper";
 
@@ -14,19 +23,19 @@ import CaretDownIcon from "assets/icons/caret-down.svg";
 import { BudgetsPageContext } from "contexts/budgetsPageContext";
 import { useAppSelector } from "store/store";
 import { selectCategories } from "store/appSlice/selectors";
+import { addBudget, updateBudget } from "store/appSlice/slice";
 
 // CSS prefix: .budgetform-
 import "./style.css";
 
 function BudgetForm() {
+  const dispatch = useDispatch();
   const categoryId = useId();
   const spendId = useId();
   const themeId = useId();
   const { setIsBudgetsFormOpened, setEditBudget, editBudget } =
     useContext(BudgetsPageContext);
-  const [category, setCategory] = useState(
-    editBudget ? editBudget.category : ""
-  );
+
   const [maxSpend, setMaxSpend] = useState(editBudget ? editBudget.maximum : 0);
   const [theme, setTheme] = useState(editBudget ? editBudget.theme : "#277c78");
   const categories = useAppSelector(selectCategories);
@@ -37,15 +46,29 @@ function BudgetForm() {
     }));
   }, [categories]);
 
-  const isDisabled = !category || !maxSpend;
+  const [category, setCategory] = useState(
+    editBudget ? editBudget.category : options[0].value
+  );
 
-  function onClick() {
+  let isDisabled = !category || !maxSpend;
+  if (editBudget) {
+    isDisabled =
+      isDisabled ||
+      (editBudget.category === category &&
+        editBudget.maximum === maxSpend &&
+        editBudget.theme === theme);
+  }
+
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     if (isDisabled) return;
 
     if (editBudget) {
-      // Update budget
+      dispatch(
+        updateBudget({ ...editBudget, category, maximum: maxSpend, theme })
+      );
     } else {
-      // Add new budget
+      dispatch(addBudget({ id: uuidv4(), category, maximum: maxSpend, theme }));
     }
     closeModal();
   }
@@ -81,7 +104,7 @@ function BudgetForm() {
         }
       />
 
-      <form className="budgetform-form">
+      <form className="budgetform-form" onSubmit={onSubmit}>
         <div className="budgetform-inputs">
           <InputWrapper
             id={categoryId}
@@ -122,7 +145,6 @@ function BudgetForm() {
         <PrimaryBtn
           label={editBudget ? "Save Changes" : "Add Budget"}
           type="submit"
-          onClick={onClick}
           isDisabled={isDisabled}
         />
       </form>

@@ -31,6 +31,7 @@ function AddToPotForm() {
   const [amount, setAmount] = useState(0);
 
   const { theme, name, total, target } = pot as Pot;
+  const isDisabled = amount <= 0;
 
   function closeModal() {
     setAddToPot(null);
@@ -47,6 +48,7 @@ function AddToPotForm() {
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (isDisabled) return;
     dispatch(addToPot({ potId: pot!.id, amount }));
     closeModal();
   }
@@ -80,7 +82,11 @@ function AddToPotForm() {
           />
         </InputWrapper>
 
-        <Primary label="Confirm Addition" type="submit" />
+        <Primary
+          label="Confirm Addition"
+          type="submit"
+          isDisabled={isDisabled}
+        />
       </form>
     </Modal>
   );

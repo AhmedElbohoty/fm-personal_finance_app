@@ -36,7 +36,17 @@ function PotForm() {
   const [target, setTarget] = useState(editPot ? editPot.target : 0);
   const [theme, setTheme] = useState(editPot ? editPot.theme : "#277c78");
 
+  let isDisabled = !potName || target === 0;
+  if (editPot) {
+    isDisabled =
+      isDisabled ||
+      (editPot.name === potName &&
+        editPot.target === target &&
+        editPot.theme === theme);
+  }
+
   function onSubmit(e: FormEvent<HTMLFormElement>) {
+    if (isDisabled) return;
     e.preventDefault();
 
     if (!editPot) {
@@ -55,6 +65,7 @@ function PotForm() {
   }
 
   function onChangePotName(e: ChangeEvent<HTMLInputElement>) {
+    if (e.target.value.length > 30) return;
     setPotName(e.target.value);
   }
 
@@ -90,13 +101,14 @@ function PotForm() {
           <InputWrapper
             id={nameId}
             label="Pot Name"
-            helperText="30 characters left"
+            helperText={`${30 - potName.length} characters left`}
           >
             <InputText
               id={nameId}
               placeholder="Pot Name"
               value={potName}
               onChange={onChangePotName}
+              maxLength={30}
             />
           </InputWrapper>
 
@@ -126,6 +138,7 @@ function PotForm() {
         <PrimaryBtn
           label={editPot ? "Save Changes" : "Add Pot"}
           type="submit"
+          isDisabled={isDisabled}
         />
       </form>
     </Modal>

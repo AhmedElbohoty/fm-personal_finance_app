@@ -8,9 +8,16 @@ type InputTextProps = {
   placeholder?: string;
   value: string | number;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  maxLength?: number;
 };
 
-function InputText({ id, placeholder, value, onChange }: InputTextProps) {
+function InputText({
+  id,
+  placeholder,
+  value,
+  onChange,
+  maxLength,
+}: InputTextProps) {
   return (
     <input
       id={id}
@@ -18,6 +25,7 @@ function InputText({ id, placeholder, value, onChange }: InputTextProps) {
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      maxLength={maxLength}
     />
   );
 }

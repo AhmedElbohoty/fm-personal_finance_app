@@ -33,6 +33,8 @@ function WithdrawFromForm() {
 
   const { name, total, target } = pot as Pot;
 
+  const isDisabled = amount <= 0;
+
   function closeModal() {
     setWithdrawFromPot(null);
   }
@@ -48,6 +50,7 @@ function WithdrawFromForm() {
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (isDisabled) return;
     dispach(withdrawFromPot({ potId: pot!.id, amount }));
     closeModal();
   }
@@ -81,7 +84,11 @@ function WithdrawFromForm() {
           />
         </InputWrapper>
 
-        <Primary label="Confirm Withdrawal" type="submit" />
+        <Primary
+          label="Confirm Withdrawal"
+          type="submit"
+          isDisabled={isDisabled}
+        />
       </form>
     </Modal>
   );

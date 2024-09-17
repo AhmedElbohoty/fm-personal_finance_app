@@ -2,7 +2,8 @@ import { createSelector } from "@reduxjs/toolkit";
 
 import { Transaction, Budget, Pot } from "types/data";
 import { RootState } from "store/store";
-import { isBillDue, isBillPaid } from "utils/helpers";
+import { abs, isBillDue, isBillPaid } from "utils/helpers";
+import { Option } from "components/Input/selectOptions";
 
 // Balance selectors
 export const selectBalance = (state: RootState) => state.app.balance;
@@ -102,32 +103,98 @@ export const selectLatestTransactions = (
 };
 
 // Transactions selectors
+export const selectTransactionsIds = (state: RootState) =>
+  state.app.transactionsIds;
+
 export const selectAllTransactions = (state: RootState) =>
   Object.values(state.app.transactions);
+
+export const selectTransactionById = (
+  state: RootState,
+  id: Transaction["id"]
+) => state.app.transactions[id];
+
+export const selectFilteredTranIds = (
+  state: RootState,
+  filter: string = "",
+  category: string = "all",
+  sortOption: string = "latest"
+) => {
+  const { transactionsIds, transactions } = state.app;
+  let filteredIds = [...transactionsIds];
+
+  // Filter by category first
+  if (category !== "all") {
+    filteredIds = transactionsIds.filter(
+      (id) => transactions[id].category === category
+    );
+  }
+
+  // Then filter by name
+  if (filter !== "") {
+    filteredIds = filteredIds.filter((id) =>
+      transactions[id].name.toLowerCase().includes(filter)
+    );
+  }
+
+  // Sort the filtered IDs based on the sortOption
+  switch (sortOption) {
+    case "latest":
+      filteredIds.sort(
+        (a, b) =>
+          new Date(transactions[b].date).getTime() -
+          new Date(transactions[a].date).getTime()
+      );
+      break;
+    case "oldest":
+      filteredIds.sort(
+        (a, b) =>
+          new Date(transactions[a].date).getTime() -
+          new Date(transactions[b].date).getTime()
+      );
+      break;
+    case "a-z":
+      filteredIds.sort((a, b) =>
+        transactions[a].name.localeCompare(transactions[b].name)
+      );
+      break;
+    case "z-a":
+      filteredIds.sort((a, b) =>
+        transactions[b].name.localeCompare(transactions[a].name)
+      );
+      break;
+    case "highest":
+      filteredIds.sort(
+        (a, b) => abs(transactions[b].amount) - abs(transactions[a].amount)
+      );
+      break;
+    case "lowest":
+      filteredIds.sort(
+        (a, b) => abs(transactions[a].amount) - abs(transactions[b].amount)
+      );
+      break;
+    default:
+      break;
+  }
+
+  return filteredIds;
+};
 
 export const selectlCategoriesOpts = (state: RootState) => {
   const { transactions } = state.app;
   const categories: Transaction["category"][] = [];
+  const options: Option[] = [{ label: "All tranasactions", value: "all" }];
 
   Object.values(transactions).forEach((t) => {
-    if (!categories.includes(t.category)) categories.push(t.category);
+    if (categories.includes(t.category)) return;
+    categories.push(t.category);
+    options.push({ label: t.category, value: t.category });
   });
 
-  return categories.map((c) => ({ label: c, value: c }));
+  return options;
 };
 
 //
-
-const getCurrentBalance = (state: RootState) => state.app.balance.current;
-
-const getIncome = (state: RootState) => state.app.balance.income;
-
-const getExpenses = (state: RootState) => state.app.balance.expenses;
-
-const getTransactionById = (state: RootState, id: Transaction["id"]) =>
-  state.app.transactions[id];
-
-const getTransactionsIds = (state: RootState) => state.app.transactionsIds;
 
 const getTransactionIdsByCategory = (
   state: RootState,
@@ -136,6 +203,12 @@ const getTransactionIdsByCategory = (
   state.app.transactionsIds.filter(
     (id) => state.app.transactions[id].category === category
   );
+
+const getCurrentBalance = (state: RootState) => state.app.balance.current;
+
+const getIncome = (state: RootState) => state.app.balance.income;
+
+const getExpenses = (state: RootState) => state.app.balance.expenses;
 
 const getTransactionByName = (state: RootState, name: string) =>
   Object.values(state.app.transactions).find(

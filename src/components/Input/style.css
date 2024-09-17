@@ -79,6 +79,7 @@
   align-items: center;
   justify-content: center;
   translate: 0 -50%;
+  pointer-events: none;
 }
 
 .input-icon .svg-caretd {
@@ -94,6 +95,7 @@
   height: 16px;
   border-radius: var(--border-radius-full);
   translate: 0 -50%;
+  pointer-events: none;
 }
 
 .input-helper-text {

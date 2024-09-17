@@ -1,51 +1,47 @@
-import { useMemo, useState } from "react";
-
 import Card from "components/Card/Card";
 import Filters from "pages/Transactions/Filters/Filters";
 import Table from "pages/Transactions/Table/Table";
+import Providers from "pages/Transactions/Providers";
 import Pagination from "components/Pagination/Pagination";
 import Heading1 from "components/Heading1/Heading1";
 
 import useDocumentTitle from "hooks/useDocumentTitle";
 import titles from "utils/documentTitle";
-import { selectAllTransactions } from "store/appSlice/selectors";
-import { useAppSelector } from "store/store";
+import { useTransactionsPageContext } from "contexts/transactionsPageContext";
 
 // CSS prefix: .transactions-
 import "./style.css";
 
 function Transactions() {
-  const transactions = useAppSelector(selectAllTransactions);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
-  const totalPages = Math.ceil(transactions.length / itemsPerPage);
-  const paginatedTransactions = useMemo(() => {
-    return transactions.slice(
-      (currentPage - 1) * itemsPerPage,
-      currentPage * itemsPerPage
-    );
-  }, [currentPage]);
-
   useDocumentTitle(titles.transactions);
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
+  return (
+    <Providers>
+      <section className="transactions">
+        <Heading1 text="Transactions" />
+
+        <Card classname="transactions-card">
+          <Filters />
+          <Table />
+          <Pages />
+        </Card>
+      </section>
+    </Providers>
+  );
+}
+
+function Pages() {
+  const { totalPages, currentPage, setCurrentPage, transactionsIds } =
+    useTransactionsPageContext();
+
+  if (!transactionsIds.length) return <></>;
 
   return (
-    <section className="transactions">
-      <Heading1 text="Transactions" />
-
-      <Card classname="transactions-card">
-        <Filters />
-        <Table transactions={paginatedTransactions} />
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
-      </Card>
-    </section>
+    <Pagination
+      totalPages={totalPages}
+      currentPage={currentPage}
+      onPageChange={setCurrentPage}
+    />
   );
 }
 

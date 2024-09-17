@@ -7,20 +7,11 @@ import Select from "components/Input/Select";
 import SearchIcon from "assets/icons/search.svg";
 import CaretDownIcon from "assets/icons/caret-down.svg";
 import SortIcon from "assets/icons/sort-mobile.svg";
-import { Option } from "components/Input/selectOptions";
+import { sortOptions } from "components/Input/selectOptions";
 import { WindowSizeContext } from "contexts/windowSizeContext";
 
 // CSS prefix: .recfilters-
 import "./style.css";
-
-const sortOptions: Option[] = [
-  { label: "Latest (most recent)", value: "latest" },
-  { label: "Oldest", value: "oldest" },
-  { label: "A to Z", value: "a-z" },
-  { label: "Z to A", value: "z-a" },
-  { label: "Highest (transaction amount)", value: "highest" },
-  { label: "Lowest", value: "lowest" },
-];
 
 function Filters() {
   const { isSmallScr } = useContext(WindowSizeContext);

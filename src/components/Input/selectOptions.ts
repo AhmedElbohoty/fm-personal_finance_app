@@ -3,6 +3,15 @@ export type Option = {
   value: string;
 };
 
+export const sortOptions: Option[] = [
+  { label: "Latest (most recent)", value: "latest" },
+  { label: "Oldest", value: "oldest" },
+  { label: "A to Z", value: "a-z" },
+  { label: "Z to A", value: "z-a" },
+  { label: "Highest (transaction amount)", value: "highest" },
+  { label: "Lowest", value: "lowest" },
+];
+
 export const themesOptions: Option[] = [
   // Grey
   {

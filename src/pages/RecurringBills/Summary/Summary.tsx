@@ -1,7 +1,7 @@
 import Separator from "components/Separator/Separator";
 
 import { useAppSelector } from "store/store";
-import { selectMonthlyBillsDetails } from "store/appSlice/selectors";
+import { selectRecurBillsDetails } from "store/appSlice/selectors";
 import { formatNumber } from "utils/helpers";
 
 // CSS prefix: .billsummary-
@@ -11,7 +11,7 @@ import "./style.css";
 
 function Summary() {
   const { totalBills, totalCount, paidCount, paidTotal, dueTotal, dueCount } =
-    useAppSelector(selectMonthlyBillsDetails);
+    useAppSelector(selectRecurBillsDetails);
 
   return (
     <div className="billsummary-cont">

@@ -1,4 +1,4 @@
-import { type ChangeEvent, useContext, useId, useState } from "react";
+import { type ChangeEvent, useContext, useId } from "react";
 
 import InputWrapper from "components/Input/InputWrapper";
 import InputText from "components/Input/InputText";
@@ -9,19 +9,20 @@ import CaretDownIcon from "assets/icons/caret-down.svg";
 import SortIcon from "assets/icons/sort-mobile.svg";
 import { sortOptions } from "components/Input/selectOptions";
 import { WindowSizeContext } from "contexts/windowSizeContext";
+import { BillsPageContext } from "contexts/billsPageContext";
 
 // CSS prefix: .recfilters-
 import "./style.css";
 
 function Filters() {
+  const { search, setSearch, sortOpt, setSortOpt } =
+    useContext(BillsPageContext);
   const { isSmallScr } = useContext(WindowSizeContext);
   const searchId = useId();
   const sortId = useId();
-  const [search, setSearch] = useState("");
-  const [sortOpt, setSortOpt] = useState(sortOptions[0].value);
 
   function onChangeSearch(e: ChangeEvent<HTMLInputElement>) {
-    setSearch(e.target.value);
+    setSearch(e.target.value.toLowerCase());
   }
 
   function onChangeSort(e: ChangeEvent<HTMLSelectElement>) {

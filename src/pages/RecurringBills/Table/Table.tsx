@@ -1,24 +1,27 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 
 import UserAvatar from "components/Avatar/Avatar";
 import DueIcon from "assets/icons/bill-due.svg";
 import PaidIcon from "assets/icons/bill-paid.svg";
 import Separator from "components/Separator/Separator";
+import HighlightText from "components/HighlightText/HighlightText";
 
 import { useAppSelector } from "store/store";
-import { selectMonthlyRecurringBills } from "store/appSlice/selectors";
+import { selectTransactionById } from "store/appSlice/selectors";
 import {
   formatMonthlyDate,
   formatNumber,
   isBillDue,
   isBillPaid,
 } from "utils/helpers";
+import { Transaction } from "types/data";
+import { BillsPageContext } from "contexts/billsPageContext";
 
 // CSS prefix: .rectable-
 import "./style.css";
 
 function Table() {
-  const recurrBills = useAppSelector(selectMonthlyRecurringBills);
+  const { transactionsIds } = useContext(BillsPageContext);
 
   return (
     <div className="rectable">
@@ -28,47 +31,57 @@ function Table() {
         <span className="rectable-hamount">Amount</span>
       </div>
       <div className="rectable-table">
-        {recurrBills.map((bill) => {
-          const { id, name, date, avatar, amount } = bill;
-
-          const isPaid = isBillPaid(date);
-          const isDue = isBillDue(date);
-
+        {!transactionsIds.length && (
+          <p className="rectable-table-empty">
+            No transactions to be displayed
+          </p>
+        )}
+        {transactionsIds.map((id) => {
           return (
             <Fragment key={id}>
-              <div className="rectable-row">
-                <div className="rectable-sender">
-                  <div className="rectable-sender-img">
-                    <UserAvatar src={avatar} alt={name} name={name} />
-                  </div>
-                  <span className="rectable-sender-name ellip-text">
-                    {name}
-                  </span>
-                </div>
-
-                <div
-                  className="rectable-date"
-                  data-paid={isPaid}
-                  data-due={isDue}
-                >
-                  <span>{formatMonthlyDate(date)}</span>
-
-                  <div className="rectable-date-icon">
-                    {isPaid && <PaidIcon />}
-                    {isDue && <DueIcon />}
-                  </div>
-                </div>
-
-                <span className="rectable-amount" data-due={isDue}>
-                  ${formatNumber(Math.abs(amount))}
-                </span>
-              </div>
+              <Row id={id} />
 
               <Separator />
             </Fragment>
           );
         })}
       </div>
+    </div>
+  );
+}
+
+function Row({ id }: { id: Transaction["id"] }) {
+  const { search } = useContext(BillsPageContext);
+  const transaction = useAppSelector((s) => selectTransactionById(s, id));
+
+  const { name, date, avatar, amount } = transaction;
+
+  const isPaid = isBillPaid(date);
+  const isDue = isBillDue(date);
+
+  return (
+    <div className="rectable-row">
+      <div className="rectable-sender">
+        <div className="rectable-sender-img">
+          <UserAvatar src={avatar} alt={name} name={name} />
+        </div>
+        <span className="rectable-sender-name ellip-text">
+          <HighlightText text={name} filter={search} />
+        </span>
+      </div>
+
+      <div className="rectable-date" data-paid={isPaid} data-due={isDue}>
+        <span>{formatMonthlyDate(date)}</span>
+
+        <div className="rectable-date-icon">
+          {isPaid && <PaidIcon />}
+          {isDue && <DueIcon />}
+        </div>
+      </div>
+
+      <span className="rectable-amount" data-due={isDue}>
+        ${formatNumber(Math.abs(amount))}
+      </span>
     </div>
   );
 }

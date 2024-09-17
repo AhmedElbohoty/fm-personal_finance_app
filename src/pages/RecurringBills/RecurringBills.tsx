@@ -4,6 +4,7 @@ import TotalBills from "pages/RecurringBills/TotalBills/TotalBills";
 import Summary from "pages/RecurringBills/Summary/Summary";
 import Table from "pages/RecurringBills/Table/Table";
 import Filters from "pages/RecurringBills/Filters/Filters";
+import Providers from "pages/RecurringBills/Providers";
 
 import titles from "utils/documentTitle";
 import useDocumentTitle from "hooks/useDocumentTitle";
@@ -15,21 +16,23 @@ function RecurringBills() {
   useDocumentTitle(titles.recurring);
 
   return (
-    <section className="recurringbills">
-      <Heading1 text="Recurring Bills" />
+    <Providers>
+      <section className="recurringbills">
+        <Heading1 text="Recurring Bills" />
 
-      <div className="recurringbills-content">
-        <div className="recurringbills-stats">
-          <TotalBills />
-          <Summary />
+        <div className="recurringbills-content">
+          <div className="recurringbills-stats">
+            <TotalBills />
+            <Summary />
+          </div>
+
+          <Card classname="recurringbills-card">
+            <Filters />
+            <Table />
+          </Card>
         </div>
-
-        <Card classname="recurringbills-card">
-          <Filters />
-          <Table />
-        </Card>
-      </div>
-    </section>
+      </section>
+    </Providers>
   );
 }
 

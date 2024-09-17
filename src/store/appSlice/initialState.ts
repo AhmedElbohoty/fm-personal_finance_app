@@ -596,9 +596,6 @@ const initialState: StateType = {
     "d8aa7685-d521-4137-9492-e84e2f22a157",
     "eb3a4f46-a1d3-4c29-828b-19cc7fe3516e",
     "0ef6c9a2-81d2-4993-9c45-a68cc60d96b2",
-    "9d980e2b-1bb2-49ce-8258-5f35c1d5dc39",
-    "59ebc1e3-15ab-4d65-bfc0-7a5084daab8d",
-    "887f5c2d-3f15-49d3-92cd-b2d816ac8929",
   ],
 };
 

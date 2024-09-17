@@ -4,6 +4,15 @@
   gap: var(--spacing-250);
 }
 
+.rectable-table-empty {
+  margin: var(--spacing-300) auto;
+  color: var(--c-grey-500);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-150);
+  letter-spacing: var(--letter-spacing-0);
+}
+
 .rectable-row,
 .rectable-header {
   display: grid;

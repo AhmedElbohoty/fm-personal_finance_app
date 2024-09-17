@@ -2,13 +2,13 @@ import BillsIcons from "assets/icons/recurring-bills.svg";
 
 import { formatNumber } from "utils/helpers";
 import { useAppSelector } from "store/store";
-import { selectMonthlyBillsDetails } from "store/appSlice/selectors";
+import { selectRecurBillsDetails } from "store/appSlice/selectors";
 
 // CSS prefix: .totalbills-
 import "./style.css";
 
 function TotalBills() {
-  const { totalBills } = useAppSelector(selectMonthlyBillsDetails);
+  const { totalBills } = useAppSelector(selectRecurBillsDetails);
 
   return (
     <div className="totalbills-cont">

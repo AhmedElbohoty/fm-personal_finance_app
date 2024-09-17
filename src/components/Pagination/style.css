@@ -1,4 +1,4 @@
-.pagination {
+.pagin {
   width: 100%;
   padding-top: var(--spacing-300);
   display: flex;
@@ -7,7 +7,7 @@
   gap: var(--spacing-200);
 }
 
-.pagination-arrow-btn {
+.pagin-arrow-btn {
   width: 94px;
   height: 40px;
   display: flex;
@@ -21,11 +21,12 @@
     var(--transition-timing-func);
 }
 
-.pagination-arrow-btn:hover {
-  background-color: var(--c-beige-500);
+.pagin-arrow-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
 }
 
-.pagination-arrow-label {
+.pagin-arrow-label {
   color: var(--c-grey-900);
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-regular);
@@ -34,11 +35,7 @@
   transition: color var(--transition-duration) var(--transition-timing-func);
 }
 
-.pagination-arrow-btn:hover .pagination-arrow-label {
-  color: var(--c-white);
-}
-
-.pagination-arrow-icon {
+.pagin-arrow-icon {
   width: 16px;
   height: 16px;
   display: flex;
@@ -46,23 +43,18 @@
   justify-content: center;
 }
 
-.pagination-arrow-icon .svg-caretl-path,
-.pagination-arrow-icon .svg-caretr-path {
+.pagin-arrow-icon .svg-caretl-path,
+.pagin-arrow-icon .svg-caretr-path {
   fill: var(--c-grey-500);
   transition: fill var(--transition-duration) var(--transition-timing-func);
 }
 
-.pagination-arrow-btn:hover .svg-caretl-path,
-.pagination-arrow-btn:hover .svg-caretr-path {
-  fill: var(--c-white);
-}
-
-.pagination-numbers {
+.pagin-numbers {
   display: flex;
   gap: var(--spacing-100);
 }
 
-.pagination-number-btn {
+.pagin-number-btn {
   width: 40px;
   height: 40px;
   display: flex;
@@ -82,30 +74,44 @@
   transition-timing-function: var(--transition-timing-func);
 }
 
-.pagination-number-btn:hover {
-  background-color: var(--c-beige-500);
-  color: var(--c-white);
-}
-
-.pagination-number-btn[data-active="true"] {
+.pagin-number-btn[data-active="true"] {
   border-color: var(--c-grey-900);
   background-color: var(--c-grey-900);
   color: var(--c-white);
 }
 
+@media (hover: hover) {
+  .pagin-arrow-btn:not(:disabled):hover {
+    background-color: var(--c-beige-500);
+  }
+
+  .pagin-arrow-btn:not(:disabled):hover .pagin-arrow-label {
+    color: var(--c-white);
+  }
+
+  .pagin-arrow-btn:not(:disabled):hover .svg-caretl-path,
+  .pagin-arrow-btn:not(:disabled):hover .svg-caretr-path {
+    fill: var(--c-white);
+  }
+
+  .pagin-number-btn:not(:disabled):hover {
+    background-color: var(--c-beige-500);
+    color: var(--c-white);
+  }
+}
 /* Small */
 @media screen and (max-width: 767px) {
-  .pagination-arrow-btn {
+  .pagin-arrow-btn {
     width: 48px;
   }
 
-  .pagination-arrow-label {
+  .pagin-arrow-label {
     display: none;
   }
 
   /* TODO */
-  .pagination-numbers:has(> .pagination-number-btn:nth-child(n + 4))
-    .pagination-number-btn:nth-child(n + 4):not(:last-child) {
+  .pagin-numbers:has(> .pagin-number-btn:nth-child(n + 4))
+    .pagin-number-btn:nth-child(n + 4):not(:last-child) {
     display: none;
   }
 }

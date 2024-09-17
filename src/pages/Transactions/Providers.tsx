@@ -9,7 +9,7 @@ import { useAppSelector } from "store/store";
 import { sortOptions } from "components/Input/selectOptions";
 
 function Providers({ children }: { children: ReactNode }) {
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [filter, setFilter] = useState("");
   const categoriesOpts = useAppSelector(selectlCategoriesOpts);
   const [categoryOpt, setCategOpt] = useState(categoriesOpts[0].value);

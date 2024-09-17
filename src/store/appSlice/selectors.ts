@@ -144,7 +144,7 @@ export const selectFilteredTranIds = (
   let filteredIds = [...transactionsIds];
 
   // Filter by category first
-  if (category !== "all") {
+  if (category !== "All tranasactions") {
     filteredIds = filteredIds.filter(
       (id) => transactions[id].category === category
     );

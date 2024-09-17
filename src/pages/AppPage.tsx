@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import Sidebar from "components/Sidebar/Sidebar";
 import Providers from "providers/Providers";
+import ClipLoader from "components/ClipLoader/ClipLoader";
 
 const Overview = React.lazy(() => import("pages/Overview/Overview"));
 const Transactions = React.lazy(
@@ -28,7 +29,7 @@ function AppPage() {
             <Route
               path="/overview"
               element={
-                <Suspense fallback={<></>}>
+                <Suspense fallback={<PageLoader />}>
                   <Overview />
                 </Suspense>
               }
@@ -36,7 +37,7 @@ function AppPage() {
             <Route
               path="/transactions"
               element={
-                <Suspense fallback={<></>}>
+                <Suspense fallback={<PageLoader />}>
                   <Transactions />
                 </Suspense>
               }
@@ -44,7 +45,7 @@ function AppPage() {
             <Route
               path="/budgets"
               element={
-                <Suspense fallback={<></>}>
+                <Suspense fallback={<PageLoader />}>
                   <Budgets />
                 </Suspense>
               }
@@ -52,7 +53,7 @@ function AppPage() {
             <Route
               path="/pots"
               element={
-                <Suspense fallback={<></>}>
+                <Suspense fallback={<PageLoader />}>
                   <Pots />
                 </Suspense>
               }
@@ -60,7 +61,7 @@ function AppPage() {
             <Route
               path="/recurring-bills"
               element={
-                <Suspense fallback={<></>}>
+                <Suspense fallback={<PageLoader />}>
                   <RecurringBills />
                 </Suspense>
               }
@@ -70,6 +71,14 @@ function AppPage() {
         </main>
       </div>
     </Providers>
+  );
+}
+
+function PageLoader() {
+  return (
+    <div className="apppage-loader">
+      <ClipLoader />
+    </div>
   );
 }
 

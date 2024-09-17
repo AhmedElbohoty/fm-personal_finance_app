@@ -1,0 +1,22 @@
+.cliploader {
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--c-green);
+  border-radius: 100%;
+  border-bottom-color: transparent;
+  animation: 750ms linear 0ms infinite normal both running cliploader;
+}
+
+@keyframes cliploader {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(0.8);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}

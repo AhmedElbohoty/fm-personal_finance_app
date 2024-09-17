@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useMemo } from "react";
 import { Options } from "highcharts";
 
 import Card from "components/Card/Card";
@@ -6,7 +6,12 @@ import CardHeader from "pages/Overview/CardHeader/CardHeader";
 import BudgetPotItem from "components/BudgetPotItem/BudgetPotItem";
 
 import { useAppSelector } from "store/store";
-import { selectAllBudgets } from "store/appSlice/selectors";
+import {
+  selectBudgets,
+  selectBudgetById,
+  selectBudgetsIds,
+} from "store/appSlice/selectors";
+import { Budget } from "types/data";
 
 // CSS .budgets-section
 import "./style.css";
@@ -14,16 +19,20 @@ import "./style.css";
 const Chart = lazy(() => import("components/Chart/Chart"));
 
 function Budgets() {
-  const budgets = useAppSelector(selectAllBudgets);
+  const budgetsIds = useAppSelector(selectBudgetsIds);
+  const budgets = useAppSelector(selectBudgets);
+  const chartData = useMemo(() => {
+    return budgetsIds.map((id) => ({
+      name: budgets[id].category,
+      y: budgets[id].maximum,
+      color: budgets[id].theme,
+    }));
+  }, [budgets, budgetsIds]);
 
   const chartSeries: Options["series"] = [
     {
       type: "pie",
-      data: Object.values(budgets).map((budget) => ({
-        name: budget.category,
-        y: budget.maximum,
-        color: budget.theme,
-      })),
+      data: chartData,
     },
   ];
 
@@ -43,18 +52,24 @@ function Budgets() {
             </Suspense>
           </div>
           <div className="budget-list">
-            {budgets.map((budget) => (
-              <BudgetPotItem
-                key={budget.id}
-                label={budget.category}
-                value={budget.maximum}
-                theme={budget.theme}
-              />
+            {budgetsIds.map((budgetId) => (
+              <BudgetItem key={budgetId} budgetId={budgetId} />
             ))}
           </div>
         </div>
       </section>
     </Card>
+  );
+}
+
+type BudgetItemProps = { budgetId: Budget["id"] };
+
+function BudgetItem({ budgetId }: BudgetItemProps) {
+  const budget = useAppSelector((s) => selectBudgetById(s, budgetId));
+
+  const { id, category, theme, maximum } = budget;
+  return (
+    <BudgetPotItem key={id} label={category} value={maximum} theme={theme} />
   );
 }
 

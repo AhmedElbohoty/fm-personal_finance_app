@@ -3,28 +3,30 @@ import { createSelector } from "@reduxjs/toolkit";
 import { Transaction, Budget, Pot } from "types/data";
 import { RootState } from "store/store";
 import { abs, isBillDue, isBillPaid } from "utils/helpers";
-import { Option } from "components/Input/selectOptions";
 
-// Balance selectors
 export const selectBalance = (state: RootState) => state.app.balance;
 
-// Budget selectors
-export const selectAllBudgets = (state: RootState) =>
-  Object.values(state.app.budgets);
+export const selectBudgets = (state: RootState) => state.app.budgets;
+export const selectBudgetsIds = (state: RootState) => state.app.budgetsIds;
 export const selectBudgetById = (state: RootState, id: Budget["id"]) =>
   state.app.budgets[id];
-export const selectBudgetsIds = (state: RootState) => state.app.budgetsIds;
 
-// Pot selectors
 export const selectPotById = (state: RootState, id: Pot["id"]) =>
   state.app.pots[id];
 export const selectPotsIds = (state: RootState) => state.app.potsIds;
-export const selectAllPots = (state: RootState) =>
-  Object.values(state.app.pots);
 export const selectPotsTotal = (state: RootState) =>
   Object.values(state.app.pots).reduce((t, p) => t + p.total, 0);
 
-// Bills selectors
+export const selectTransactions = (state: RootState) => state.app.transactions;
+export const selectTransactionsIds = (state: RootState) =>
+  state.app.transactionsIds;
+export const selectTransactionById = (
+  state: RootState,
+  id: Transaction["id"]
+) => state.app.transactions[id];
+
+export const selectCategories = (state: RootState) => state.app.categories;
+
 export const selectRecurringBillsIds = (
   state: RootState,
   search: string = "",
@@ -132,31 +134,6 @@ export const selectMonthlySpent = (
   }, 0);
 };
 
-export const selectLatestTransactions = (
-  state: RootState,
-  category: Transaction["category"]
-) => {
-  const { transactions } = state.app;
-
-  const sortedTransactions = Object.values(transactions)
-    .filter((transaction) => transaction.category === category)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-  return sortedTransactions.slice(0, 3);
-};
-
-// Transactions selectors
-export const selectTransactionsIds = (state: RootState) =>
-  state.app.transactionsIds;
-
-export const selectAllTransactions = (state: RootState) =>
-  Object.values(state.app.transactions);
-
-export const selectTransactionById = (
-  state: RootState,
-  id: Transaction["id"]
-) => state.app.transactions[id];
-
 export const selectFilteredTranIds = (
   state: RootState,
   filter: string = "",
@@ -223,16 +200,19 @@ export const selectFilteredTranIds = (
   return filteredIds;
 };
 
-export const selectlCategoriesOpts = (state: RootState) => {
-  const { transactions } = state.app;
-  const categories: Transaction["category"][] = [];
-  const options: Option[] = [{ label: "All tranasactions", value: "all" }];
+export const selectLatestTransactionsIds = createSelector(
+  selectTransactionsIds,
+  selectTransactions,
+  (_, category: Transaction["category"]) => category,
+  (ids: Transaction["id"][], transactions, category) => {
+    const sortedTransactions = ids
+      .filter((id) => transactions[id].category === category)
+      .sort(
+        (a, b) =>
+          new Date(transactions[b].date).getTime() -
+          new Date(transactions[a].date).getTime()
+      );
 
-  Object.values(transactions).forEach((t) => {
-    if (categories.includes(t.category)) return;
-    categories.push(t.category);
-    options.push({ label: t.category, value: t.category });
-  });
-
-  return options;
-};
+    return sortedTransactions.slice(0, 3);
+  }
+);

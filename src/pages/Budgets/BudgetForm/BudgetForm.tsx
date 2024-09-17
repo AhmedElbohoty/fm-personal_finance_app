@@ -1,4 +1,4 @@
-import { useId, useState, type ChangeEvent, useContext } from "react";
+import { useId, useState, type ChangeEvent, useContext, useMemo } from "react";
 
 import InputWrapper from "components/Input/InputWrapper";
 
@@ -13,7 +13,7 @@ import { themesOptions } from "components/Input/selectOptions";
 import CaretDownIcon from "assets/icons/caret-down.svg";
 import { BudgetsPageContext } from "contexts/budgetsPageContext";
 import { useAppSelector } from "store/store";
-import { selectlCategoriesOpts } from "store/appSlice/selectors";
+import { selectCategories } from "store/appSlice/selectors";
 
 // CSS prefix: .budgetform-
 import "./style.css";
@@ -29,7 +29,13 @@ function BudgetForm() {
   );
   const [maxSpend, setMaxSpend] = useState(editBudget ? editBudget.maximum : 0);
   const [theme, setTheme] = useState(editBudget ? editBudget.theme : "#277c78");
-  const options = useAppSelector(selectlCategoriesOpts);
+  const categories = useAppSelector(selectCategories);
+  const options = useMemo(() => {
+    return categories.map((category) => ({
+      value: category,
+      label: category,
+    }));
+  }, [categories]);
 
   function onClick() {}
 

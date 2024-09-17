@@ -9,7 +9,10 @@ import EllipsisIcon from "assets/icons/ellipsis.svg";
 import CaretRightIcon from "assets/icons/caret-right.svg";
 import BudgetPotItem from "components/BudgetPotItem/BudgetPotItem";
 
-import { Budget as BudgetType } from "types/data";
+import type {
+  Budget as BudgetType,
+  Transaction as TransactionType,
+} from "types/data";
 import usePopover from "hooks/usePopover";
 import { BudgetsPageContext } from "contexts/budgetsPageContext";
 import useToggleEvent from "hooks/useToggleEvent";
@@ -17,8 +20,9 @@ import { formatDate, formatNumber } from "utils/helpers";
 import { useAppSelector } from "store/store";
 import {
   selectBudgetById,
-  selectLatestTransactions,
+  selectLatestTransactionsIds,
   selectMonthlySpent,
+  selectTransactionById,
 } from "store/appSlice/selectors";
 
 // CSS prefix: .budgetcard-
@@ -31,8 +35,8 @@ type BudgetProps = {
 function Budget({ budgetId }: BudgetProps) {
   const budget = useAppSelector((s) => selectBudgetById(s, budgetId));
   const spent = useAppSelector((s) => selectMonthlySpent(s, budget.category));
-  const latestSpendings = useAppSelector((s) =>
-    selectLatestTransactions(s, budget.category)
+  const latestSpendingsIds = useAppSelector((s) =>
+    selectLatestTransactionsIds(s, budget.category)
   );
   const floatId = useId();
   const { setDeleteBudget, setIsBudgetsFormOpened, setEditBudget } =
@@ -125,27 +129,10 @@ function Budget({ budgetId }: BudgetProps) {
         </div>
 
         <div className="budgetcard-transactions">
-          {latestSpendings.map((t) => {
-            const { id, avatar, name, amount, date } = t;
-
+          {latestSpendingsIds.map((transId) => {
             return (
-              <Fragment key={id}>
-                <div className="budgetcard-transitem">
-                  <div className="budgetcard-transitem-user">
-                    <UserAvatar src={avatar} alt={name} name={name} />
-
-                    <p className="ellip-text">{name}</p>
-                  </div>
-
-                  <div className="budgetcard-transitem-detail">
-                    <p className="budgetcard-transitem-amount">
-                      {amount > 0 ? "+" : "-"}${formatNumber(Math.abs(amount))}
-                    </p>
-                    <p className="budgetcard-transitem-date">
-                      {formatDate(date)}
-                    </p>
-                  </div>
-                </div>
+              <Fragment key={transId}>
+                <Transaction transId={transId} />
                 <Separator />
               </Fragment>
             );
@@ -153,6 +140,31 @@ function Budget({ budgetId }: BudgetProps) {
         </div>
       </div>
     </section>
+  );
+}
+
+type TransactionProps = {
+  transId: TransactionType["id"];
+};
+function Transaction({ transId }: TransactionProps) {
+  const transaction = useAppSelector((s) => selectTransactionById(s, transId));
+
+  const { avatar, name, amount, date } = transaction;
+  return (
+    <div className="budgetcard-transitem">
+      <div className="budgetcard-transitem-user">
+        <UserAvatar src={avatar} alt={name} name={name} />
+
+        <p className="ellip-text">{name}</p>
+      </div>
+
+      <div className="budgetcard-transitem-detail">
+        <p className="budgetcard-transitem-amount">
+          {amount > 0 ? "+" : "-"}${formatNumber(Math.abs(amount))}
+        </p>
+        <p className="budgetcard-transitem-date">{formatDate(date)}</p>
+      </div>
+    </div>
   );
 }
 

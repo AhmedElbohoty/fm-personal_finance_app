@@ -1,11 +1,17 @@
-import { lazy, Suspense } from "react";
+import { Fragment, lazy, Suspense, useMemo } from "react";
 import type { Options } from "highcharts";
 
 import Separator from "components/Separator/Separator";
 import BudgetPotItem from "components/BudgetPotItem/BudgetPotItem";
 
 import { useAppSelector } from "store/store";
-import { selectAllBudgets } from "store/appSlice/selectors";
+import {
+  selectBudgets,
+  selectBudgetById,
+  selectBudgetsIds,
+  selectMonthlySpent,
+} from "store/appSlice/selectors";
+import { Budget } from "types/data";
 
 // CSS prefix: .budsummary-
 import "./style.css";
@@ -13,16 +19,20 @@ import "./style.css";
 const Chart = lazy(() => import("components/Chart/Chart"));
 
 function Summary() {
-  const budgets = useAppSelector(selectAllBudgets);
+  const budgetsIds = useAppSelector(selectBudgetsIds);
+  const budgets = useAppSelector(selectBudgets);
+  const chartData = useMemo(() => {
+    return budgetsIds.map((id) => ({
+      name: budgets[id].category,
+      y: budgets[id].maximum,
+      color: budgets[id].theme,
+    }));
+  }, [budgets, budgetsIds]);
 
   const chartSeries: Options["series"] = [
     {
       type: "pie",
-      data: Object.values(budgets).map((budget) => ({
-        name: budget.category,
-        y: budget.maximum,
-        color: budget.theme,
-      })),
+      data: chartData,
     },
   ];
 
@@ -38,42 +48,33 @@ function Summary() {
         <h2 className="budsummary-h2">Spending Summary</h2>
 
         <div className="budsummary-spend">
-          <BudgetPotItem
-            label="Entertainment"
-            value={15}
-            total={50}
-            theme="var(--c-green)"
-          />
-
-          <Separator />
-
-          <BudgetPotItem
-            label="Bills"
-            value={150}
-            total={750}
-            theme="var(--c-cyan)"
-          />
-
-          <Separator />
-
-          <BudgetPotItem
-            label="Dining Out"
-            value={133}
-            total={75}
-            theme="var(--c-yellow)"
-          />
-
-          <Separator />
-
-          <BudgetPotItem
-            label="Personal Care"
-            value={40}
-            total={100}
-            theme="var(--c-navy)"
-          />
+          {budgetsIds.map((budgetId) => (
+            <Fragment key={budgetId}>
+              <BudgetItem budgetId={budgetId} />
+              <Separator />
+            </Fragment>
+          ))}
         </div>
       </div>
     </section>
+  );
+}
+
+type BudgetItemProps = { budgetId: Budget["id"] };
+
+function BudgetItem({ budgetId }: BudgetItemProps) {
+  const budget = useAppSelector((s) => selectBudgetById(s, budgetId));
+  const spent = useAppSelector((s) => selectMonthlySpent(s, budget.category));
+
+  const { id, category, theme, maximum } = budget;
+  return (
+    <BudgetPotItem
+      key={id}
+      label={category}
+      value={spent}
+      theme={theme}
+      total={maximum}
+    />
   );
 }
 

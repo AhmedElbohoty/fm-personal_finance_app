@@ -1,12 +1,18 @@
+import React, { Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import Sidebar from "components/Sidebar/Sidebar";
-import Overview from "pages/Overview/Overview";
-import Transactions from "pages/Transactions/Transactions";
-import Budgets from "pages/Budgets/Budgets";
-import Pots from "pages/Pots/Pots";
-import RecurringBills from "pages/RecurringBills/RecurringBills";
 import Providers from "providers/Providers";
+
+const Overview = React.lazy(() => import("pages/Overview/Overview"));
+const Transactions = React.lazy(
+  () => import("pages/Transactions/Transactions")
+);
+const Budgets = React.lazy(() => import("pages/Budgets/Budgets"));
+const Pots = React.lazy(() => import("pages/Pots/Pots"));
+const RecurringBills = React.lazy(
+  () => import("pages/RecurringBills/RecurringBills")
+);
 
 // CSS prefix: .apppage-
 import "./style.css";
@@ -19,11 +25,46 @@ function AppPage() {
         <Sidebar />
         <main className="apppage-main">
           <Routes>
-            <Route path="/overview" element={<Overview />} />
-            <Route path="/transactions" element={<Transactions />} />
-            <Route path="/budgets" element={<Budgets />} />
-            <Route path="/pots" element={<Pots />} />
-            <Route path="/recurring-bills" element={<RecurringBills />} />
+            <Route
+              path="/overview"
+              element={
+                <Suspense fallback={<></>}>
+                  <Overview />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/transactions"
+              element={
+                <Suspense fallback={<></>}>
+                  <Transactions />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/budgets"
+              element={
+                <Suspense fallback={<></>}>
+                  <Budgets />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/pots"
+              element={
+                <Suspense fallback={<></>}>
+                  <Pots />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/recurring-bills"
+              element={
+                <Suspense fallback={<></>}>
+                  <RecurringBills />
+                </Suspense>
+              }
+            />
             <Route path="*" element={<Navigate to="/overview" replace />} />
           </Routes>
         </main>

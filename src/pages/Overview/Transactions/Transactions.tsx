@@ -6,13 +6,16 @@ import UserAvatar from "components/Avatar/Avatar";
 
 import type { Transaction } from "types/data";
 import { useAppSelector } from "store/store";
-import { selectAllTransactions } from "store/appSlice/selectors";
+import {
+  selectTransactionById,
+  selectTransactionsIds,
+} from "store/appSlice/selectors";
 
 // CSS prefix: .transactions-section-
 import "./style.css";
 
 function Transactions() {
-  const transactions = useAppSelector(selectAllTransactions).slice(0, 5);
+  const transactionsIds = useAppSelector(selectTransactionsIds).slice(0, 5);
 
   return (
     <Card>
@@ -24,9 +27,9 @@ function Transactions() {
         />
 
         <ul className="transactions-list">
-          {transactions.map((transaction, index) => (
-            <Fragment key={index}>
-              <Transaction key={index} transaction={transaction} />
+          {transactionsIds.map((tranId) => (
+            <Fragment key={tranId}>
+              <Transaction tranId={tranId} />
               <span className="transaction-line"></span>
             </Fragment>
           ))}
@@ -37,10 +40,11 @@ function Transactions() {
 }
 
 type TransactionProps = {
-  transaction: Transaction;
+  tranId: Transaction["id"];
 };
 
-function Transaction({ transaction }: TransactionProps) {
+function Transaction({ tranId }: TransactionProps) {
+  const transaction = useAppSelector((s) => selectTransactionById(s, tranId));
   const { name, avatar, date, amount } = transaction;
 
   const formatter = new Intl.NumberFormat("en-US", {

@@ -9,6 +9,7 @@ export type StateType = {
   budgetsIds: Budget["id"][];
   potsIds: Pot["id"][];
   recurringBillsIds: string[];
+  categories: Transaction["category"][];
 };
 
 const initialState: StateType = {
@@ -596,6 +597,19 @@ const initialState: StateType = {
     "d8aa7685-d521-4137-9492-e84e2f22a157",
     "eb3a4f46-a1d3-4c29-828b-19cc7fe3516e",
     "0ef6c9a2-81d2-4993-9c45-a68cc60d96b2",
+  ],
+  categories: [
+    "All tranasactions",
+    "General",
+    "Dining Out",
+    "Groceries",
+    "Entertainment",
+    "Transportation",
+    "Lifestyle",
+    "Personal Care",
+    "Education",
+    "Bills",
+    "Shopping",
   ],
 };
 

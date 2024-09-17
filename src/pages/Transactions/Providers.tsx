@@ -2,7 +2,7 @@ import { useMemo, useState, type ReactNode } from "react";
 
 import { TransactionsPageContext } from "contexts/transactionsPageContext";
 import {
-  selectlCategoriesOpts,
+  selectCategories,
   selectFilteredTranIds,
 } from "store/appSlice/selectors";
 import { useAppSelector } from "store/store";
@@ -11,8 +11,14 @@ import { sortOptions } from "components/Input/selectOptions";
 function Providers({ children }: { children: ReactNode }) {
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [filter, setFilter] = useState("");
-  const categoriesOpts = useAppSelector(selectlCategoriesOpts);
-  const [categoryOpt, setCategOpt] = useState(categoriesOpts[0].value);
+  const categories = useAppSelector(selectCategories);
+  const options = useMemo(() => {
+    return categories.map((category) => ({
+      value: category,
+      label: category,
+    }));
+  }, [categories]);
+  const [categoryOpt, setCategOpt] = useState(options[0].value);
   const [sortOpt, setSortOpt] = useState(sortOptions[0].value);
 
   const transactionsIds = useAppSelector((s) =>

@@ -1,14 +1,16 @@
+import { lazy, Suspense } from "react";
 import type { Options } from "highcharts";
 
 import Separator from "components/Separator/Separator";
 import BudgetPotItem from "components/BudgetPotItem/BudgetPotItem";
-import Chart from "components/Chart/Chart";
 
 import { useAppSelector } from "store/store";
 import { selectAllBudgets } from "store/appSlice/selectors";
 
 // CSS prefix: .budsummary-
 import "./style.css";
+
+const Chart = lazy(() => import("components/Chart/Chart"));
 
 function Summary() {
   const budgets = useAppSelector(selectAllBudgets);
@@ -27,7 +29,9 @@ function Summary() {
   return (
     <section className="budsummary">
       <div className="budsummary-chart">
-        <Chart series={chartSeries} />
+        <Suspense fallback={<></>}>
+          <Chart series={chartSeries} />
+        </Suspense>
       </div>
 
       <div className="budsummary-stats">

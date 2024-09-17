@@ -13,12 +13,26 @@
 
 .budget-chart {
   flex: 1;
+  max-height: 247px;
+  max-width: 247px;
+}
+
+.budget-chart [data-highcharts-chart] {
+  max-height: 247px;
+  max-width: 247px;
 }
 
 .budget-list {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-200);
+}
+
+/* Medium */
+@media screen and (max-width: 1439px) {
+  .budgets-main {
+    margin: auto;
+  }
 }
 
 /* Small */

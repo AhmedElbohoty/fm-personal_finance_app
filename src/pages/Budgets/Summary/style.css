@@ -55,6 +55,17 @@
 }
 /* #endregion stats */
 
+.budsummary-chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.budsummary-chart [data-highcharts-chart] {
+  max-height: 240px;
+  max-width: 240px;
+}
+
 /* Medium */
 @media screen and (max-width: 1439px) {
   .budsummary {
@@ -64,6 +75,7 @@
 
   .budsummary-stats {
     flex: 1;
+    margin: auto;
   }
 
   .budsummary-chart {

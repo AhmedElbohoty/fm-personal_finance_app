@@ -3,14 +3,14 @@ import CardHeader from "pages/Overview/CardHeader/CardHeader";
 
 import { formatNumber } from "utils/helpers";
 import { useAppSelector } from "store/store";
-import { selectMonthlyBillsDetails } from "store/appSlice/selectors";
+import { selectRecurBillsDetails } from "store/appSlice/selectors";
 
 // CSS prefix: .recurbills
 import "./style.css";
 
 function RecurringBills() {
   const { totalBills, paidTotal, dueTotal } = useAppSelector(
-    selectMonthlyBillsDetails
+    selectRecurBillsDetails
   );
 
   return (

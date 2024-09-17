@@ -2,7 +2,7 @@ import React, { createContext, useContext } from "react";
 
 import type { Pot } from "types/data";
 
-type potsPageContext = {
+type PotsPageContextType = {
   isPotsFormOpened: boolean;
   setIsPotsFormOpened: React.Dispatch<React.SetStateAction<boolean>>;
   editPot: Pot | null;
@@ -15,7 +15,7 @@ type potsPageContext = {
   setWithdrawFromPot: React.Dispatch<React.SetStateAction<Pot | null>>;
 };
 
-const contextValue: potsPageContext = {
+const contextValue: PotsPageContextType = {
   isPotsFormOpened: false,
   setIsPotsFormOpened: () => {},
   editPot: null,

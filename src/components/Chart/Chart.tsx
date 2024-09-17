@@ -12,6 +12,7 @@ function Chart({ series }: ChartProps) {
       type: "pie",
       plotShadow: false,
     },
+    title: { text: "" },
     tooltip: {
       pointFormat: "<b>{point.percentage:.1f}%</b>",
       style: { fontSize: "16px" },

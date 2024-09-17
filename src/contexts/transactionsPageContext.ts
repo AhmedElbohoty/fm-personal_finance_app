@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 
 import type { Transaction } from "types/data";
 
-type transactionsPageContext = {
+type TransactionsPageContextType = {
   itemsPerPage: number;
   setItemsPerPage: React.Dispatch<React.SetStateAction<number>>;
   currentPage: number;
@@ -17,7 +17,7 @@ type transactionsPageContext = {
   setSortOpt: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const contextValue: transactionsPageContext = {
+const contextValue: TransactionsPageContextType = {
   itemsPerPage: 10,
   setItemsPerPage: () => {},
   currentPage: 0,

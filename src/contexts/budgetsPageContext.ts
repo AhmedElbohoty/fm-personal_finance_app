@@ -2,7 +2,7 @@ import React, { createContext, useContext } from "react";
 
 import type { Budget } from "types/data";
 
-type budgetsPageContext = {
+type BudgetsPageContextType = {
   isBudgetsFormOpened: boolean;
   setIsBudgetsFormOpened: React.Dispatch<React.SetStateAction<boolean>>;
   editBudget: Budget | null;
@@ -11,7 +11,7 @@ type budgetsPageContext = {
   setDeleteBudget: React.Dispatch<React.SetStateAction<Budget | null>>;
 };
 
-const contextValue: budgetsPageContext = {
+const contextValue: BudgetsPageContextType = {
   isBudgetsFormOpened: false,
   setIsBudgetsFormOpened: () => {},
   editBudget: null,

@@ -2,12 +2,12 @@ import { createContext, useContext } from "react";
 
 import { MAX_SMAL_SCR_WIDTH, MIN_LARGE_SCR_WIDTH } from "utils/constants";
 
-interface windowSizeContext {
+type WindowSizeContextType = {
   isLargeScr: boolean;
   isSmallScr: boolean;
-}
+};
 
-const contextValue: windowSizeContext = {
+const contextValue: WindowSizeContextType = {
   isLargeScr: window.innerWidth > MIN_LARGE_SCR_WIDTH,
   isSmallScr: window.innerWidth <= MAX_SMAL_SCR_WIDTH,
 };

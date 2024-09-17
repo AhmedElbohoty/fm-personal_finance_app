@@ -1,3 +1,4 @@
+import { Option } from "components/Input/selectOptions";
 import { createContext, useContext } from "react";
 
 import type { Transaction } from "types/data";
@@ -15,6 +16,7 @@ type TransactionsPageContextType = {
   setCategOpt: React.Dispatch<React.SetStateAction<string>>;
   sortOpt: string;
   setSortOpt: React.Dispatch<React.SetStateAction<string>>;
+  categoriesOpts: Option[];
 };
 
 const contextValue: TransactionsPageContextType = {
@@ -30,6 +32,7 @@ const contextValue: TransactionsPageContextType = {
   setCategOpt: () => {},
   sortOpt: "",
   setSortOpt: () => {},
+  categoriesOpts: [],
 };
 
 export const TransactionsPageContext = createContext(contextValue);

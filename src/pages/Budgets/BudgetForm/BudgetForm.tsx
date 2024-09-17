@@ -37,7 +37,18 @@ function BudgetForm() {
     }));
   }, [categories]);
 
-  function onClick() {}
+  const isDisabled = !category || !maxSpend;
+
+  function onClick() {
+    if (isDisabled) return;
+
+    if (editBudget) {
+      // Update budget
+    } else {
+      // Add new budget
+    }
+    closeModal();
+  }
 
   function onChageCategory(e: ChangeEvent<HTMLSelectElement>) {
     setCategory(e.target.value);
@@ -112,6 +123,7 @@ function BudgetForm() {
           label={editBudget ? "Save Changes" : "Add Budget"}
           type="submit"
           onClick={onClick}
+          isDisabled={isDisabled}
         />
       </form>
     </Modal>

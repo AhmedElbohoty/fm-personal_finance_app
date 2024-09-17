@@ -7,12 +7,22 @@ type PrimaryProps = {
   label: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   type?: "submit" | "reset" | "button";
+  isDisabled?: boolean;
 };
 
-// TODO: handle disabled button
-function Primary({ label, onClick = () => {}, type = "button" }: PrimaryProps) {
+function Primary({
+  label,
+  onClick = () => {},
+  type = "button",
+  isDisabled = false,
+}: PrimaryProps) {
   return (
-    <button className="primarybtn" onClick={onClick} type={type}>
+    <button
+      className="primarybtn"
+      onClick={onClick}
+      type={type}
+      disabled={isDisabled}
+    >
       <span className="primarybtn-label">{label}</span>
     </button>
   );

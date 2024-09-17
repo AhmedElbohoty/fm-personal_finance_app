@@ -1,3 +1,4 @@
+import { useSearchParams } from "react-router-dom";
 import { useMemo, useState, type ReactNode } from "react";
 
 import { TransactionsPageContext } from "contexts/transactionsPageContext";
@@ -9,23 +10,26 @@ import { useAppSelector } from "store/store";
 import { sortOptions } from "components/Input/selectOptions";
 
 function Providers({ children }: { children: ReactNode }) {
+  const [searchPraram] = useSearchParams();
   const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [filter, setFilter] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [filter, setFilter] = useState(searchPraram.get("search") || "");
+
   const categories = useAppSelector(selectCategories);
   const options = useMemo(() => {
-    return categories.map((category) => ({
-      value: category,
-      label: category,
-    }));
+    const opts = [{ label: "All tranasactions", value: "all" }];
+    categories.forEach((category) => {
+      opts.push({ value: category, label: category });
+    });
+
+    return opts;
   }, [categories]);
-  const [categoryOpt, setCategOpt] = useState(options[0].value);
+  const [categoryOpt, setCategOpt] = useState(getInitCategory());
   const [sortOpt, setSortOpt] = useState(sortOptions[0].value);
 
   const transactionsIds = useAppSelector((s) =>
-    selectFilteredTranIds(s, filter, categoryOpt, sortOpt)
+    selectFilteredTranIds(s, filter.trim(), categoryOpt, sortOpt)
   );
-
-  const [currentPage, setCurrentPage] = useState(1);
   const paginatedTransactionsIds = useMemo(() => {
     return transactionsIds.slice(
       (currentPage - 1) * itemsPerPage,
@@ -34,6 +38,14 @@ function Providers({ children }: { children: ReactNode }) {
   }, [transactionsIds, currentPage, itemsPerPage]);
 
   const totalPages = Math.ceil(transactionsIds.length / itemsPerPage);
+
+  function getInitCategory() {
+    const category = searchPraram.get("category");
+    if (!category || !categories.includes(category)) {
+      return options[0].value;
+    }
+    return category;
+  }
 
   const contextValue = {
     itemsPerPage,
@@ -48,6 +60,7 @@ function Providers({ children }: { children: ReactNode }) {
     setCategOpt,
     sortOpt,
     setSortOpt,
+    categoriesOpts: options,
   };
 
   return (

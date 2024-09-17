@@ -13,6 +13,7 @@
   background-color: var(--c-grey-900);
   transition: width var(--transition-duration) var(--transition-timing-func);
   overflow: hidden;
+  z-index: 99;
 }
 
 .sidebar-placeholder {

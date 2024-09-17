@@ -1,4 +1,4 @@
-import { type ChangeEvent, useContext, useId, useMemo } from "react";
+import { type ChangeEvent, useContext, useId } from "react";
 
 import InputWrapper from "components/Input/InputWrapper";
 import InputText from "components/Input/InputText";
@@ -12,25 +12,23 @@ import { WindowSizeContext } from "contexts/windowSizeContext";
 import FilterIcon from "assets/icons/filter-mobile.svg";
 import SortIcon from "assets/icons/sort-mobile.svg";
 import { useTransactionsPageContext } from "contexts/transactionsPageContext";
-import { selectCategories } from "store/appSlice/selectors";
-import { useAppSelector } from "store/store";
 
 // CSS prefix: .tranfilters-
 import "./style.css";
 
 function Filters() {
-  const { filter, setFilter, categoryOpt, setCategOpt, sortOpt, setSortOpt } =
-    useTransactionsPageContext();
+  const {
+    filter,
+    setFilter,
+    categoryOpt,
+    setCategOpt,
+    sortOpt,
+    setSortOpt,
+    categoriesOpts,
+  } = useTransactionsPageContext();
   const { isSmallScr } = useContext(WindowSizeContext);
   const searchId = useId();
   const sortId = useId();
-  const categories = useAppSelector(selectCategories);
-  const options = useMemo(() => {
-    return categories.map((category) => ({
-      value: category,
-      label: category,
-    }));
-  }, [categories]);
 
   function onChangeSearch(e: ChangeEvent<HTMLInputElement>) {
     setFilter(e.target.value.toLowerCase());
@@ -77,7 +75,7 @@ function Filters() {
           <InputWrapper id={sortId} label="Category" icon={<CaretDownIcon />}>
             <Select
               id={sortId}
-              options={options}
+              options={categoriesOpts}
               value={categoryOpt}
               onChange={onChangeCategory}
             />

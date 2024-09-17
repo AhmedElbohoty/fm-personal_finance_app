@@ -123,7 +123,7 @@ function Budget({ budgetId }: BudgetProps) {
 
           <TertiaryButton
             label="See All"
-            link="/transactions"
+            link={`/transactions?category=${budget.category}`}
             icon={<CaretRightIcon />}
           />
         </div>

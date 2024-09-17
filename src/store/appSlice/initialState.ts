@@ -599,7 +599,6 @@ const initialState: StateType = {
     "0ef6c9a2-81d2-4993-9c45-a68cc60d96b2",
   ],
   categories: [
-    "All tranasactions",
     "General",
     "Dining Out",
     "Groceries",

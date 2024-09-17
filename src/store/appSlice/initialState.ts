@@ -20,7 +20,7 @@ const initialState: StateType = {
   transactions: {
     "bb0dfe7a-4418-4641-b47f-dd66002c9429": {
       id: "bb0dfe7a-4418-4641-b47f-dd66002c9429",
-      avatar: "/avatars/emma-richardson.jpg",
+      avatar: "/avatars/avatar_4.jpg",
       name: "Emma Richardson",
       category: "General",
       date: "2024-09-19T14:23:11Z",
@@ -38,7 +38,7 @@ const initialState: StateType = {
     },
     "b04ffdc2-c8e7-4d41-91a2-1c3e4cab95c8": {
       id: "b04ffdc2-c8e7-4d41-91a2-1c3e4cab95c8",
-      avatar: "/avatars/daniel-carter.jpg",
+      avatar: "/avatars/avatar_0.jpg",
       name: "Daniel Carter",
       category: "General",
       date: "2024-09-18T09:45:32Z",
@@ -47,7 +47,7 @@ const initialState: StateType = {
     },
     "571f7a10-5ed5-4289-8508-67a7608d8342": {
       id: "571f7a10-5ed5-4289-8508-67a7608d8342",
-      avatar: "/avatars/sun-park.jpg",
+      avatar: "/avatars/avatar_3.jpg",
       name: "Sun Park",
       category: "General",
       date: "2024-09-17T16:12:05Z",
@@ -65,7 +65,7 @@ const initialState: StateType = {
     },
     "8a24673f-98de-4142-8aaa-7a76394392e0": {
       id: "8a24673f-98de-4142-8aaa-7a76394392e0",
-      avatar: "/avatars/liam-hughes.jpg",
+      avatar: "/avatars/avatar_1.jpg",
       name: "Liam Hughes",
       category: "Groceries",
       date: "2024-09-15T18:20:33Z",
@@ -74,7 +74,7 @@ const initialState: StateType = {
     },
     "1ac726c5-977a-4426-b528-8de59c190c2a": {
       id: "1ac726c5-977a-4426-b528-8de59c190c2a",
-      avatar: "/avatars/lily-ramirez.jpg",
+      avatar: "/avatars/avatar_2.jpg",
       name: "Lily Ramirez",
       category: "General",
       date: "2024-09-14T13:05:27Z",
@@ -83,7 +83,7 @@ const initialState: StateType = {
     },
     "e45589e2-4b97-45f8-9605-2ca0719f3821": {
       id: "e45589e2-4b97-45f8-9605-2ca0719f3821",
-      avatar: "/avatars/ethan-clark.jpg",
+      avatar: "/avatars/avatar_2.jpg",
       name: "Ethan Clark",
       category: "Dining Out",
       date: "2024-09-13T20:15:59Z",
@@ -92,7 +92,7 @@ const initialState: StateType = {
     },
     "5e75ec3f-09fe-444c-9900-e1efedbcfe90": {
       id: "5e75ec3f-09fe-444c-9900-e1efedbcfe90",
-      avatar: "/avatars/james-thompson.jpg",
+      avatar: "/avatars/avatar_0.jpg",
       name: "James Thompson",
       category: "Entertainment",
       date: "2024-09-11T15:45:38Z",
@@ -110,7 +110,7 @@ const initialState: StateType = {
     },
     "5c87cac6-1cb5-4e90-8b27-6510a25f1c64": {
       id: "5c87cac6-1cb5-4e90-8b27-6510a25f1c64",
-      avatar: "/avatars/ella-phillips.jpg",
+      avatar: "/avatars/avatar_1.jpg",
       name: "Ella Phillips",
       category: "Dining Out",
       date: "2024-09-10T19:22:51Z",
@@ -119,7 +119,7 @@ const initialState: StateType = {
     },
     "3a36f365-1ae4-44e9-9903-a401ac65a171": {
       id: "3a36f365-1ae4-44e9-9903-a401ac65a171",
-      avatar: "/avatars/sofia-peterson.jpg",
+      avatar: "/avatars/avatar_2.jpg",
       name: "Sofia Peterson",
       category: "Transportation",
       date: "2024-09-08T08:55:17Z",
@@ -128,7 +128,7 @@ const initialState: StateType = {
     },
     "88c78c29-726b-438f-a56a-9c2074e3a872": {
       id: "88c78c29-726b-438f-a56a-9c2074e3a872",
-      avatar: "/avatars/mason-martinez.jpg",
+      avatar: "/avatars/avatar_3.jpg",
       name: "Mason Martinez",
       category: "Lifestyle",
       date: "2024-09-07T17:40:29Z",
@@ -146,7 +146,7 @@ const initialState: StateType = {
     },
     "ec23f9b9-70e8-49fe-905f-1eb491a623b6": {
       id: "ec23f9b9-70e8-49fe-905f-1eb491a623b6",
-      avatar: "/avatars/sebastian-cook.jpg",
+      avatar: "/avatars/avatar_1.jpg",
       name: "Sebastian Cook",
       category: "Transportation",
       date: "2024-09-06T10:05:44Z",
@@ -155,7 +155,7 @@ const initialState: StateType = {
     },
     "96faed9d-94b9-420a-8498-6c08d18e7b98": {
       id: "96faed9d-94b9-420a-8498-6c08d18e7b98",
-      avatar: "/avatars/william-harris.jpg",
+      avatar: "/avatars/avatar_4.jpg",
       name: "William Harris",
       category: "Personal Care",
       date: "2024-09-05T14:30:56Z",
@@ -191,7 +191,7 @@ const initialState: StateType = {
     },
     "d191385c-09ba-4f8d-a037-3bc4f697fa2c": {
       id: "d191385c-09ba-4f8d-a037-3bc4f697fa2c",
-      avatar: "/avatars/rina-sato.jpg",
+      avatar: "/avatars/avatar_0.jpg",
       name: "Rina Sato",
       category: "Bills",
       date: "2024-09-02T13:31:11Z",
@@ -227,7 +227,7 @@ const initialState: StateType = {
     },
     "a54c9e05-cdaa-4fad-9c74-cc145ec9136b": {
       id: "a54c9e05-cdaa-4fad-9c74-cc145ec9136b",
-      avatar: "/avatars/yuna-kim.jpg",
+      avatar: "/avatars/avatar_0.jpg",
       name: "Yuna Kim",
       category: "Dining Out",
       date: "2024-08-29T13:51:29Z",
@@ -245,7 +245,7 @@ const initialState: StateType = {
     },
     "6f2b8016-7c2a-4574-b497-162a902510aa": {
       id: "6f2b8016-7c2a-4574-b497-162a902510aa",
-      avatar: "/avatars/harper-edwards.jpg",
+      avatar: "/avatars/avatar_3.jpg",
       name: "Harper Edwards",
       category: "Shopping",
       date: "2024-08-26T09:43:23Z",
@@ -281,7 +281,7 @@ const initialState: StateType = {
     },
     "0ef6c9a2-81d2-4993-9c45-a68cc60d96b2": {
       id: "0ef6c9a2-81d2-4993-9c45-a68cc60d96b2",
-      avatar: "/avatars/nimbus-data-storage.jpg",
+      avatar: "/avatars/avatar_4.jpg",
       name: "Nimbus Data Storage",
       category: "Bills",
       date: "2024-08-21T10:05:42Z",
@@ -290,7 +290,7 @@ const initialState: StateType = {
     },
     "78780bd0-dd57-4244-8af5-7f4638ca7c20": {
       id: "78780bd0-dd57-4244-8af5-7f4638ca7c20",
-      avatar: "/avatars/emma-richardson.jpg",
+      avatar: "/avatars/avatar_4.jpg",
       name: "Emma Richardson",
       category: "General",
       date: "2024-08-20T17:30:55Z",
@@ -299,7 +299,7 @@ const initialState: StateType = {
     },
     "f93b2f4f-daa9-4227-9b7a-6dea099e623e": {
       id: "f93b2f4f-daa9-4227-9b7a-6dea099e623e",
-      avatar: "/avatars/daniel-carter.jpg",
+      avatar: "/avatars/avatar_0.jpg",
       name: "Daniel Carter",
       category: "General",
       date: "2024-08-19T12:45:09Z",
@@ -308,7 +308,7 @@ const initialState: StateType = {
     },
     "ee26f2d5-9351-407b-9f81-342a85c7132b": {
       id: "ee26f2d5-9351-407b-9f81-342a85c7132b",
-      avatar: "/avatars/sun-park.jpg",
+      avatar: "/avatars/avatar_3.jpg",
       name: "Sun Park",
       category: "General",
       date: "2024-08-18T19:20:23Z",
@@ -317,7 +317,7 @@ const initialState: StateType = {
     },
     "48d36528-7b5a-4564-b215-0b0afa3822bc": {
       id: "48d36528-7b5a-4564-b215-0b0afa3822bc",
-      avatar: "/avatars/harper-edwards.jpg",
+      avatar: "/avatars/avatar_3.jpg",
       name: "Harper Edwards",
       category: "Shopping",
       date: "2024-08-17T14:55:37Z",
@@ -326,7 +326,7 @@ const initialState: StateType = {
     },
     "02cfd8ee-f4ac-4203-afc5-8697a1297938": {
       id: "02cfd8ee-f4ac-4203-afc5-8697a1297938",
-      avatar: "/avatars/liam-hughes.jpg",
+      avatar: "/avatars/avatar_1.jpg",
       name: "Liam Hughes",
       category: "Groceries",
       date: "2024-08-16T10:10:51Z",
@@ -335,7 +335,7 @@ const initialState: StateType = {
     },
     "0353650e-8649-4d43-9499-18f79375adc3": {
       id: "0353650e-8649-4d43-9499-18f79375adc3",
-      avatar: "/avatars/lily-ramirez.jpg",
+      avatar: "/avatars/avatar_2.jpg",
       name: "Lily Ramirez",
       category: "General",
       date: "2024-08-15T16:35:04Z",
@@ -344,7 +344,7 @@ const initialState: StateType = {
     },
     "15df6696-7299-4a6b-afb9-6db6f8d587ed": {
       id: "15df6696-7299-4a6b-afb9-6db6f8d587ed",
-      avatar: "/avatars/ethan-clark.jpg",
+      avatar: "/avatars/avatar_2.jpg",
       name: "Ethan Clark",
       category: "Dining Out",
       date: "2024-08-14T20:50:18Z",
@@ -353,7 +353,7 @@ const initialState: StateType = {
     },
     "b302b2d6-9974-437f-b107-89c19d03ddb4": {
       id: "b302b2d6-9974-437f-b107-89c19d03ddb4",
-      avatar: "/avatars/rina-sato.jpg",
+      avatar: "/avatars/avatar_0.jpg",
       name: "Rina Sato",
       category: "Entertainment",
       date: "2024-08-13T09:15:32Z",
@@ -362,7 +362,7 @@ const initialState: StateType = {
     },
     "e0821ced-6a9e-4158-aad8-574dfec54bcc": {
       id: "e0821ced-6a9e-4158-aad8-574dfec54bcc",
-      avatar: "/avatars/james-thompson.jpg",
+      avatar: "/avatars/avatar_0.jpg",
       name: "James Thompson",
       category: "Bills",
       date: "2024-08-12T13:40:46Z",
@@ -371,7 +371,7 @@ const initialState: StateType = {
     },
     "c52c7c7d-ea00-4c9e-9ebe-5dfab7fb2079": {
       id: "c52c7c7d-ea00-4c9e-9ebe-5dfab7fb2079",
-      avatar: "/avatars/ella-phillips.jpg",
+      avatar: "/avatars/avatar_1.jpg",
       name: "Ella Phillips",
       category: "Dining Out",
       date: "2024-08-11T18:05:59Z",
@@ -380,7 +380,7 @@ const initialState: StateType = {
     },
     "8ecddbc4-6bd6-42d9-82de-4e14d935fc0d": {
       id: "8ecddbc4-6bd6-42d9-82de-4e14d935fc0d",
-      avatar: "/avatars/yuna-kim.jpg",
+      avatar: "/avatars/avatar_0.jpg",
       name: "Yuna Kim",
       category: "Dining Out",
       date: "2024-08-10T12:30:13Z",
@@ -389,7 +389,7 @@ const initialState: StateType = {
     },
     "3bac2c03-8b5a-4d26-ae7d-d75dd1c168a0": {
       id: "3bac2c03-8b5a-4d26-ae7d-d75dd1c168a0",
-      avatar: "/avatars/sofia-peterson.jpg",
+      avatar: "/avatars/avatar_2.jpg",
       name: "Sofia Peterson",
       category: "Transportation",
       date: "2024-08-09T08:55:27Z",
@@ -398,7 +398,7 @@ const initialState: StateType = {
     },
     "3eaa5b96-43d3-488f-b2fb-3912cf4dec85": {
       id: "3eaa5b96-43d3-488f-b2fb-3912cf4dec85",
-      avatar: "/avatars/mason-martinez.jpg",
+      avatar: "/avatars/avatar_3.jpg",
       name: "Mason Martinez",
       category: "Lifestyle",
       date: "2024-08-08T15:20:41Z",
@@ -407,7 +407,7 @@ const initialState: StateType = {
     },
     "549b12b6-58c5-4e5d-9a8b-49ce2cefbf48": {
       id: "549b12b6-58c5-4e5d-9a8b-49ce2cefbf48",
-      avatar: "/avatars/sebastian-cook.jpg",
+      avatar: "/avatars/avatar_1.jpg",
       name: "Sebastian Cook",
       category: "Transportation",
       date: "2024-08-07T11:45:55Z",
@@ -416,7 +416,7 @@ const initialState: StateType = {
     },
     "06b007a8-33bc-425d-94a5-457c61f7343b": {
       id: "06b007a8-33bc-425d-94a5-457c61f7343b",
-      avatar: "/avatars/william-harris.jpg",
+      avatar: "/avatars/avatar_4.jpg",
       name: "William Harris",
       category: "General",
       date: "2024-08-06T17:10:09Z",

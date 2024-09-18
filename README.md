@@ -65,6 +65,7 @@ Users should be able to:
 - @reduxjs/toolkit.
 - highcharts.
 - highcharts-react-official.
+- @floating-ui/dom
 
 ### What I learned
 

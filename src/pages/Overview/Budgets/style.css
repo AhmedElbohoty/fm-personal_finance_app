@@ -9,15 +9,19 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--spacing-200);
+  padding: 28px 0;
 }
 
 .budget-chart {
   flex: 1;
+  width: 247px;
   max-height: 247px;
   max-width: 247px;
+  min-width: 247px;
 }
 
 .budget-chart [data-highcharts-chart] {
+  width: 247px;
   max-height: 247px;
   max-width: 247px;
 }

@@ -16,7 +16,7 @@ import { useAppSelector } from "store/store";
 import "./style.css";
 
 function PotsSection() {
-  const potsIds = useAppSelector(selectPotsIds);
+  const potsIds = useAppSelector(selectPotsIds).slice(0, 4);
   const totalSaved = useAppSelector(selectPotsTotal);
 
   return (

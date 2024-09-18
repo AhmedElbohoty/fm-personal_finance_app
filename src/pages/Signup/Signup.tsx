@@ -57,16 +57,16 @@ function Signup({ login, setIsLogin }: SignupProps) {
 
   return (
     <div className="signup">
-      <div className="signup-illust">
+      <aside className="signup-illust">
         <div className="signup-illust-img" />
         <Suspense>
           <Logo />
         </Suspense>
-      </div>
+      </aside>
 
-      <div className="signup-form-cont">
+      <main className="signup-form-main">
         <form className="signup-form" onSubmit={onSubmit}>
-          <p className="signup-form-label">{login ? "Login" : "Sign Up"}</p>
+          <h1 className="signup-form-label">{login ? "Login" : "Sign Up"}</h1>
 
           {!login && (
             <InputWrapper id={nameId} label="Name">
@@ -134,7 +134,7 @@ function Signup({ login, setIsLogin }: SignupProps) {
             😊 This is a demo, just fill in the fields and click the button 😊
           </p>
         </form>
-      </div>
+      </main>
     </div>
   );
 }

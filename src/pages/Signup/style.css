@@ -23,7 +23,7 @@
   background-size: cover;
 }
 
-.signup-form-cont {
+.signup-form-main {
   padding: var(--spacing-200);
   display: flex;
   align-items: center;

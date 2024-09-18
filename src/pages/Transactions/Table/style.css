@@ -37,6 +37,7 @@
 
 .transtable-hsender {
   grid-area: sender;
+  white-space: nowrap;
 }
 
 .transtable-hcategory {
@@ -82,6 +83,7 @@
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-150);
   letter-spacing: var(--letter-spacing-0);
+  white-space: nowrap;
 }
 
 .transtable-date {

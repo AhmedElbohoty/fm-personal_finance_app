@@ -43,16 +43,41 @@
 
 /* Small */
 @media screen and (max-width: 767px) {
-  .tranfilters-sort,
-  .tranfilters-category {
-    flex: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .tranfilters {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .tranfilters-search {
+    width: 100%;
+  }
+
+  .tranfilters-icons {
+    width: 64px;
+    display: grid;
+    grid-template-columns: 20px 20px;
+    gap: var(--spacing-300);
+    margin-left: auto;
+  }
+
+  .tranfilters-icons-icon {
     width: 20px;
-    min-width: 20px;
     height: 20px;
-    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+  }
+
+  .tranfilters-category,
+  .tranfilters-sort {
+    grid-column: 1 / 3;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .tranfilters-sort .input-label,
+  .tranfilters-category .input-label {
+    display: none;
   }
 }

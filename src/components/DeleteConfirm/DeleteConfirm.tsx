@@ -27,7 +27,7 @@ function DeleteConfirm({
 
       <div className="deleteconfirm-actions">
         <DestroyButton label="Yes, Confirm Deletion" onClick={onClickDelete} />
-        <TertiaryButton label="No, Go Back" />
+        <TertiaryButton label="No, Go Back" onClick={closeModal} />
       </div>
     </Modal>
   );

@@ -1,4 +1,4 @@
-import { type ChangeEvent, useContext, useId } from "react";
+import { type ChangeEvent, useContext, useId, useState } from "react";
 
 import InputWrapper from "components/Input/InputWrapper";
 import InputText from "components/Input/InputText";
@@ -25,6 +25,8 @@ function Filters() {
   const { isSmallScr } = useContext(WindowSizeContext);
   const searchId = useId();
   const sortId = useId();
+  const [showFilter, setShowFilter] = useState(false);
+  const [showSort, setShowSort] = useState(false);
 
   function onChangeSearch(e: ChangeEvent<HTMLInputElement>) {
     setFilter(e.target.value.toLowerCase());
@@ -36,6 +38,16 @@ function Filters() {
 
   function onChangeCategory(e: ChangeEvent<HTMLSelectElement>) {
     setCategOpt(e.target.value);
+  }
+
+  function onClickFilterIcon() {
+    setShowFilter(!showFilter);
+    setShowSort(false);
+  }
+
+  function onClickSortIcon() {
+    setShowSort(!showSort);
+    setShowFilter(false);
   }
 
   return (
@@ -51,9 +63,19 @@ function Filters() {
         </InputWrapper>
       </div>
 
-      <div className="tranfilters-sort">
-        {isSmallScr && <SvgIcon path="sort-mobile" />}
-        {!isSmallScr && (
+      {isSmallScr && (
+        <div className="tranfilters-icons">
+          <span className="tranfilters-icons-icon" onClick={onClickSortIcon}>
+            <SvgIcon path="sort-mobile" />
+          </span>
+          <span className="tranfilters-icons-icon" onClick={onClickFilterIcon}>
+            <SvgIcon path="filter-mobile" />
+          </span>
+        </div>
+      )}
+
+      {(!isSmallScr || showSort) && (
+        <div className="tranfilters-sort">
           <InputWrapper
             id={sortId}
             label="Sort by"
@@ -66,12 +88,11 @@ function Filters() {
               onChange={onChangeSort}
             />
           </InputWrapper>
-        )}
-      </div>
+        </div>
+      )}
 
-      <div className="tranfilters-category">
-        {isSmallScr && <SvgIcon path="filter-mobile" />}
-        {!isSmallScr && (
+      {(!isSmallScr || showFilter) && (
+        <div className="tranfilters-category">
           <InputWrapper
             id={sortId}
             label="Category"
@@ -84,8 +105,8 @@ function Filters() {
               onChange={onChangeCategory}
             />
           </InputWrapper>
-        )}
-      </div>
+        </div>
+      )}
     </section>
   );
 }

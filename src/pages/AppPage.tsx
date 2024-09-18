@@ -4,7 +4,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Sidebar from "components/Sidebar/Sidebar";
 import Providers from "providers/Providers";
 import ClipLoader from "components/ClipLoader/ClipLoader";
-import Signup from "pages/Signup/Signup";
 
 const Overview = React.lazy(() => import("pages/Overview/Overview"));
 const Transactions = React.lazy(
@@ -12,6 +11,7 @@ const Transactions = React.lazy(
 );
 const Budgets = React.lazy(() => import("pages/Budgets/Budgets"));
 const Pots = React.lazy(() => import("pages/Pots/Pots"));
+const Signup = React.lazy(() => import("pages/Signup/Signup"));
 const RecurringBills = React.lazy(
   () => import("pages/RecurringBills/RecurringBills")
 );
@@ -20,16 +20,29 @@ const RecurringBills = React.lazy(
 import "./style.css";
 
 function AppPage() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(
+    window.localStorage.getItem("personal_finances_logged_in") === "true"
+  );
 
   if (!isLogin) {
     return (
       <div className="apppage">
         <Routes>
-          <Route path="/signup" element={<Signup setIsLogin={setIsLogin} />} />
+          <Route
+            path="/signup"
+            element={
+              <Suspense>
+                <Signup setIsLogin={setIsLogin} />
+              </Suspense>
+            }
+          />
           <Route
             path="/login"
-            element={<Signup login setIsLogin={setIsLogin} />}
+            element={
+              <Suspense>
+                <Signup login setIsLogin={setIsLogin} />
+              </Suspense>
+            }
           />
 
           <Route path="*" element={<Navigate to="/signup" replace />} />

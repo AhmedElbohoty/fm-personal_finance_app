@@ -41,7 +41,7 @@ function BudgetForm() {
   const categories = useAppSelector(selectCategories);
   const options = useMemo(() => {
     return categories.map((category) => ({
-      value: category,
+      value: category.toLowerCase(),
       label: category,
     }));
   }, [categories]);

@@ -29,7 +29,7 @@ function TertiaryButton({
   }
 
   return (
-    <button className="tertiarybtn" type={type} onCanPlay={onClick}>
+    <button className="tertiarybtn" type={type} onClick={onClick}>
       <span>{label}</span>
       {icon && <span className="tertiarybtn-icon">{icon}</span>}
     </button>

@@ -1,5 +1,6 @@
 .apppage {
   width: 100%;
+  min-height: 100%;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-areas: "aside main";
@@ -14,7 +15,8 @@
   max-width: 1440px;
   grid-area: main;
   padding: var(--spacing-400) var(--spacing-500);
-  margin: auto;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .apppage-loader {

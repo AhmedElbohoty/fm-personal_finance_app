@@ -19,7 +19,7 @@ function Providers({ children }: { children: ReactNode }) {
   const options = useMemo(() => {
     const opts = [{ label: "All tranasactions", value: "all" }];
     categories.forEach((category) => {
-      opts.push({ value: category, label: category });
+      opts.push({ value: category.toLowerCase(), label: category });
     });
 
     return opts;
@@ -40,8 +40,8 @@ function Providers({ children }: { children: ReactNode }) {
   const totalPages = Math.ceil(transactionsIds.length / itemsPerPage);
 
   function getInitCategory() {
-    const category = searchPraram.get("category");
-    if (!category || !categories.includes(category)) {
+    const category = searchPraram.get("category")?.toLowerCase();
+    if (!category || !categories.find((c) => c.toLowerCase() === category)) {
       return options[0].value;
     }
     return category;

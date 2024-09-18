@@ -82,17 +82,16 @@
 }
 
 @media (hover: hover) {
-  .pagin-arrow-btn[data-active="false"]:not(:disabled):hover {
+  .pagin-arrow-btn:not(:disabled):hover {
     background-color: var(--c-beige-500);
   }
 
-  .pagin-arrow-btn[data-active="false"]:not(:disabled):hover
-    .pagin-arrow-label {
+  .pagin-arrow-btn:not(:disabled):hover .pagin-arrow-label {
     color: var(--c-white);
   }
 
-  .pagin-arrow-btn[data-active="false"]:not(:disabled):hover .svg-caretl-path,
-  .pagin-arrow-btn[data-active="false"]:not(:disabled):hover .svg-caretr-path {
+  .pagin-arrow-btn:not(:disabled):hover .svg-caretl-path,
+  .pagin-arrow-btn:not(:disabled):hover .svg-caretr-path {
     fill: var(--c-white);
   }
 

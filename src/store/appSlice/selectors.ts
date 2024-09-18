@@ -146,7 +146,7 @@ export const selectFilteredTranIds = (
   // Filter by category first
   if (category !== "all") {
     filteredIds = filteredIds.filter(
-      (id) => transactions[id].category === category
+      (id) => transactions[id].category.toLowerCase() === category
     );
   }
 
@@ -206,7 +206,10 @@ export const selectLatestTransactionsIds = createSelector(
   (_, category: Transaction["category"]) => category,
   (ids: Transaction["id"][], transactions, category) => {
     const sortedTransactions = ids
-      .filter((id) => transactions[id].category === category)
+      .filter(
+        (id) =>
+          transactions[id].category.toLowerCase() === category.toLowerCase()
+      )
       .sort(
         (a, b) =>
           new Date(transactions[b].date).getTime() -

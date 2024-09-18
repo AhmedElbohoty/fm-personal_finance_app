@@ -25,16 +25,17 @@ function Signup({ login, setIsLogin }: SignupProps) {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const isDisabled = !name || !email || !password;
+  const isDisabled = login ? !email || !password : !name || !email || !password;
+
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (!name || !email || !password) {
+    if (isDisabled) {
       alert("Please fill in all fields.");
       return;
     }
 
-    if (name.length < 2) {
+    if (!login && name.length < 2) {
       alert("Name must be at least 2 letters long.");
       return;
     }
@@ -51,6 +52,7 @@ function Signup({ login, setIsLogin }: SignupProps) {
     }
 
     setIsLogin(true);
+    window.localStorage.setItem("personal_finances_logged_in", "true");
   }
 
   return (
@@ -110,7 +112,7 @@ function Signup({ login, setIsLogin }: SignupProps) {
           </InputWrapper>
 
           <PrimaryBtn
-            label="Create Account"
+            label={login ? "Login" : "Create Account"}
             isDisabled={isDisabled}
             type="submit"
           />
@@ -129,7 +131,7 @@ function Signup({ login, setIsLogin }: SignupProps) {
           </p>
 
           <p className="signup-form-note">
-            * This is a demo, just fill in the fields and click the button 😊
+            😊 This is a demo, just fill in the fields and click the button 😊
           </p>
         </form>
       </div>

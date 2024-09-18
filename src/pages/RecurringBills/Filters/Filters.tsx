@@ -1,4 +1,4 @@
-import { type ChangeEvent, useContext, useId } from "react";
+import { type ChangeEvent, useContext, useId, useState } from "react";
 
 import InputWrapper from "components/Input/InputWrapper";
 import InputText from "components/Input/InputText";
@@ -17,6 +17,7 @@ function Filters() {
   const { isSmallScr } = useContext(WindowSizeContext);
   const searchId = useId();
   const sortId = useId();
+  const [showSort, setShowSort] = useState(false);
 
   function onChangeSearch(e: ChangeEvent<HTMLInputElement>) {
     setSearch(e.target.value.toLowerCase());
@@ -39,9 +40,17 @@ function Filters() {
         </InputWrapper>
       </div>
 
-      <div className="recfilters-sort">
-        {isSmallScr && <SvgIcon path="sort-mobile" />}
-        {!isSmallScr && (
+      {isSmallScr && (
+        <div
+          className="recfilters-sort-icon"
+          onClick={() => setShowSort(!showSort)}
+        >
+          <SvgIcon path="sort-mobile" />
+        </div>
+      )}
+
+      {(!isSmallScr || showSort) && (
+        <div className="recfilters-sort">
           <InputWrapper
             id={sortId}
             label="Sort by"
@@ -54,8 +63,8 @@ function Filters() {
               onChange={onChangeSort}
             />
           </InputWrapper>
-        )}
-      </div>
+        </div>
+      )}
     </section>
   );
 }

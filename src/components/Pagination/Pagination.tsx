@@ -1,6 +1,4 @@
-// TODO: Use one caret
-import CaretRightIcon from "assets/icons/caret-right.svg";
-import CaretLeftIcon from "assets/icons/caret-left.svg";
+import SvgIcon from "components/SvgIcon/SvgIcon";
 
 // CSS prefix: .pagination-
 import "./style.css";
@@ -51,7 +49,7 @@ function Pagination({
         disabled={currentPage === 1}
       >
         <span className="pagin-arrow-icon">
-          <CaretLeftIcon />
+          <SvgIcon path="caret-left" />
         </span>
         <span className="pagin-arrow-label">Prev</span>
       </button>
@@ -65,7 +63,7 @@ function Pagination({
       >
         <span className="pagin-arrow-label">Next</span>
         <span className="pagin-arrow-icon">
-          <CaretRightIcon />
+          <SvgIcon path="caret-right" />
         </span>
       </button>
     </div>

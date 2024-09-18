@@ -1,10 +1,9 @@
 import { Fragment, useContext } from "react";
 
 import UserAvatar from "components/Avatar/Avatar";
-import DueIcon from "assets/icons/bill-due.svg";
-import PaidIcon from "assets/icons/bill-paid.svg";
 import Separator from "components/Separator/Separator";
 import HighlightText from "components/HighlightText/HighlightText";
+import SvgIcon from "components/SvgIcon/SvgIcon";
 
 import { useAppSelector } from "store/store";
 import { selectTransactionById } from "store/appSlice/selectors";
@@ -74,8 +73,8 @@ function Row({ id }: { id: Transaction["id"] }) {
         <span>{formatMonthlyDate(date)}</span>
 
         <div className="rectable-date-icon">
-          {isPaid && <PaidIcon />}
-          {isDue && <DueIcon />}
+          {isPaid && <SvgIcon path="bill-paid" />}
+          {isDue && <SvgIcon path="bill-due" />}
         </div>
       </div>
 

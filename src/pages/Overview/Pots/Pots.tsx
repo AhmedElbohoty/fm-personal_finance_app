@@ -2,7 +2,7 @@ import Card from "components/Card/Card";
 import CardHeader from "pages/Overview/CardHeader/CardHeader";
 import BudgetPotItem from "components/BudgetPotItem/BudgetPotItem";
 
-import PotIcon from "assets/icons/pot.svg";
+import SvgIcon from "components/SvgIcon/SvgIcon";
 
 import { formatNumber } from "utils/helpers";
 import {
@@ -27,7 +27,7 @@ function PotsSection() {
         <div className="potssect-main">
           <div className="potssect-total">
             <span className="potssect-total-icon">
-              <PotIcon />
+              <SvgIcon path="pot" />
             </span>
             <div>
               <p className="potssect-total-label">Total Saved</p>

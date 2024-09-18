@@ -5,6 +5,11 @@
   grid-template-columns: 600px 1fr;
 }
 
+.signup .svg-logo_large {
+  display: none;
+  opacity: 0;
+}
+
 .signup-illust {
   padding: var(--spacing-250);
 }
@@ -69,6 +74,7 @@
   line-height: var(--line-height-150);
   letter-spacing: var(--letter-spacing-0);
   text-decoration: underline;
+  text-align: center;
   transition: opacity var(--transition-duration) var(--transition-timing-func);
 }
 
@@ -86,6 +92,7 @@
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-150);
   letter-spacing: var(--letter-spacing-0);
+  text-align: center;
 }
 /* Medium */
 @media screen and (max-width: 1439px) {
@@ -94,9 +101,17 @@
     grid-template-rows: 70px 1fr;
   }
 
+  .signup .svg-logo_large {
+    display: block;
+    opacity: 1;
+  }
+
   .signup-illust {
     padding: 0;
     background-color: var(--c-grey-900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .signup-illust-img {

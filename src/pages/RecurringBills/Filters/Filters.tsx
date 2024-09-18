@@ -3,10 +3,7 @@ import { type ChangeEvent, useContext, useId } from "react";
 import InputWrapper from "components/Input/InputWrapper";
 import InputText from "components/Input/InputText";
 import Select from "components/Input/Select";
-
-import SearchIcon from "assets/icons/search.svg";
-import CaretDownIcon from "assets/icons/caret-down.svg";
-import SortIcon from "assets/icons/sort-mobile.svg";
+import SvgIcon from "components/SvgIcon/SvgIcon";
 import { sortOptions } from "components/Input/selectOptions";
 import { WindowSizeContext } from "contexts/windowSizeContext";
 import { BillsPageContext } from "contexts/billsPageContext";
@@ -32,7 +29,7 @@ function Filters() {
   return (
     <section className="recfilters">
       <div className="recfilters-search">
-        <InputWrapper id={searchId} icon={<SearchIcon />}>
+        <InputWrapper id={searchId} icon={<SvgIcon path="search" />}>
           <InputText
             id={searchId}
             placeholder="Search bills"
@@ -43,9 +40,13 @@ function Filters() {
       </div>
 
       <div className="recfilters-sort">
-        {isSmallScr && <SortIcon />}
+        {isSmallScr && <SvgIcon path="sort-mobile" />}
         {!isSmallScr && (
-          <InputWrapper id={sortId} label="Sort by" icon={<CaretDownIcon />}>
+          <InputWrapper
+            id={sortId}
+            label="Sort by"
+            icon={<SvgIcon path="caret-down" />}
+          >
             <Select
               id={sortId}
               options={sortOptions}

@@ -1,8 +1,6 @@
 import { useState, type SyntheticEvent } from "react";
 
-import CircleIcon from "assets/icons/circle.svg";
-
-// TODO: Lazy load all images
+import SvgIcon from "components/SvgIcon/SvgIcon";
 
 // CSS prefix: .useravatar-
 import "./style.css";
@@ -22,7 +20,7 @@ function UserAvatar({ src, alt, name }: UserAvatarProps) {
   if (!src || isError) {
     return (
       <div className="useravatar useravatar-circ">
-        <CircleIcon />
+        <SvgIcon path="circle" />
         <span className="useravatar-circ-text">{name[0]}</span>
       </div>
     );

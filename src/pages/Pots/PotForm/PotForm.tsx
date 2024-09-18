@@ -17,8 +17,8 @@ import Modal from "components/Modal/Modal";
 import ModalHeader from "components/Modal/ModalHeader";
 import ModalInfo from "components/Modal/ModalInfo";
 import { themesOptions } from "components/Input/selectOptions";
+import SvgIcon from "components/SvgIcon/SvgIcon";
 
-import CaretDownIcon from "assets/icons/caret-down.svg";
 import { PotsPageContext } from "contexts/potsPageContext";
 import { addPot, updatePot } from "store/appSlice/slice";
 
@@ -124,7 +124,7 @@ function PotForm() {
             id={themeId}
             label="Theme"
             colorTag={theme}
-            icon={<CaretDownIcon />}
+            icon={<SvgIcon path="caret-down" />}
           >
             <Select
               id={themeId}

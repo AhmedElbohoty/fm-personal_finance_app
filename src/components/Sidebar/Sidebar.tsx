@@ -1,15 +1,11 @@
 import { useState } from "react";
 
 import Link from "components/Sidebar/Link/Link";
+import SvgIcon from "components/SvgIcon/SvgIcon";
 
 import Logo from "assets/logo/logo-large.svg";
 import LogoMinimized from "assets/logo/logo-small.svg";
-import OverviewIcon from "assets/icons/nav-overview.svg";
-import TransactionsIcon from "assets/icons/nav-transactions.svg";
-import BudgetsIcon from "assets/icons/nav-budgets.svg";
-import PotsIcon from "assets/icons/nav-pots.svg";
-import RecurringBillsIcon from "assets/icons/nav-recurring-bills.svg";
-import MinimizeIcon from "assets/icons/minimize-menu.svg";
+
 import { useWindowSizeContext } from "contexts/windowSizeContext";
 
 // CSS prefix: .sidebar-
@@ -23,27 +19,27 @@ export type LinkType = {
 
 const links: LinkType[] = [
   {
-    icon: <OverviewIcon />,
+    icon: <SvgIcon path="nav-overview" />,
     to: "/overview",
     label: "Overview",
   },
   {
-    icon: <TransactionsIcon />,
+    icon: <SvgIcon path="nav-transactions" />,
     to: "/transactions",
     label: "Transactions",
   },
   {
-    icon: <BudgetsIcon />,
+    icon: <SvgIcon path="nav-budgets" />,
     to: "/budgets",
     label: "Budgets",
   },
   {
-    icon: <PotsIcon />,
+    icon: <SvgIcon path="nav-pots" />,
     to: "/pots",
     label: "Pots",
   },
   {
-    icon: <RecurringBillsIcon />,
+    icon: <SvgIcon path="nav-recurring-bills" />,
     to: "/recurring-bills",
     label: "Recurring bills",
   },
@@ -77,7 +73,7 @@ function Sidebar() {
         {isLargeScr && (
           <button className="sidebar-toggle-btn" onClick={handleToggleMinimize}>
             <span className="sidebar-toggle-btn-icon">
-              <MinimizeIcon />
+              <SvgIcon path="minimize-menu" />
             </span>
             <span className="sidebar-toggle-btn-label">Minimize Menu</span>
           </button>

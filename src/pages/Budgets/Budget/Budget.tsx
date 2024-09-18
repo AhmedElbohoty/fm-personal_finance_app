@@ -5,8 +5,7 @@ import ProgressBar from "components/ProgressBar/ProgressBar";
 import TertiaryButton from "components/Buttons/Tertiary/Tertiary";
 import Separator from "components/Separator/Separator";
 import UserAvatar from "components/Avatar/Avatar";
-import EllipsisIcon from "assets/icons/ellipsis.svg";
-import CaretRightIcon from "assets/icons/caret-right.svg";
+import SvgIcon from "components/SvgIcon/SvgIcon";
 import BudgetPotItem from "components/BudgetPotItem/BudgetPotItem";
 
 import type {
@@ -87,7 +86,7 @@ function Budget({ budgetId }: BudgetProps) {
           className="budgetcard-head-icon"
           onClick={onCLickOptIcon}
         >
-          <EllipsisIcon />
+          <SvgIcon path="ellipsis" />
         </span>
 
         {isDropdownOpen && (
@@ -124,7 +123,7 @@ function Budget({ budgetId }: BudgetProps) {
           <TertiaryButton
             label="See All"
             link={`/transactions?category=${budget.category}`}
-            icon={<CaretRightIcon />}
+            icon={<SvgIcon path="caret-right" />}
           />
         </div>
 

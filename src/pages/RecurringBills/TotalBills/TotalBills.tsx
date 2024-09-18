@@ -1,4 +1,4 @@
-import BillsIcons from "assets/icons/recurring-bills.svg";
+import SvgIcon from "components/SvgIcon/SvgIcon";
 
 import { formatNumber } from "utils/helpers";
 import { useAppSelector } from "store/store";
@@ -13,7 +13,7 @@ function TotalBills() {
   return (
     <div className="totalbills-cont">
       <span className="totalbills-icon">
-        <BillsIcons />
+        <SvgIcon path="recurring-bills" />
       </span>
 
       <div className="totalbills-total">

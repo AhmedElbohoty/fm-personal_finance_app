@@ -1,4 +1,4 @@
-import CloseIcon from "assets/icons/close-modal.svg";
+import SvgIcon from "components/SvgIcon/SvgIcon";
 
 // CSS prefix: .modalhead-
 import "./style.css";
@@ -14,7 +14,7 @@ function ModalHeader({ text, closeModal }: ModalHeaderProps) {
       <p className="modalhead-label">{text}</p>
 
       <span className="modalhead-icon" onClick={closeModal}>
-        <CloseIcon />
+        <SvgIcon path="close-modal" />
       </span>
     </div>
   );

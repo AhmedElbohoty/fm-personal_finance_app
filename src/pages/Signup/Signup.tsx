@@ -1,12 +1,12 @@
-import { FormEvent, useId, useState } from "react";
+import { type FormEvent, Suspense, useId, useState } from "react";
 import { Link } from "react-router-dom";
 
 import InputWrapper from "components/Input/InputWrapper";
 import InputText from "components/Input/InputText";
 import PrimaryBtn from "components/Buttons/Primary/Primary";
+import SvgIcon from "components/SvgIcon/SvgIcon";
 
-import HidePassIcon from "assets/icons/hide-password.svg";
-import ShowPassIcon from "assets/icons/show-password.svg";
+import Logo from "assets/logo/logo-large.svg";
 
 // CSS prefix: .signup-
 import "./style.css";
@@ -57,6 +57,9 @@ function Signup({ login, setIsLogin }: SignupProps) {
     <div className="signup">
       <div className="signup-illust">
         <div className="signup-illust-img" />
+        <Suspense>
+          <Logo />
+        </Suspense>
       </div>
 
       <div className="signup-form-cont">
@@ -89,7 +92,11 @@ function Signup({ login, setIsLogin }: SignupProps) {
             id={passwordId}
             label="Create Password"
             helperText="Passwords must be at least 8 characters"
-            icon={showPassword ? <HidePassIcon /> : <ShowPassIcon />}
+            icon={
+              <SvgIcon
+                path={showPassword ? "show-password" : "hide-password"}
+              />
+            }
             onClickIcon={() => setShowPassword(!showPassword)}
           >
             <InputText

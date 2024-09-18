@@ -1,6 +1,6 @@
 import { useContext, useId, useState } from "react";
 
-import EllipsisIcon from "assets/icons/ellipsis.svg";
+import SvgIcon from "components/SvgIcon/SvgIcon";
 import SecondaryBtn from "components/Buttons/Secondary/Secondary";
 import ProgressBar from "components/ProgressBar/ProgressBar";
 import { formatPercentage } from "components/ProgressBar/helpers";
@@ -81,7 +81,7 @@ function Pot({ potId }: PotProps) {
           className="potcard-head-icon"
           onClick={onCLickOptIcon}
         >
-          <EllipsisIcon />
+          <SvgIcon path="ellipsis" />
         </span>
 
         {isDropdownOpen && (

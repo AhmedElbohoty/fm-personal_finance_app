@@ -1,5 +1,5 @@
 import TertiaryButton from "components/Buttons/Tertiary/Tertiary";
-import CaretRight from "assets/icons/caret-right.svg";
+import SvgIcon from "components/SvgIcon/SvgIcon";
 
 // CSS prefix: .cardheader-
 import "./style.css";
@@ -14,7 +14,11 @@ function CardHeader({ title, linkPath, linkText }: CardHeaderProps) {
   return (
     <header className="cardheader">
       <h2 className="cardheader-h2">{title}</h2>
-      <TertiaryButton label={linkText} link={linkPath} icon={<CaretRight />} />
+      <TertiaryButton
+        label={linkText}
+        link={linkPath}
+        icon={<SvgIcon path="caret-right" />}
+      />
     </header>
   );
 }

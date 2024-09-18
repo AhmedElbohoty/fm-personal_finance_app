@@ -3,14 +3,10 @@ import { type ChangeEvent, useContext, useId } from "react";
 import InputWrapper from "components/Input/InputWrapper";
 import InputText from "components/Input/InputText";
 import Select from "components/Input/Select";
+import SvgIcon from "components/SvgIcon/SvgIcon";
 
-import SearchIcon from "assets/icons/search.svg";
-import CaretDownIcon from "assets/icons/caret-down.svg";
 import { sortOptions } from "components/Input/selectOptions";
 import { WindowSizeContext } from "contexts/windowSizeContext";
-
-import FilterIcon from "assets/icons/filter-mobile.svg";
-import SortIcon from "assets/icons/sort-mobile.svg";
 import { useTransactionsPageContext } from "contexts/transactionsPageContext";
 
 // CSS prefix: .tranfilters-
@@ -45,7 +41,7 @@ function Filters() {
   return (
     <section className="tranfilters">
       <div className="tranfilters-search">
-        <InputWrapper id={searchId} icon={<SearchIcon />}>
+        <InputWrapper id={searchId} icon={<SvgIcon path="search" />}>
           <InputText
             id={searchId}
             placeholder="Search transaction"
@@ -56,9 +52,13 @@ function Filters() {
       </div>
 
       <div className="tranfilters-sort">
-        {isSmallScr && <SortIcon />}
+        {isSmallScr && <SvgIcon path="sort-mobile" />}
         {!isSmallScr && (
-          <InputWrapper id={sortId} label="Sort by" icon={<CaretDownIcon />}>
+          <InputWrapper
+            id={sortId}
+            label="Sort by"
+            icon={<SvgIcon path="caret-down" />}
+          >
             <Select
               id={sortId}
               options={sortOptions}
@@ -70,9 +70,13 @@ function Filters() {
       </div>
 
       <div className="tranfilters-category">
-        {isSmallScr && <FilterIcon />}
+        {isSmallScr && <SvgIcon path="filter-mobile" />}
         {!isSmallScr && (
-          <InputWrapper id={sortId} label="Category" icon={<CaretDownIcon />}>
+          <InputWrapper
+            id={sortId}
+            label="Category"
+            icon={<SvgIcon path="caret-down" />}
+          >
             <Select
               id={sortId}
               options={categoriesOpts}

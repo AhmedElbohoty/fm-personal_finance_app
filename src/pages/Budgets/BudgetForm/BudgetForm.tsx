@@ -18,8 +18,8 @@ import Modal from "components/Modal/Modal";
 import ModalHeader from "components/Modal/ModalHeader";
 import ModalInfo from "components/Modal/ModalInfo";
 import { themesOptions } from "components/Input/selectOptions";
+import SvgIcon from "components/SvgIcon/SvgIcon";
 
-import CaretDownIcon from "assets/icons/caret-down.svg";
 import { BudgetsPageContext } from "contexts/budgetsPageContext";
 import { useAppSelector } from "store/store";
 import { selectCategories } from "store/appSlice/selectors";
@@ -109,7 +109,7 @@ function BudgetForm() {
           <InputWrapper
             id={categoryId}
             label="Budget Category"
-            icon={<CaretDownIcon />}
+            icon={<SvgIcon path="caret-down" />}
           >
             <Select
               id={categoryId}
@@ -131,7 +131,7 @@ function BudgetForm() {
             id={themeId}
             label="Theme"
             colorTag={theme}
-            icon={<CaretDownIcon />}
+            icon={<SvgIcon path="caret-down" />}
           >
             <Select
               id={themeId}

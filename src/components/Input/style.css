@@ -82,6 +82,11 @@
   pointer-events: none;
 }
 
+.input-icon[data-active="true"] {
+  pointer-events: all;
+  cursor: pointer;
+}
+
 .input-icon .svg-caretd {
   width: 11px;
   height: 6px;

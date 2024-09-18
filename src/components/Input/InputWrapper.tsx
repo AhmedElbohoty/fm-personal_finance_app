@@ -11,6 +11,7 @@ type InputWrapProps = {
   icon?: ReactNode;
   colorTag?: string;
   helperText?: string;
+  onClickIcon?: () => void;
 };
 
 function InputWrapper({
@@ -21,6 +22,7 @@ function InputWrapper({
   icon,
   colorTag,
   helperText,
+  onClickIcon,
 }: InputWrapProps) {
   return (
     <div className="input-wrapper">
@@ -33,7 +35,7 @@ function InputWrapper({
 
         {children}
 
-        {icon && <Icon icon={icon} />}
+        {icon && <Icon icon={icon} onClick={onClickIcon} />}
       </div>
 
       {helperText && <HelperText helperText={helperText} />}
@@ -62,8 +64,12 @@ function Prefix({ prefix }: { prefix: string }) {
   return <span className="input-prefix">{prefix}</span>;
 }
 
-function Icon({ icon }: { icon: ReactNode }) {
-  return <span className="input-icon">{icon}</span>;
+function Icon({ icon, onClick }: { icon: ReactNode; onClick?: () => void }) {
+  return (
+    <span className="input-icon" data-active={!!onClick} onClick={onClick}>
+      {icon}
+    </span>
+  );
 }
 
 function HelperText({ helperText }: { helperText: string }) {

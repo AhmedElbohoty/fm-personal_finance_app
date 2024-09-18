@@ -1,9 +1,10 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import Sidebar from "components/Sidebar/Sidebar";
 import Providers from "providers/Providers";
 import ClipLoader from "components/ClipLoader/ClipLoader";
+import Signup from "pages/Signup/Signup";
 
 const Overview = React.lazy(() => import("pages/Overview/Overview"));
 const Transactions = React.lazy(
@@ -19,10 +20,27 @@ const RecurringBills = React.lazy(
 import "./style.css";
 
 function AppPage() {
+  const [isLogin, setIsLogin] = useState(false);
+
+  if (!isLogin) {
+    return (
+      <div className="apppage">
+        <Routes>
+          <Route path="/signup" element={<Signup setIsLogin={setIsLogin} />} />
+          <Route
+            path="/login"
+            element={<Signup login setIsLogin={setIsLogin} />}
+          />
+
+          <Route path="*" element={<Navigate to="/signup" replace />} />
+        </Routes>
+      </div>
+    );
+  }
+
   return (
     <Providers>
       <div className="apppage">
-        {/* TODO: add topbar notification */}
         <Sidebar />
         <main className="apppage-main">
           <Routes>

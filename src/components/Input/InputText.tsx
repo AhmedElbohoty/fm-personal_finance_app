@@ -9,6 +9,8 @@ type InputTextProps = {
   value: string | number;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   maxLength?: number;
+  minLength?: number;
+  type?: HTMLInputElement["type"];
 };
 
 function InputText({
@@ -17,6 +19,8 @@ function InputText({
   value,
   onChange,
   maxLength,
+  minLength,
+  type = "text",
 }: InputTextProps) {
   return (
     <input
@@ -26,6 +30,8 @@ function InputText({
       value={value}
       onChange={onChange}
       maxLength={maxLength}
+      minLength={minLength}
+      type={type}
     />
   );
 }

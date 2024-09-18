@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@floating-ui/dom':
+        specifier: ^1.6.10
+        version: 1.6.10
       '@reduxjs/toolkit':
         specifier: ^2.2.7
         version: 2.2.7(react-redux@9.1.2(@types/react@18.3.4)(react@18.3.1)(redux@5.0.1))(react@18.3.1)
@@ -33,9 +36,6 @@ importers:
       '@eslint/js':
         specifier: ^9.9.0
         version: 9.9.1
-      '@floating-ui/dom':
-        specifier: ^1.6.10
-        version: 1.6.10
       '@types/node':
         specifier: ^22.5.0
         version: 22.5.0

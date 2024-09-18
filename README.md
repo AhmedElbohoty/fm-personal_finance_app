@@ -54,6 +54,7 @@ Users should be able to:
 - [Vite](https://vitejs.dev/) - Frontend tool
 - [Redux](https://redux-toolkit.js.org/) - State management
 - [Highcharts](https://www.highcharts.com/) - Create charts
+- [@floating-ui/dom](https://floating-ui.com/) - Position floating element
 
 ### Dependencies
 
